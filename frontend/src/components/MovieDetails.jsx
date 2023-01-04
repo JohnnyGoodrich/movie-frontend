@@ -157,9 +157,11 @@ function MovieDetails(props) {
                 newReview.reviews.map((review, index) => {
                     
                     return (
+                        <div className='review-list'>
                         <div className='review'>
-                        <p>Rating {review.rating}</p>
+                        <p>Rating: {review.rating}</p>
                         <p>{review.comment}</p>
+                        </div>
                         </div>
                     )
                 })
