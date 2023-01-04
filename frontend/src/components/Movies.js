@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FaRegHandPointRight } from "react-icons/fa";
 import Search from './Search'
 import Slider from './Slider'
-import '../styles/homepage.css'
+import '../styles/headerHomepage.css'
 
 
 function Movies(props) {
@@ -37,7 +37,7 @@ const loaded = () => {
             <section className="movie-list">
                 {movies?.map((movie) =>{
                     return(
-                        <Link key={movie._id} to={`/movie/${movie._id}`}>
+                        <Link key={movie._id} to={`/review/${movie._id}`}>
                             <div className="movie-card">
                                 <img className="movie-images" src={movie.image} alt=""/>
                                 <h1>{movie.title}</h1>
