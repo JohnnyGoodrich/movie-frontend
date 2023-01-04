@@ -2,54 +2,30 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 function MovieDetails(props) {
-    const [person, setPerson] = useState(null)
+    const [movie, setMovie] = useState(null)
     const [editForm, setEditForm] = useState("")
-    const [newReview, setNewReview] = useState({
-        Review: "",
-     
-    })
+    const [newReview, setNewReview] = useState([])
 
     const navigate = useNavigate()
 
     const params = useParams()
     const { id } = params
 
-    const URL = `http://localhost:13000/people/${id}`
+    const URL = `https://movie-buff-backend.herokuapp.com/movie/${id}`
+    const URL2 = `https://movie-buff-backend.herokuapp.com/review/${id}`
 
     // console.log("id", id, URL)
-    // console.log(`Current Person: ${JSON.stringify(person)}`)
+    // console.log(`Current Person: ${JSON.stringify(movie)}`)
 
     const handleChange = (e) => setEditForm({ ...editForm, [e.target.name]: e.target.value })
 
-
-    // const updatePerson = async (e) => {
-    //     e.preventDefault()
-    //     // console.log(editForm)
-    //     try {
-    //         const options = {
-    //             method: "PUT",
-    //             headers: { "Content-Type": "application/json" },
-    //             body: JSON.stringify(editForm)
-    //         }
-    //         const response = await fetch(URL, options)
-    //         const updatedPerson = await response.json()
-
-    //         setPerson(updatedPerson)
-    //         setEditForm(updatedPerson)
-
-    //     } catch (err) {
-    //         console.log(err)
-    //         navigate(URL)
-    //     }
-    // }
-
-    const getPerson = async () => {
+    const getMovie = async () => {
         try {
 
             const response = await fetch(URL)
             const foundPerson = await response.json()
 
-            setPerson(foundPerson)
+            setMovie(foundPerson)
             setEditForm(foundPerson)
 
         } catch (err) {
@@ -57,11 +33,8 @@ function MovieDetails(props) {
         }
     }
     const handleSubmit = async (e) => {
-        // 0. prevent default (event object method)
         e.preventDefault()
-        // 1. capturing our local state
         const currentState = { ...newReview }
-        // check any fields for property data types / truthy value (function call - stretch)
         try {
             const requestOptions = {
                 method: "POST",
@@ -70,62 +43,36 @@ function MovieDetails(props) {
                 },
                 body: JSON.stringify(currentState)
             }
-            // 2. specify request method , headers, Content-Type
-            // 3. make fetch to BE - sending data (requestOptions)
-
-            // 3a fetch sends the data to API - (mongo)
-            const response = await fetch(URL, requestOptions)
-            // 4. check our response - 
-            // 5. parse the data from the response into JS (from JSON) 
-            const createdPerson = await response.json()
-            console.log(createdPerson)
-            // update local state with response (json from be)
-            setNewReview([...person, createdPerson])
-            // reset newReview state so that our form empties out
+            const response = await fetch(URL2, requestOptions)
+            console.log(URL2) 
+            const createdReview = await response.json()
+            console.log(createdReview)
+            setNewReview([...movie, createdReview])
             setNewReview({
-                review: "",
+                name: "",
+                image: "",
+                title: "",
             })
 
         } catch (err) {
             console.log(err)
         }
     }
-    const removePerson = async () => {
-        try {
-            const options = {
-                method: "DELETE"
-            }
-            const response = await fetch(URL, options)
-            const deletedPerson = await response.json()
-            // console.log(deletedPerson)
-            navigate('/')
 
-            // navigate will change the browser's URL
-            // which will cause react-router to "redirect" to home page;
-            // the Main will then re-render the People component
-            // upon mount People will fetch the updated index of person data
-
-        } catch (err) {
-            console.log(err)
-            navigate(URL)
-        }
-    }
 
     useEffect(() => {
-        getPerson()
+        getMovie()
     }, [])
 
     const loaded = () => (
         <>
             <section>
-                <div className="person">
+                <div className="movie">
                     <h1>Movie Details Page</h1>
-                    <h2>{person.name}</h2>
-                    <h2>{person.title}</h2>
-                    <img src={person.image} alt={person.name + " image"} height="200px" width="200px" />
-                    <div>
-                        <button className="delete" onClick={removePerson}>Remove Person</button>
-                    </div>
+                    <h2>{movie.name}</h2>
+                    <h2>{movie.title}</h2>
+                    <img src={movie.image} alt={movie.name + " image"} height="200px" width="200px" />
+                   
                 </div>
             </section>
 
@@ -154,12 +101,7 @@ function MovieDetails(props) {
                 <section>
                     <h2>Create a new Review</h2>
                     <form onSubmit={handleSubmit}>
-                        <div>
-                        
-                        </div>
-                        <div>
-                        
-                        </div>
+  
                         <div>
                             <label htmlFor='title'>
                                Review
@@ -169,7 +111,7 @@ function MovieDetails(props) {
                                     name="title"
                                     placeholder="write review here"
                                     value={newReview.title}
-                                    onChange={handleChange}
+                                    // onChange={handleChange}
                                 />
                             </label>
                             <br />
@@ -177,20 +119,24 @@ function MovieDetails(props) {
                         </div>
                     </form>
                 </section>
-                {person && person.length ? loaded() : loading()}
+                {movie && movie.length ? loaded() : loading()}
             </div >
         </>
     )
-
+    {newReview.length > 0 ? (
+        newReview.map(review => {
+            return <p key={review.id}>Rating: {review.rating} <br /> {review.description}</p>
+        })
+    ): ( <p> No reviews for this product </p> )}
     const loading = () => (
         <>
             <h1>
-                Loading...
+                {/* Loading... */}
             </h1>
         </>
     );
     return (
-        <div>{person ? loaded() : loading()}</div>
+        <div>{movie ? loaded() : loading()}</div>
     )
 }
 

@@ -12,7 +12,7 @@ const People = (props) => {
         title: "",
     })
     // fetch endpoint
-    const BASE_URL = "https://seir1031-people-be.herokuapp.com/people"
+    const BASE_URL = "https://movie-buff-backend.herokuapp.com/movie"
 
 
     const getPeople = async () => {
@@ -80,14 +80,14 @@ const People = (props) => {
     const loaded = () => {
         return (<>
             <section className="people-list">
-                {people?.map((person) => {
+                {people?.map((movie) => {
                     return (
-                        <Link key={person._id} to={`/people/${person._id}`}>
-                            <div className="person-card">
+                        <Link key={movie._id} to={`/movie/${movie._id}`}>
+                            <div className="movie-card">
                                 {/* React optimization / difference */}
-                                <h1>{person.name}</h1>
-                                <img className='showpic' src={person.image}height="200px" width="200px" />
-                                <h3>{person.title}</h3>
+                                <h1>{movie.name}</h1>
+                                <img className='showpic' src={movie.image}height="200px" width="200px" />
+                                <h3>{movie.title}</h3>
                             </div>
                         </Link>
                     )
