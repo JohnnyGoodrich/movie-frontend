@@ -1,9 +1,11 @@
 import { useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import Search from './Search'
+import '../styles/homepage.css'
+
 function Movies(props) {
 const [movies, setMovies] = useState([])
-
-const BASE_URL = 'http://localhost:4000/movies'
+const BASE_URL = 'https://movie-buff-backend.herokuapp.com/movie'
 
 const getMovies = async () => {
     try {
@@ -19,6 +21,12 @@ useEffect(() => {
     getMovies()
 }, [])
 
+const movieTitleList = []
+for (let i=0; i<movies.length; i++) {
+    movieTitleList.push(movies[0].title)
+}
+console.log(`movieTitleList: ${movieTitleList}`)
+
 const loaded = () => {
     return (
         <>
@@ -27,9 +35,8 @@ const loaded = () => {
                     return(
                         <Link key={movie._id} to={`/movie/${movie._id}`}>
                             <div className="movie-card">
-                                <h1>movie name</h1>
-                                <img>image</img>
-                                <h3>movie title</h3>
+                                <img src={movie.image} alt=""/>
+                                <h1>{movie.title}</h1>
                             </div>
                         </Link>
                     )
@@ -46,6 +53,13 @@ const loading = () => (
 )
     return (
         <>
+        <div className='header-homepage'>
+        <h1>MovieBuff</h1>
+        <Search movieList={movieTitleList} > </Search>
+        <h1>LOGIN/SIGNUP</h1>
+        </div>
+        <h1>Scroll wheel</h1>
+        <h1>Movies:</h1>
         {movies && movies.length ? loaded() :loading()}
         </>
     )
