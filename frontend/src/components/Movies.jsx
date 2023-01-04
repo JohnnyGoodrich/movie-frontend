@@ -82,7 +82,7 @@ const People = (props) => {
             <section className="people-list">
                 {people?.map((movie) => {
                     return (
-                        <Link key={movie._id} to={`/movie/${movie._id}`}>
+                        <Link key={movie._id} to={`/review/${movie._id}`}>
                             <div className="movie-card">
                                 {/* React optimization / difference */}
                                 <h1>{movie.name}</h1>
@@ -121,7 +121,7 @@ const People = (props) => {
     return (
         <div>
             <section>
-                <h2>Create a new person</h2>
+                <h2>Add a new movie</h2>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor='name'>
@@ -130,7 +130,7 @@ const People = (props) => {
                                 type="text"
                                 id="name"
                                 name="name"
-                                placeholder="enter a person's name"
+                                placeholder="enter a movie's name"
                                 value={newForm.name}
                                 onChange={handleChange}
                             />
@@ -143,7 +143,7 @@ const People = (props) => {
                                 type="text"
                                 id="image"
                                 name="image"
-                                placeholder="enter a person's image"
+                                placeholder="enter a movie's image"
                                 value={newForm.image}
                                 onChange={handleChange}
                             />
@@ -156,13 +156,13 @@ const People = (props) => {
                                 type="text"
                                 id="title"
                                 name="title"
-                                placeholder="enter a person's title"
+                                placeholder="enter a movie's title"
                                 value={newForm.title}
                                 onChange={handleChange}
                             />
                         </label>
                         <br />
-                        <input type="submit" value="Create a new person" />
+                        <input type="submit" value="Create a new movie" />
                     </div>
                 </form>
             </section>
