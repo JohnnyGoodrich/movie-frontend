@@ -82,7 +82,7 @@ const People = (props) => {
             <section className="people-list">
                 {people?.map((movie) => {
                     return (
-                        <Link key={movie._id} to={`/review/${movie._id}`}>
+                        <Link key={movie._id} to={`/reviews/${movie._id}`}>
                             <div className="movie-card">
                                 {/* React optimization / difference */}
                                 <h1>{movie.name}</h1>

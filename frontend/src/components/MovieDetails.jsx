@@ -5,7 +5,13 @@ import './MovieDetails.css'
 function MovieDetails(props) {
     const [movie, setMovie] = useState(null)
     const [editForm, setEditForm] = useState("")
-    const [newReview, setNewReview] = useState([])
+    const [newReview, setNewReview] = useState([{
+        rating:"",
+        comment:"",
+        title:'',
+    }]
+
+    )
 
     const navigate = useNavigate()
 
@@ -19,7 +25,14 @@ function MovieDetails(props) {
     // console.log("id", id, URL)
     // console.log(`Current Person: ${JSON.stringify(movie)}`)
 
-    const handleChange = (e) => setEditForm({ ...editForm, [e.target.name]: e.target.value })
+    // const handleChange = (e) => setEditForm({ ...editForm, [e.target.name]: e.target.value })
+
+    const handleChange = (e) => {
+        console.log(newReview)
+        const userInput = { ...newReview }
+        userInput[e.target.name] = e.target.value
+        setNewReview(userInput)
+    }
 
     const getMovie = async () => {
         try {
@@ -58,17 +71,17 @@ function MovieDetails(props) {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(currentState)
+
             }
             const response = await fetch(URL2, requestOptions)
-            console.log(URL2) 
+            console.log(URL2)
             const createdReview = await response.json()
             console.log(createdReview)
             setNewReview([...newReview, createdReview])
-            setNewReview({
+            setNewReview([{
                 rating: "",
                 comment: "",
-             
-            })
+            }])
 
         } catch (err) {
             console.log(err)
@@ -91,7 +104,7 @@ function MovieDetails(props) {
                     <h2>{movie.name}</h2>
                     <h2>{movie.title}</h2>
                     <img src={movie.image} alt={movie.name + " image"} height="200px" width="200px" />
-                   
+
                 </div>
             </section>
 
@@ -120,52 +133,50 @@ function MovieDetails(props) {
                 <section>
                     <h2>Create a new Review</h2>
                     <form onSubmit={handleSubmit}>
-  
+
                         <div>
                             <label htmlFor='title'>
-                               Rating
+                                Rating
                                 <input
                                     type="number"
-                                    id="title"
-                                    name="title"
+                                    id="rating"
                                     placeholder="write review here"
-                                    // value={newReview}
+                                    value={newReview.reviews.rating}
                                     onChange={handleChange}
                                 />
                             </label>
                             <label htmlFor='title'>
-                               Comment
+                                Comment
                                 <input
                                     type="text"
-                                    id="title"
-                                    name="title"
+                                    id="comment"
                                     placeholder="write review here"
-                                    value=""
+                                    value={newReview.reviews.comment}
                                     onChange={handleChange}
                                 />
                             </label>
-                        
+
                             <br />
                             <input type="submit" value="Post Review" />
                         </div>
                     </form>
                 </section>
-                {movie && movie.length ? loaded() : loading()}
+                {/* {movie && movie.length ? loaded() : loading()} */}
             </div >
             <div>
-            {newReview.reviews.length > 0 ? (
-                newReview.reviews.map((review, index) => {
-                    
-                    return (
-                        <div className='review-list'>
-                        <div className='review'>
-                        <p>Rating: {review.rating}</p>
-                        <p>{review.comment}</p>
-                        </div>
-                        </div>
-                    )
-                })
-            ): ( <p> No reviews for this product </p> )}
+                {newReview.reviews ? (
+                    newReview.reviews.map((review, index) => {
+
+                        return (
+                            <div key={review._id} className='review-list'>
+                                <div className='review'>
+                                    <p>Rating: {review.rating}</p>
+                                    <p>{review.comment}</p>
+                                </div>
+                            </div>
+                        )
+                    })
+                ) : (<p> No reviews for this product </p>)}
             </div>
         </>
     )
