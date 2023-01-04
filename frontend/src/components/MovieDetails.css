@@ -1,0 +1,13 @@
+.review{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    border-radius: 10px;
+}
+.review-list{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 60px;
+}
