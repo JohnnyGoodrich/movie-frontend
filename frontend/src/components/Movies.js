@@ -1,7 +1,10 @@
 import { useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import { FaRegHandPointRight } from "react-icons/fa";
 import Search from './Search'
+import Slider from './Slider'
 import '../styles/homepage.css'
+
 
 function Movies(props) {
 const [movies, setMovies] = useState([])
@@ -22,10 +25,11 @@ useEffect(() => {
 }, [])
 
 const movieTitleList = []
+const movieImageList = []
 for (let i=0; i<movies.length; i++) {
-    movieTitleList.push(movies[0].title)
+    movieTitleList.push(movies[i].title)
+    movieImageList.push(movies[i].image)
 }
-console.log(`movieTitleList: ${movieTitleList}`)
 
 const loaded = () => {
     return (
@@ -35,7 +39,7 @@ const loaded = () => {
                     return(
                         <Link key={movie._id} to={`/movie/${movie._id}`}>
                             <div className="movie-card">
-                                <img src={movie.image} alt=""/>
+                                <img className="movie-images" src={movie.image} alt=""/>
                                 <h1>{movie.title}</h1>
                             </div>
                         </Link>
@@ -55,11 +59,13 @@ const loading = () => (
         <>
         <div className='header-homepage'>
         <h1>MovieBuff</h1>
-        <Search movieList={movieTitleList} > </Search>
+        <Search movieList={movieTitleList}/>
         <h1>LOGIN/SIGNUP</h1>
         </div>
-        <h1>Scroll wheel</h1>
-        <h1>Movies:</h1>
+        <div>
+        <Slider movieList={movieTitleList} movieImage={movieImageList}/>
+        </div>
+        <h1><span id="biwind">{<FaRegHandPointRight />}</span>MOVIES</h1>
         {movies && movies.length ? loaded() :loading()}
         </>
     )
