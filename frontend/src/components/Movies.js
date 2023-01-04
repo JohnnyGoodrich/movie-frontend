@@ -70,3 +70,5 @@ const loading = () => (
         </>
     )
 }
+
+export default Movies
