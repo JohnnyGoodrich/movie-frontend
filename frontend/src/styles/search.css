@@ -1,0 +1,105 @@
+/* user input */
+input {
+    width: 300px;
+    height:50px;
+}
+
+
+/* submit button */
+#search{
+    height:50px;
+}
+
+.search-context {
+    position: relative;
+    z-index: 100;
+}
+
+.drop-down-list {
+    position: absolute;
+    top:100%;
+    width: 150%;
+    color: white;
+    background-color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* input {
+    width: 220px;
+}
+
+
+.hide {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.search-context {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 5px;
+    color: rgb(0, 157, 255);
+    font-size: 10px;
+}
+
+.drop-down-list{
+    margin: 0;
+    width: 220px;
+    font-size: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid gray;
+    background-color: black;
+}
+
+.drop-down-list:empty{
+border: none;
+background-color: black;
+}
+
+.drop-down-row {
+    cursor: pointer;
+    text-align: start;
+    margin: 2px 0;
+    background-color: black;
+}
+
+.search-context-inner {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+#search {
+    font-size: 30px;
+    padding: 10px;
+    margin: 0px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+#search:hover {
+    color: rgb(0, 157, 255);
+    background-color: rgb(12, 12, 12);
+} */
