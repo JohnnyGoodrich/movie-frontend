@@ -40,30 +40,30 @@ const Search = (props) => {
 
             {/* search-context-inner class is a form for user to type */}
             <div className="search-context-inner">
+                <p id="look-up-symbol">{<BsSearch/>}</p>
+                <input type="text" value={searchValue} onChange={onChange} id="search" placeholder="Search movies titles....." /> 
                 <Link to={`/details/${searchValue}`}>
-                    <button onClick={<Link to={`/details/${searchValue}`}></Link>} id="search">{<BsSearch/>} </button>
+                    <button onClick={<Link to={`/details/${searchValue}`}></Link>} id="search-submit">Search  </button>
                 </Link>
-                <input type="text" value={searchValue} onChange={onChange} id="search" placeholder="Search movies titles" />
             </div>
 
             {/* This filters through the search results to suggest movie titles completion for the user dynamically as they type. */}
             {/* props.movieList.fliter */}
 
             <div className="drop-down-list">
-                {props.movieList.filter((movie) => {
+                {Object.values(movies).filter((movie) => {
                     const searchItem = searchValue.toLowerCase()
-                    const movieTitle = movie.toLowerCase()
+                    const movieTitle = movie.title.toLowerCase()
                     return (searchItem && movieTitle.startsWith(searchItem) && movieTitle !== searchItem)
                 })
                     .slice(0, 8)
                     .map((movie, idx) => (
                         <div onClick={() => onSearch(movie)} className="drop-down-row" key={idx}>
-                            {movie}
+                            <h3>{movie.title}</h3>
+                            <img id="search-image" src={movie.image} alt=""/>
                             </div>
                     ))
                 }
-                
-
             </div>
         </div>
     )
