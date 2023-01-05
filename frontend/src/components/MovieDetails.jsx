@@ -20,7 +20,7 @@ function MovieDetails(props) {
 
 
     const URL = `https://movie-buff-backend.herokuapp.com/movie/${id}`
-    const URL2 = `https://movie-buff-backend.herokuapp.com/review/${id}`
+    const URL2 = `http://localhost:4000/review/${id}`
 
     // console.log("id", id, URL)
     // console.log(`Current Person: ${JSON.stringify(movie)}`)
@@ -28,10 +28,11 @@ function MovieDetails(props) {
     // const handleChange = (e) => setEditForm({ ...editForm, [e.target.name]: e.target.value })
 
     const handleChange = (e) => {
-        console.log(newReview)
+        console.log(newReview.reviews)
         const userInput = { ...newReview }
-        userInput[e.target.name] = e.target.value
+        userInput[e.target.comment] = e.target.value
         setNewReview(userInput)
+        console.log(userInput)
     }
 
     const getMovie = async () => {
@@ -39,9 +40,10 @@ function MovieDetails(props) {
 
             const response = await fetch(URL)
             const foundMovie = await response.json()
-
+            
             setMovie(foundMovie)
-            setEditForm(foundMovie)
+            // console.log(foundMovie)
+            // setEditForm(foundMovie)
 
         } catch (err) {
             console.log(err)
@@ -52,9 +54,10 @@ function MovieDetails(props) {
         try {
 
             const response = await fetch(URL2)
-            const foundMovie = await response.json()
-
-            setNewReview(foundMovie)
+            const foundReview = await response.json()
+            // console.log(response.json)
+            setNewReview(foundReview)
+            console.log(foundReview)
             // setEditForm(foundMovie)
 
         } catch (err) {
@@ -64,6 +67,7 @@ function MovieDetails(props) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const currentState = { ...newReview }
+        console.log(currentState)
         try {
             const requestOptions = {
                 method: "POST",
@@ -78,10 +82,10 @@ function MovieDetails(props) {
             const createdReview = await response.json()
             console.log(createdReview)
             setNewReview([...newReview, createdReview])
-            setNewReview([{
-                rating: "",
-                comment: "",
-            }])
+            // setNewReview([{
+            //     rating: "",
+            //     comment: "",
+            // }])
 
         } catch (err) {
             console.log(err)
@@ -93,6 +97,7 @@ function MovieDetails(props) {
         getMovie()
     }, [])
     useEffect(() => {
+       
         getReview()
     }, [])
 
@@ -107,28 +112,6 @@ function MovieDetails(props) {
 
                 </div>
             </section>
-
-            {/* <section>
-                <h2>Write a Review:</h2>
-                <form onSubmit={updatePerson}>
-                    <input
-                        type="text"
-                        value={editForm.name}
-                        name="name"
-                        placeholder="name"
-                        onChange={handleChange}
-                    />
-               
-                    <input
-                        type="text"
-                        value={editForm.title}
-                        name="title"
-                        placeholder="title"
-                        onChange={handleChange}
-                    />
-                    <input type="submit" value="Update Person" />
-                </form> 
-            </section> */}
             <div>
                 <section>
                     <h2>Create a new Review</h2>
@@ -140,8 +123,9 @@ function MovieDetails(props) {
                                 <input
                                     type="number"
                                     id="rating"
+                                    name="rating"
                                     placeholder="write review here"
-                                    value={newReview.reviews.rating}
+                                    value={newReview.rating}
                                     onChange={handleChange}
                                 />
                             </label>
@@ -150,8 +134,9 @@ function MovieDetails(props) {
                                 <input
                                     type="text"
                                     id="comment"
+                                    name="comment"
                                     placeholder="write review here"
-                                    value={newReview.reviews.comment}
+                                    value={newReview.comment}
                                     onChange={handleChange}
                                 />
                             </label>
@@ -171,7 +156,7 @@ function MovieDetails(props) {
                             <div key={review._id} className='review-list'>
                                 <div className='review'>
                                     <p>Rating: {review.rating}</p>
-                                    <p>{review.comment}</p>
+                                    <p>Review: {review.comment}</p>
                                 </div>
                             </div>
                         )
@@ -183,12 +168,12 @@ function MovieDetails(props) {
     const loading = () => (
         <>
             <h1>
-                {/* Loading... */}
+                Loading...
             </h1>
         </>
     );
     return (
-        <div>{movie ? loaded() : loading()}</div>
+        <div>{movie? loaded() : loading()}</div>
     )
 }
 
