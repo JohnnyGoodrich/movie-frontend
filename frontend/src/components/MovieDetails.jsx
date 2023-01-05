@@ -20,7 +20,7 @@ function MovieDetails(props) {
 
 
     const URL = `https://movie-buff-backend.herokuapp.com/movie/${id}`
-    const URL2 = `https://movie-buff-backend.herokuapp.com/review/${id}`
+    const URL2 = `http://localhost:4000/review/${id}`
 
     // console.log("id", id, URL)
     // console.log(`Current Person: ${JSON.stringify(movie)}`)
@@ -30,7 +30,7 @@ function MovieDetails(props) {
     const handleChange = (e) => {
         console.log(newReview)
         const userInput = { ...newReview }
-        userInput[e.target.name] = e.target.value
+        userInput[e.target.rating] = e.target.value
         setNewReview(userInput)
         console.log(userInput)
     }
@@ -122,8 +122,9 @@ function MovieDetails(props) {
                                 <input
                                     type="number"
                                     id="rating"
+                                    name="rating"
                                     placeholder="write review here"
-                                    // value={newReview.reviews.rating}
+                                    value={newReview.rating}
                                     onChange={handleChange}
                                 />
                             </label>
@@ -132,8 +133,9 @@ function MovieDetails(props) {
                                 <input
                                     type="text"
                                     id="comment"
+                                    name="comment"
                                     placeholder="write review here"
-                                    // value={newReview.reviews.comment}
+                                    value={newReview.comment}
                                     onChange={handleChange}
                                 />
                             </label>
@@ -153,7 +155,7 @@ function MovieDetails(props) {
                             <div key={review._id} className='review-list'>
                                 <div className='review'>
                                     <p>Rating: {review.rating}</p>
-                                    <p>{review.comment}</p>
+                                    <p>Review: {review.comment}</p>
                                 </div>
                             </div>
                         )
