@@ -1,14 +1,36 @@
 /* user input */
 input {
-    width: 300px;
-    height:50px;
+    width: 650px;
+    height: 50px;
+    border: 0px solid white;
+    border-radius: 90px;
+    background-color: whitesmoke;
 }
+
+*:focus {
+    outline: 0 !important;
+}
+
+
 
 
 /* submit button */
-#search{
-    height:50px;
+#search-submit {
+    height: 51px;
+    border-radius: 90px;
+    border: 0px solid white;
+    font-size:20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-image: linear-gradient(45deg, #19f19b, #5191ff);
+    
 }
+
+#look-up-symbol {
+    margin-left: 20px;
+    margin-top:  11px;
+}
+
 
 .search-context {
     position: relative;
@@ -17,15 +39,25 @@ input {
 
 .drop-down-list {
     position: absolute;
-    top:100%;
+    top: 100%;
     width: 150%;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
 }
 
 
+#search-image {
+    width: 100%;
+    height: auto;
+}
 
-
+.search-context-inner {
+    display: flex;
+    border-radius: 50px;
+    background-color: whitesmoke;
+    box-sizing: border-box;
+    margin-top: 8px;
+}
 
 
 
