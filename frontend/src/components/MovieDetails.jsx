@@ -42,8 +42,8 @@ function MovieDetails(props) {
             const foundMovie = await response.json()
             
             setMovie(foundMovie)
-            console.log(movie.title.title)
-            setEditForm(foundMovie)
+            console.log(foundMovie)
+            // setEditForm(foundMovie)
 
         } catch (err) {
             console.log(err)
@@ -123,7 +123,7 @@ function MovieDetails(props) {
                                     type="number"
                                     id="rating"
                                     placeholder="write review here"
-                                    value={newReview.reviews.rating}
+                                    // value={newReview.reviews.rating}
                                     onChange={handleChange}
                                 />
                             </label>
@@ -133,7 +133,7 @@ function MovieDetails(props) {
                                     type="text"
                                     id="comment"
                                     placeholder="write review here"
-                                    value={newReview.reviews.comment}
+                                    // value={newReview.reviews.comment}
                                     onChange={handleChange}
                                 />
                             </label>
@@ -170,7 +170,7 @@ function MovieDetails(props) {
         </>
     );
     return (
-        <div>{movie ? loaded() : loading()}</div>
+        <div>{movie? loaded() : loading()}</div>
     )
 }
 
