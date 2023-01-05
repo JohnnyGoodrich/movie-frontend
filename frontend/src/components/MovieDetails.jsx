@@ -1,14 +1,16 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './MovieDetails.css'
+import { Link } from 'react-router-dom'
 
 function MovieDetails(props) {
     const [movie, setMovie] = useState(null)
     const [editForm, setEditForm] = useState("")
-    const [newReview, setNewReview] = useState([{
+    const [newReview, setNewReview] = useState([
+        {
         rating:"",
         comment:"",
-        title:'',
+        title:"",
     }]
 
     )
@@ -26,14 +28,6 @@ function MovieDetails(props) {
     // console.log(`Current Person: ${JSON.stringify(movie)}`)
 
     // const handleChange = (e) => setEditForm({ ...editForm, [e.target.name]: e.target.value })
-
-    const handleChange = (e) => {
-        console.log(newReview.reviews)
-        const userInput = { ...newReview }
-        userInput[e.target.comment] = e.target.value
-        setNewReview(userInput)
-        console.log(userInput)
-    }
 
     const getMovie = async () => {
         try {
@@ -63,6 +57,13 @@ function MovieDetails(props) {
         } catch (err) {
             console.log(err)
         }
+    }
+    const handleChange = (e) => {
+        console.log(newReview.reviews)
+        const userInput = { ...newReview }
+        userInput[e.target.name] = e.target.value
+        setNewReview(userInput)
+        console.log(userInput)
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -105,7 +106,7 @@ function MovieDetails(props) {
         <>
             <section>
                 <div className="movie">
-                    <h1>Movie Details Page</h1>
+                    {/* <h1>Movie Details Page</h1> */}
                     <h2>{movie.name}</h2>
                     <h2>{movie.title}</h2>
                     <img src={movie.image} alt={movie.name + " image"} height="200px" width="200px" />
@@ -157,6 +158,7 @@ function MovieDetails(props) {
                                 <div className='review'>
                                     <p>Rating: {review.rating}</p>
                                     <p>Review: {review.comment}</p>
+                                    <Link to={`/review/${review._id}`} className='edit'>edit</Link>
                                 </div>
                             </div>
                         )
