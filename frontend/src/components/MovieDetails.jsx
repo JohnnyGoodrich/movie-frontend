@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './MovieDetails.css'
+import { Link } from 'react-router-dom'
 
 function MovieDetails(props) {
     const [movie, setMovie] = useState(null)
@@ -105,7 +106,7 @@ function MovieDetails(props) {
         <>
             <section>
                 <div className="movie">
-                    <h1>Movie Details Page</h1>
+                    {/* <h1>Movie Details Page</h1> */}
                     <h2>{movie.name}</h2>
                     <h2>{movie.title}</h2>
                     <img src={movie.image} alt={movie.name + " image"} height="200px" width="200px" />
@@ -157,6 +158,7 @@ function MovieDetails(props) {
                                 <div className='review'>
                                     <p>Rating: {review.rating}</p>
                                     <p>Review: {review.comment}</p>
+                                    <Link to={`/review/${review._id}`} className='edit'>edit</Link>
                                 </div>
                             </div>
                         )
