@@ -28,9 +28,9 @@ function MovieDetails(props) {
     // const handleChange = (e) => setEditForm({ ...editForm, [e.target.name]: e.target.value })
 
     const handleChange = (e) => {
-        console.log(newReview)
+        console.log(newReview.reviews)
         const userInput = { ...newReview }
-        userInput[e.target.rating] = e.target.value
+        userInput[e.target.comment] = e.target.value
         setNewReview(userInput)
         console.log(userInput)
     }
@@ -42,7 +42,7 @@ function MovieDetails(props) {
             const foundMovie = await response.json()
             
             setMovie(foundMovie)
-            console.log(foundMovie)
+            // console.log(foundMovie)
             // setEditForm(foundMovie)
 
         } catch (err) {
@@ -54,10 +54,10 @@ function MovieDetails(props) {
         try {
 
             const response = await fetch(URL2)
-            const foundMovie = await response.json()
-            console.log(response.json)
-            setNewReview(foundMovie)
-            console.log(foundMovie)
+            const foundReview = await response.json()
+            // console.log(response.json)
+            setNewReview(foundReview)
+            console.log(foundReview)
             // setEditForm(foundMovie)
 
         } catch (err) {
@@ -67,6 +67,7 @@ function MovieDetails(props) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const currentState = { ...newReview }
+        console.log(currentState)
         try {
             const requestOptions = {
                 method: "POST",
@@ -81,10 +82,10 @@ function MovieDetails(props) {
             const createdReview = await response.json()
             console.log(createdReview)
             setNewReview([...newReview, createdReview])
-            setNewReview([{
-                rating: "",
-                comment: "",
-            }])
+            // setNewReview([{
+            //     rating: "",
+            //     comment: "",
+            // }])
 
         } catch (err) {
             console.log(err)
