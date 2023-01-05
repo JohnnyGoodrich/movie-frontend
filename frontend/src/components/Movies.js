@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { FaRegHandPointRight } from "react-icons/fa";
 import Search from './Search'
 import Slider from './Slider'
+import MovieSlider from './MovieSlider';
 import '../styles/headerHomepage.css'
 
 
@@ -72,6 +73,14 @@ function Movies(props) {
                 <Slider movieList={movieTitleList} movieImage={movieImageList} />
             </div>
             <h1><span id="biwind">{<FaRegHandPointRight />}</span>MOVIES</h1>
+            <div className="movies-slide-bar">
+                <h1>Recent <span className='green'>Projects</span></h1>
+                <p>Testing</p>
+                <MovieSlider image={movieImageList} title={movieTitleList} />
+
+            </div>
+
+
             {movies && movies.length ? loaded() : loading()}
         </>
     )

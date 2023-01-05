@@ -31,6 +31,7 @@
     
 }
 
+
 #login-box{
     margin-top: 14px;
     background-color: #f3ec78;
@@ -59,6 +60,52 @@
     width: 24px;
     animation: loading infinite 3s linear;
 }
+
+
+.content{
+    background-image: linear-gradient(0.25turn, #10698683, #0c2c63);
+    animation: mymove 10s infinite;
+}
+
+/* movieSlider.js */
+.movies-slide-bar {
+    width: 80%;
+    max-width:1280px;
+    margin: 0 auto;
+    padding: 3rem 0;
+    text-align:center;
+
+    h1{
+        font-size: 1.9rem;
+    }
+
+    p{
+        width: 28rem;
+        margin: 0 auto;
+        padding: 1rem 0;
+        font-size: 0%.9rem;
+
+    }
+}
+
+.disc{
+    height: 10rem;
+    background-color: #4e5156;
+    margin: 0 0.5rem;
+    padding: 0 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+
+
+
+
+@keyframes mymove {
+    from {background-color: #2d883a83;}
+    to {background-color: #005cfc;}
+  }
 
 @keyframes loading{
     from{

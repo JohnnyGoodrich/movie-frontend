@@ -1,9 +1,11 @@
 .carousel-container {
     width:50%;
-    
+    margin-left: 400px;
 }
 .slider {
-    height: 30%!important;
-    width: 100%!important;
+    height: 500px!important;
+    width: auto!important;
+    margin-left: 220px;
     
 }
+

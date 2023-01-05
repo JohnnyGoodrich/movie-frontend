@@ -4,7 +4,7 @@ import '../styles/slider.css'
 function Slider(props) {
     return (
         <>
-            <Carousel className="carousel-container" height="200px">
+            <Carousel className="carousel-container">
                 <Carousel.Item interval={1500}>
                     <img
                         className="slider"
