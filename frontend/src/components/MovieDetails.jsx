@@ -32,6 +32,7 @@ function MovieDetails(props) {
         const userInput = { ...newReview }
         userInput[e.target.name] = e.target.value
         setNewReview(userInput)
+        console.log(userInput)
     }
 
     const getMovie = async () => {
@@ -39,8 +40,9 @@ function MovieDetails(props) {
 
             const response = await fetch(URL)
             const foundMovie = await response.json()
-
+            
             setMovie(foundMovie)
+            console.log(movie.title.title)
             setEditForm(foundMovie)
 
         } catch (err) {
@@ -53,8 +55,9 @@ function MovieDetails(props) {
 
             const response = await fetch(URL2)
             const foundMovie = await response.json()
-
+            console.log(response.json)
             setNewReview(foundMovie)
+            console.log(foundMovie)
             // setEditForm(foundMovie)
 
         } catch (err) {
@@ -93,6 +96,7 @@ function MovieDetails(props) {
         getMovie()
     }, [])
     useEffect(() => {
+       
         getReview()
     }, [])
 
@@ -107,28 +111,6 @@ function MovieDetails(props) {
 
                 </div>
             </section>
-
-            {/* <section>
-                <h2>Write a Review:</h2>
-                <form onSubmit={updatePerson}>
-                    <input
-                        type="text"
-                        value={editForm.name}
-                        name="name"
-                        placeholder="name"
-                        onChange={handleChange}
-                    />
-               
-                    <input
-                        type="text"
-                        value={editForm.title}
-                        name="title"
-                        placeholder="title"
-                        onChange={handleChange}
-                    />
-                    <input type="submit" value="Update Person" />
-                </form> 
-            </section> */}
             <div>
                 <section>
                     <h2>Create a new Review</h2>
@@ -183,7 +165,7 @@ function MovieDetails(props) {
     const loading = () => (
         <>
             <h1>
-                {/* Loading... */}
+                Loading...
             </h1>
         </>
     );
