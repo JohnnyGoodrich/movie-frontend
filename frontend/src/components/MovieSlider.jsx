@@ -39,7 +39,7 @@ function MovieSlider (props) {
       
     return (
         <Slider {...settings}>
-            <img src={props.image[0]} alt="" />
+            <img className="movie-slider-image"src={props.image[0]} alt="" />
             <div className="disc">
                 <h1>Testing Description</h1>
                 <p>Testing p</p>
