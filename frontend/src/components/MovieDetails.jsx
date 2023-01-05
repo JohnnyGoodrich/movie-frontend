@@ -5,10 +5,11 @@ import './MovieDetails.css'
 function MovieDetails(props) {
     const [movie, setMovie] = useState(null)
     const [editForm, setEditForm] = useState("")
-    const [newReview, setNewReview] = useState([{
+    const [newReview, setNewReview] = useState([
+        {
         rating:"",
         comment:"",
-        title:'',
+        title:"",
     }]
 
     )
@@ -26,14 +27,6 @@ function MovieDetails(props) {
     // console.log(`Current Person: ${JSON.stringify(movie)}`)
 
     // const handleChange = (e) => setEditForm({ ...editForm, [e.target.name]: e.target.value })
-
-    const handleChange = (e) => {
-        console.log(newReview.reviews)
-        const userInput = { ...newReview }
-        userInput[e.target.comment] = e.target.value
-        setNewReview(userInput)
-        console.log(userInput)
-    }
 
     const getMovie = async () => {
         try {
@@ -63,6 +56,13 @@ function MovieDetails(props) {
         } catch (err) {
             console.log(err)
         }
+    }
+    const handleChange = (e) => {
+        console.log(newReview.reviews)
+        const userInput = { ...newReview }
+        userInput[e.target.name] = e.target.value
+        setNewReview(userInput)
+        console.log(userInput)
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
