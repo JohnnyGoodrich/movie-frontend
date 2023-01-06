@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import './MovieDetails.css'
 import { Link } from 'react-router-dom'
 
-function MovieDetails(props) {
+function ReviewDetails(props){
     const [movie, setMovie] = useState(null)
     const [editForm, setEditForm] = useState("")
     const [newReview, setNewReview] = useState([
@@ -53,7 +53,7 @@ function MovieDetails(props) {
             const foundReview = await response.json()
             // console.log(response.json)
             setNewReview(foundReview)
-            // console.log(foundReview)
+            console.log(foundReview)
             // setEditForm(foundMovie)
 
         } catch (err) {
@@ -65,11 +65,10 @@ function MovieDetails(props) {
             const options = {
                 method: "DELETE"
             }
-            console.log(URL2.reviews[1]._id)
             const response = await fetch(URL2, options)
-            console.log(URL2.reviews)
+            console.log(URL2)
             const deletedReview = await response.json()
-            // console.log(deletedReview)
+            console.log(deletedReview)
             navigate('/')
             console.log(URL3)
             
@@ -80,18 +79,16 @@ function MovieDetails(props) {
         }
     }
     const handleChange = (e) => {
-        // console.log(newReview.reviews._id)
+        console.log(newReview.reviews)
         const userInput = { ...newReview }
         userInput[e.target.name] = e.target.value
         setNewReview(userInput)
-        // console.log(userInput)
-        // console.log(URL2)
+        console.log(userInput)
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
         const currentState = { ...newReview }
-        // console.log(currentState)
-        console.log(newReview.reviews[0]._id)
+        console.log(currentState)
         try {
             const requestOptions = {
                 method: "POST",
@@ -102,9 +99,9 @@ function MovieDetails(props) {
 
             }
             const response = await fetch(URL2, requestOptions)
-            // console.log(URL2)
+            console.log(URL2)
             const createdReview = await response.json()
-            // console.log(createdReview)
+            console.log(createdReview)
             setNewReview([...newReview, createdReview])
             setNewReview([{
                 rating: "",
@@ -182,7 +179,7 @@ function MovieDetails(props) {
                                     <p>Rating: {review.rating}</p>
                                     <p>Review: {review.comment}</p>
                                     <button className="delete" onClick={removeReview}>Delete Review</button>
-                                    <Link to={`/reviewdetails/:id`} className='edit'>edit</Link>
+                                    <Link to={`/reviewdetails`} className='edit'>edit</Link>
                                 </div>
                             </div>
                         )
@@ -203,4 +200,4 @@ function MovieDetails(props) {
     )
 }
 
-export default MovieDetails
+export default ReviewDetails

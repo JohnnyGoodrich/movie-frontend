@@ -3,6 +3,7 @@ import {Route, Routes} from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import Movies from './components/Movies';
 import MovieDetails from './components/MovieDetails';
+import ReviewDetails from './components/ReviewDetails';
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Movies />} />
         <Route path="/review/:id" element={<MovieDetails/>} />
-        <Route path="/editreview/:id" element={<MovieDetails/>} />
+        <Route path="/reviewdetails/:id" element={<ReviewDetails/>} />
       </Routes>
     </div>
   );
