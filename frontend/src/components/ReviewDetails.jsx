@@ -143,23 +143,29 @@ function ReviewDetails(props) {
                         <h2>{newReview.rating}</h2>
                     <h2>{newReview.comment}</h2>
                         {/* <Link to={`/review/${review._id}`}> */}
-                        <button className="delete" onClick={removeReview}>delete review</button>
                         {/* </Link> */}
                     </div>
+                </div>
+                <div>
+                    <button className="delete" onClick={removeReview}>delete review</button>
                 </div>
             </section>
             <section>
                 <h2>Edit this review</h2>
-                <form onSubmit={updateReview}>
+                <form className='rating-form'onSubmit={updateReview}>
+                    Rating
                     <input
                         type="number"
                         value={editForm.rating}
+                        id="rating"
                         name="rating"
                         placeholder="rating"
                         onChange={handleChange}
                     />
+                    Comment
                     <input
                         type="text"
+                        id="comment"
                         value={editForm.comment}
                         name="comment"
                         placeholder="comment"

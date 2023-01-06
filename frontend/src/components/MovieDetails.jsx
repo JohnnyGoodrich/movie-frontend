@@ -113,35 +113,43 @@ function MovieDetails(props) {
         <>
             <section>
                 <div className="movie">
-                    {/* <h1>Movie Details Page</h1> */}
-                    <h2>{movie.name}</h2>
+                    <div>
                     <h2>{movie.title}</h2>
-                    <img src={movie.image} alt={movie.name + " image"} height="200px" width="200px" />
-
+                    <img className='movie-details-image' src={movie.image} alt={movie.name + " image"} height="200px" width="200px" />
+                    <p className='movie-info'><span className='age-rating'>{movie.agerating}</span>&nbsp; {movie.year}, {movie.hlength}h{movie.mlength}m</p>             
+                    </div>
+                    <div className='cast'>
+                        <h5>Cast:</h5>
+                        <p>{movie.cast[0]}</p>
+                        <p>{movie.cast[1]}</p>
+                        <p>{movie.cast[2]}</p>
+                        <p>{movie.cast[3]}</p>
+                        <p>{movie.cast[4]}</p>
+                    </div>
                 </div>
             </section>
             <div>
                 <section>
-                    <h2>Create a new Review</h2>
+                    <h4>Create a new Review</h4>
                     <form className='rating-form' onSubmit={handleSubmit}>
 
                         <div>
+                        <div>Rating</div>
                             <label htmlFor='title'>
-                                Rating
                                 <input
                                     type="number"
                                     id="rating"
                                     name="rating"
-                                    placeholder="write review here"
+                                    placeholder="rating"
                                     value={newReview.rating}
                                     onChange={handleChange}
                                 />
                             </label>
+                        <div>Comment</div>
                             <label htmlFor='title'>
-                                Comment
                                 <input
                                     type="text"
-                                    id="rating"
+                                    id="comment"
                                     name="comment"
                                     placeholder="write review here"
                                     value={newReview.comment}
@@ -157,15 +165,15 @@ function MovieDetails(props) {
             </div >
             
             <div>
-                <h2>Reviews:</h2>
+                <h4>Reviews:</h4>
                 {newReview.reviews ? (
                     newReview.reviews.map((review, index) => {
                         
                         return (
                             <div key={review._id} className='review-list'>
                                 <div className='review'>
-                                    <p>Rating: {review.rating}</p>
-                                    <p>Review: {review.comment}</p>
+                                    <p className='rating-number'>Rating: {review.rating}</p>
+                                    <p>"{review.comment}"</p>
                                     {/* <button className="delete" onClick={removeReview}>Delete Review</button> */}
                                     <Link to={`/review/edit/${review._id}`} className='edit'>edit</Link>
                                 </div>

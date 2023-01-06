@@ -17,9 +17,22 @@
 #rating{
     text-align: center;
     border: 1px solid black;
-    width: 200px;
+    width: 100px;
+    height:40px;
+    border-radius: 0;
+}
+#comment{
+    border-radius: 0;
+    text-align: center;
+    border: 1px solid black;
+    width: 400px;
+    height:100px;
 }
 .rating-form{
     width: 200px;
     /* margin: 0 auto; */
+}
+.delete{
+    text-align: center;
+    margin: 0 auto;
 }
