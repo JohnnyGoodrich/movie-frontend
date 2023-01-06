@@ -110,8 +110,8 @@ function MovieDetails(props) {
     }, [])
 
     const loaded = () => (
-        <>
-            <section>
+        <div className='details-content'>
+            <section className='movie-details-1'>
                 <div className="movie">
                     <div>
                     <h2>{movie.title}</h2>
@@ -128,10 +128,15 @@ function MovieDetails(props) {
                     </div>
                 </div>
             </section>
+            
+            <div className='movie-description'>
+                <h4>Movie Description</h4>
+                <p>{movie.desc}</p>
+            </div>
             <div>
                 <section>
-                    <h4>Create a new Review</h4>
                     <form className='rating-form' onSubmit={handleSubmit}>
+                    <h4>Create a new Review</h4>
 
                         <div>
                         <div>Rating</div>
@@ -145,8 +150,8 @@ function MovieDetails(props) {
                                     onChange={handleChange}
                                 />
                             </label>
+                            <label className='comment-label' htmlFor='title'>
                         <div>Comment</div>
-                            <label htmlFor='title'>
                                 <input
                                     type="text"
                                     id="comment"
@@ -164,8 +169,8 @@ function MovieDetails(props) {
                 </section>
             </div >
             
-            <div>
-                <h4>Reviews:</h4>
+            <h4 className='review-header'>Reviews:</h4>
+            <div className='all-reviews'>
                 {newReview.reviews ? (
                     newReview.reviews.map((review, index) => {
                         
@@ -173,7 +178,7 @@ function MovieDetails(props) {
                             <div key={review._id} className='review-list'>
                                 <div className='review'>
                                     <p className='rating-number'>Rating: {review.rating}</p>
-                                    <p>"{review.comment}"</p>
+                                    <p className='review-comment'>"{review.comment}"</p>
                                     {/* <button className="delete" onClick={removeReview}>Delete Review</button> */}
                                     <Link to={`/review/edit/${review._id}`} className='edit'>edit</Link>
                                 </div>
@@ -182,7 +187,7 @@ function MovieDetails(props) {
                     })
                 ) : (<p> No reviews for this product </p>)}
             </div>
-        </>
+        </div>
     )
     const loading = () => (
         <>
