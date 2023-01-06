@@ -24,6 +24,7 @@ function MovieDetails(props) {
     const URL = `https://movie-buff-backend.herokuapp.com/movie/${id}`
     const URL2 = `http://localhost:4000/review/${id}`
     const URL3 = `http://localhost:3000/review/${id}`
+    const URL4 = `http://localhost:3000/review/${id}/edit`
   
 
     // console.log("id", id, URL)
@@ -55,30 +56,13 @@ function MovieDetails(props) {
             setNewReview(foundReview)
             // console.log(foundReview)
             // setEditForm(foundMovie)
+            // console.log(newReview.reviews[0]._id)
 
         } catch (err) {
             console.log(err)
         }
     }
-    const removeReview = async () => {
-        try {
-            const options = {
-                method: "DELETE"
-            }
-            console.log(URL2.reviews[1]._id)
-            const response = await fetch(URL2, options)
-            console.log(URL2.reviews)
-            const deletedReview = await response.json()
-            // console.log(deletedReview)
-            navigate('/')
-            console.log(URL3)
-            
-        } catch (err) {
-            console.log(err)
-            // navigate(URL3)
-            // navigate(`/`)
-        }
-    }
+
     const handleChange = (e) => {
         // console.log(newReview.reviews._id)
         const userInput = { ...newReview }
@@ -88,10 +72,10 @@ function MovieDetails(props) {
         // console.log(URL2)
     }
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         const currentState = { ...newReview }
         // console.log(currentState)
-        console.log(newReview.reviews[0]._id)
+        // console.log(newReview.reviews[0]._id)
         try {
             const requestOptions = {
                 method: "POST",
@@ -139,7 +123,7 @@ function MovieDetails(props) {
             <div>
                 <section>
                     <h2>Create a new Review</h2>
-                    <form onSubmit={handleSubmit}>
+                    <form className='rating-form' onSubmit={handleSubmit}>
 
                         <div>
                             <label htmlFor='title'>
@@ -157,7 +141,7 @@ function MovieDetails(props) {
                                 Comment
                                 <input
                                     type="text"
-                                    id="comment"
+                                    id="rating"
                                     name="comment"
                                     placeholder="write review here"
                                     value={newReview.comment}
@@ -166,13 +150,14 @@ function MovieDetails(props) {
                             </label>
 
                             <br />
-                            <input type="submit" value="Post Review" />
+                            <button type="submit" value="Post Review">Post Review</button>
                         </div>
                     </form>
                 </section>
-                {/* {movie && movie.length ? loaded() : loading()} */}
             </div >
+            
             <div>
+                <h2>Reviews:</h2>
                 {newReview.reviews ? (
                     newReview.reviews.map((review, index) => {
                         
@@ -181,8 +166,8 @@ function MovieDetails(props) {
                                 <div className='review'>
                                     <p>Rating: {review.rating}</p>
                                     <p>Review: {review.comment}</p>
-                                    <button className="delete" onClick={removeReview}>Delete Review</button>
-                                    <Link to={`/reviewdetails/:id`} className='edit'>edit</Link>
+                                    {/* <button className="delete" onClick={removeReview}>Delete Review</button> */}
+                                    <Link to={`/review/edit/${review._id}`} className='edit'>edit</Link>
                                 </div>
                             </div>
                         )

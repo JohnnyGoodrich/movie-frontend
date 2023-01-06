@@ -1,0 +1,25 @@
+.review-details{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    border-radius: 10px;
+}
+.review-details-list{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 60px;
+}
+.edit{
+    text-align: right;
+}
+#rating{
+    text-align: center;
+    border: 1px solid black;
+    width: 200px;
+}
+.rating-form{
+    width: 200px;
+    /* margin: 0 auto; */
+}
