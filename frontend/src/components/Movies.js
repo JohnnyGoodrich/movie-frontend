@@ -59,12 +59,12 @@ function Movies(props) {
     return (
         <>
             <div className='header-homepage'>
-                <Link to ={'./'}style={{ textDecoration: 'none' }}>
+                <Link to={'./'} style={{ textDecoration: 'none' }}>
                     <div className="homepage">
-                    <h1 id="movie-buff" >MovieBuff</h1>
-                    <h1 id="blank-symbol-header">...</h1>
+                        <h1 id="movie-buff" >MovieBuff</h1>
+                        <h1 id="blank-symbol-header">...</h1>
                     </div>
-                    
+
                 </Link>
                 <Search movieList={movieTitleList} />
                 <h1 id="login-box">LOGIN/SIGNUP</h1>
@@ -74,14 +74,12 @@ function Movies(props) {
             </div>
             <h1><span id="biwind">{<FaRegHandPointRight />}</span>MOVIES</h1>
             <div className="movies-slide-bar">
-                <h1>Recent <span className='green'>Projects</span></h1>
-                <p>Testing</p>
                 <MovieSlider image={movieImageList} title={movieTitleList} />
-
             </div>
 
 
-            {movies && movies.length ? loaded() : loading()}
+
+            {/* {movies && movies.length ? loaded() : loading()} */}
         </>
     )
 }
