@@ -60,18 +60,28 @@ function MovieSlider(props) {
                 </div>
 
                 <div className='each-movie'>
-                    <img className="each-movie-img" src={props.image[4]} alt="" />
-                    <h3 className="h3-in-each-movie">{props.title[4]}</h3>
+                    <img className="each-movie-img" src={props.image[5]} alt="" />
+                    <h3 className="h3-in-each-movie">{props.title[5]}</h3>
                 </div>
 
                 <div className='each-movie'>
-                    <img className="each-movie-img" src={props.image[4]} alt="" />
-                    <h3 className="h3-in-each-movie">{props.title[4]}</h3>
+                    <img className="each-movie-img" src={props.image[6]} alt="" />
+                    <h3 className="h3-in-each-movie">{props.title[6]}</h3>
                 </div>
                 
                 <div className='each-movie'>
-                    <img className="each-movie-img" src={props.image[4]} alt="" />
-                    <h3 className="h3-in-each-movie">{props.title[4]}</h3>
+                    <img className="each-movie-img" src={props.image[7]} alt="" />
+                    <h3 className="h3-in-each-movie">{props.title[7]}</h3>
+                </div>
+
+                <div className='each-movie'>
+                    <img className="each-movie-img" src={props.image[8]} alt="" />
+                    <h3 className="h3-in-each-movie">{props.title[8]}</h3>
+                </div>
+
+                <div className='each-movie'>
+                    <img className="each-movie-img" src={props.image[9]} alt="" />
+                    <h3 className="h3-in-each-movie">{props.title[9]}</h3>
                 </div>
 
                

@@ -79,7 +79,7 @@ function Movies(props) {
 
 
 
-            {/* {movies && movies.length ? loaded() : loading()} */}
+            {movies && movies.length ? loaded() : loading()}
         </>
     )
 }
