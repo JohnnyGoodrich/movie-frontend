@@ -6,14 +6,12 @@
     text-align: center;
     border-radius: 10px;
 }
-.review-details-list{
+/* .review-details-list{
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 60px;
-}
-.edit{
-    text-align: right;
-}
+} */
+
 
 
 .delete{
