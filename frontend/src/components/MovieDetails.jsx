@@ -163,7 +163,9 @@ function MovieDetails(props) {
                             </label>
 
                             <br />
+                            <div className='button'>
                             <button type="submit" value="Post Review">Post Review</button>
+                            </div>
                         </div>
                     </form>
                 </section>

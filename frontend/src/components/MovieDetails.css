@@ -3,7 +3,7 @@
 }
 .review{
     border: 1px solid black;
-    /* display: flex; */
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
@@ -94,6 +94,7 @@
     max-width: 600px;
     height:100px;
     /* margin: 0 auto; */
+    word-wrap: break-word;
 }
 .review-header{
     max-width: 600px;
@@ -102,5 +103,9 @@
 .review-comment{
     max-width: 200px;
     margin: 0 auto;
-    
+    word-wrap: break-word;
+}
+.button{
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
