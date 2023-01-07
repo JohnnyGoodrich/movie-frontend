@@ -67,25 +67,25 @@
     animation: mymove 10s infinite;
 }
 
+
 /* movieSlider.js */
 .movies-slide-bar{
-    
+    position: relative;
     border-radius: 5px;
-    cursor: pointer;
-    
+    cursor: pointer;    
 }
 
 .each-movie{
-    width: 100%;
-    height:100%;
+    width: 100px;
+    height: auto;
     position:relative;
     margin-left: 20px;
-
+    background-color: rgba(139, 255, 255, 0.588);
 }
 
 .each-movie-img {
-    width: 70%;
-    height:100%;
+    width: auto;
+    height: 400px;
     margin-left: 30px;
     transition: transform 400ms ease-in-out;
     
@@ -96,16 +96,50 @@
 }
 .each-movie-img:hover {
     transform: scale(1.3);
-    opacity: 0.9;
+    opacity: 0.8;
+    
+}
+
+.Description{ 
+    font-weight: bold;
+    font-size: 50px;
+    color: rgb(255, 255, 255);
 }
 
 .h3-in-each-movie{
     position:absolute;
+    font-size: 25px;
+    padding:15px;
     bottom:50px;
     display: none;
-    color:black;
+    color:rgb(255, 255, 255);
 
 }
+
+.button-movie-slider{
+    position: absolute;
+    top: 45%;
+}
+.back{
+    padding: 10px;
+    font-size: 20px;
+    opacity: 0.4;
+}
+.back:hover{
+    opacity: 1;
+}
+.next{
+    margin-left: 1500px;
+    padding: 10px;
+    font-size: 20px;
+    opacity: 0.4;
+}
+.next:hover{
+    opacity: 1;
+}
+
+
+
 
 
 

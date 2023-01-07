@@ -27,10 +27,16 @@ function Movies(props) {
 
     const movieTitleList = []
     const movieImageList = []
+    const movieDescList= []
+    const movieID = []
     for (let i = 0; i < movies.length; i++) {
         movieTitleList.push(movies[i].title)
         movieImageList.push(movies[i].image)
+        movieDescList.push(movies[i].desc)
+        movieID.push(movies[i]._id)
+
     }
+    console.log(movieDescList)
 
     const loaded = () => {
         return (
@@ -72,12 +78,10 @@ function Movies(props) {
             <div className='content'>
                 <Slider movieList={movieTitleList} movieImage={movieImageList} />
             </div>
-            <h1><span id="biwind">{<FaRegHandPointRight />}</span>MOVIES</h1>
+            <h1 className='Top-Rated-Movies'><span id="biwind">{<FaRegHandPointRight />}</span>TOP RATED MOVIES</h1>
             <div className="movies-slide-bar">
-                <MovieSlider image={movieImageList} title={movieTitleList} />
+                <MovieSlider image={movieImageList} title={movieTitleList} desc={movieDescList} id={movieID} />
             </div>
-
-
 
             {movies && movies.length ? loaded() : loading()}
         </>
