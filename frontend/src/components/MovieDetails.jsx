@@ -118,25 +118,38 @@ function MovieDetails(props) {
                         <img className='movie-details-image' src={movie.image} alt={movie.name + " image"} height="400px" width="400px" />
                         <p className='movie-info'><span className='age-rating'>{movie.agerating}</span>&nbsp; {movie.year}, {movie.hlength}h{movie.mlength}m</p>
                     </div>
-                    <div className='cast'>
+                    {/* <div className='cast'>
                         <h4 className='section-header'>Cast:</h4>
                         <p>{movie.cast[0]}</p>
                         <p>{movie.cast[1]}</p>
                         <p>{movie.cast[2]}</p>
                         <p>{movie.cast[3]}</p>
                         <p>{movie.cast[4]}</p>
-                    </div>
+                    </div> */}
                 </div>
             </section>
                 <div className='movie-description'>
-                    <h4 className='section-header'>Movie Description</h4>
+                    <h2 className='section-header'>Movie Description</h2>
                     <p>{movie.desc}</p>
                 </div>
+                <div className='cast'>
+
+                        <h2 className='section-header'>Director:</h2>
+                        <p>{movie.director}</p>
+                        <h2 className='section-header'>Cast:</h2>
+                        <div className='cast-list'>
+                        <p>{movie.cast[0]}</p>
+                        <p>{movie.cast[1]}</p>
+                        <p>{movie.cast[2]}</p>
+                        <p>{movie.cast[3]}</p>
+                        <p>{movie.cast[4]}</p>
+                        </div>
+                    </div>
             <div className='bottom-half'>
                 <div  >
                     <section>
                         <form className='rating-form' onSubmit={handleSubmit}>
-                            <h4 className='section-header'>Create a new Review</h4>
+                            <h2 className='section-header'>Create a new Review</h2>
 
                             <div className='create-review'>
                                 <div>Rating</div>
@@ -171,7 +184,7 @@ function MovieDetails(props) {
                     </section>
                 </div >
 
-                <h4 className='review-header'>Reviews:</h4>
+                <h2 className='review-header'>Reviews:</h2>
                 <div className='all-reviews'>
                     {newReview.reviews ? (
                         newReview.reviews.map((review, index) => {

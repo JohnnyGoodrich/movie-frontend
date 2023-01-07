@@ -1,8 +1,6 @@
-html{
-
-}
 .section-header{
     font-family: 'Bebas Neue', cursive;
+    padding-top:10px;
 
 }
 .details-content{
@@ -24,7 +22,7 @@ html{
     border-radius: 10px;
     width: 300px;
     height: 200px;
-    background-color: white;
+    background-color:whitesmoke;
     
 }
 .review-list{
@@ -39,6 +37,7 @@ html{
     text-align: right;
     padding-right: 10px;
     align-items: flex-end;
+    text-decoration: none;
    
 }
 .movie{
@@ -48,13 +47,18 @@ html{
     margin: 0 auto;
 }
 .cast{
-    padding: 50px;
+    max-width: 800px;
+    margin:0 auto;
+}
+.cast-list{
+    margin: 0;
 }
 .rating-number{
     text-align: left;
     padding-left: 5px;
 }
 .age-rating{
+    color: black;
     border:1px solid black;
     border-radius: 5px;
     font-size:15px;
@@ -75,12 +79,11 @@ html{
 .rating-form{
     /* display: flex;
     flex-direction: column; */
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 .movie-description{
     max-width: 800px;
-    /* text-align: center; */
     margin:0 auto;
 }
 .all-reviews{
@@ -90,7 +93,7 @@ html{
   grid-auto-rows: minmax(10px, 50px);
   grid-gap: 1rem;
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 1200px;
   padding-bottom: 4rem;
   grid-auto-rows: auto;
   color: rgb(85, 84, 84);
@@ -108,14 +111,14 @@ html{
     border-radius: 0;
     text-align: center;
     /* border: 1px solid black; */
-    max-width: 800px;
+    /* max-width: 800px; */
     height:100px;
     /* margin: 0 auto; */
     word-wrap: break-word;
 }
 .review-header{
     font-family: 'Bebas Neue', cursive;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 .review-comment{
@@ -134,6 +137,6 @@ html{
     flex-direction: column;
 }
 .bottom-half{
-    background-color: rgb(0, 0, 0, .5);
+    background-color: rgb(0, 0, 0, .4);
     
 }
