@@ -156,7 +156,7 @@ function MovieDetails(props) {
                                 <label htmlFor='title'>
                                     <input
                                         type="number"
-                                        id="rating"
+                                        className="rating"
                                         name="rating"
                                         placeholder="rating"
                                         value={newReview.rating}
@@ -167,7 +167,7 @@ function MovieDetails(props) {
                                     <div>Comment</div>
                                     <input
                                         type="text"
-                                        id="comment"
+                                        className="comment"
                                         name="comment"
                                         placeholder="write review here"
                                         value={newReview.comment}
@@ -191,12 +191,13 @@ function MovieDetails(props) {
 
                             return (
                                 <div key={review._id} className='review-list'>
+                                    <Link to={`/review/edit/${review._id}`} className='edit'>
                                     <div className='review'>
                                         <p className='rating-number'>Rating: {review.rating}</p>
                                         <p className='review-comment'>"{review.comment}"</p>
                                         {/* <button className="delete" onClick={removeReview}>Delete Review</button> */}
-                                        <Link to={`/review/edit/${review._id}`} className='edit'>edit</Link>
                                     </div>
+                                    </Link>
                                 </div>
                             )
                         })

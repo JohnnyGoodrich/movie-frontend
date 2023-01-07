@@ -5,9 +5,10 @@
 }
 .details-content{
     padding-top: 50px;
-    background-color: black;
+    /* background-color: black; */
     background-image: url("https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
     background-size:100% 100%;
+    background-attachment: fixed;
     margin:0px;
     background-repeat: no-repeat;
     color: white;
@@ -15,7 +16,7 @@
 }
 .review{
     border: 1px solid black;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
@@ -23,6 +24,7 @@
     width: 300px;
     height: 200px;
     background-color:whitesmoke;
+    color: rgb(81, 79, 79);
     
 }
 .review-list{
@@ -79,8 +81,9 @@
 .rating-form{
     /* display: flex;
     flex-direction: column; */
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
+    padding-top: 20px;
 }
 .movie-description{
     max-width: 800px;
@@ -99,7 +102,7 @@
   color: rgb(85, 84, 84);
 }
 
-#rating{
+.rating{
     text-align: center;
     /* border: 1px solid black; */
     max-width: 70px;
@@ -107,7 +110,7 @@
     height:40px;
     border-radius: 0;
 }
-#comment{
+.comment{
     border-radius: 0;
     text-align: center;
     /* border: 1px solid black; */
@@ -123,6 +126,7 @@
 }
 .review-comment{
     max-width: 200px;
+    padding-top: 40px;
     margin: 0 auto;
     word-wrap: break-word;
     
