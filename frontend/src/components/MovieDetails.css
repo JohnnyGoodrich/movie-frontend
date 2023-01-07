@@ -15,7 +15,7 @@
     /* height:100vh; */
 }
 .review{
-    border: 1px solid black;
+    border: 1px solid white;
     /* display: flex; */
     flex-direction: column;
     justify-content: space-between;
@@ -23,9 +23,19 @@
     border-radius: 10px;
     width: 300px;
     height: 200px;
-    background-color:whitesmoke;
-    color: rgb(81, 79, 79);
+    /* background-color:whitesmoke; */
+    /* color: rgb(81, 79, 79); */
+    color:white
     
+}
+.review:hover{
+    border: 1px solid #ddd;
+    /* background-color: transparent; */
+    /* padding: 8px 24px; */
+    width: 310px;
+    height:210px;
+    /* border-radius: 4px; */
+    transition: transform .5s ease-in-out;
 }
 .review-list{
     display: grid;
