@@ -3,8 +3,10 @@ import Slider from "react-slick";
 import '../styles/headerHomepage.css'
 function MovieSlider(props) {
     var settings = {
-        dots: true,
-        infinite: false,
+        className: "center",
+        centermode: true,
+        dots: false,
+        infinite: true,
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 4,
@@ -13,10 +15,10 @@ function MovieSlider(props) {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow:1,
                     slidesToScroll: 3,
                     infinite: true,
-                    dots: true
+                    dots: false
                 }
             },
             {
