@@ -1,5 +1,19 @@
+html{
+
+}
+.section-header{
+    font-family: 'Bebas Neue', cursive;
+
+}
 .details-content{
-    /* text-align: center; */
+    padding-top: 50px;
+    background-color: black;
+    background-image: url("https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-size:100% 100%;
+    margin:0px;
+    background-repeat: no-repeat;
+    color: white;
+    /* height:100vh; */
 }
 .review{
     border: 1px solid black;
@@ -10,11 +24,13 @@
     border-radius: 10px;
     width: 300px;
     height: 200px;
+    background-color: white;
     
 }
 .review-list{
-    /* display: grid;
-    grid-template-columns: repeat(3,1fr); */
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-self: start;
     gap: 60px;
     margin:0 auto;
     
@@ -28,7 +44,7 @@
 .movie{
     display: flex;
     justify-content: flex-start;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
 }
 .cast{
@@ -59,29 +75,30 @@
 .rating-form{
     /* display: flex;
     flex-direction: column; */
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
 }
 .movie-description{
-    max-width: 600px;
+    max-width: 800px;
     /* text-align: center; */
     margin:0 auto;
 }
 .all-reviews{
-
+  justify-self: start;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-auto-rows: minmax(10px, 50px);
   grid-gap: 1rem;
   margin: 0 auto;
-  max-width: 600px;
-  /* padding: 1rem; */
+  max-width: 800px;
+  padding-bottom: 4rem;
   grid-auto-rows: auto;
+  color: rgb(85, 84, 84);
 }
 
 #rating{
     text-align: center;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     max-width: 70px;
     margin:0 auto;
     height:40px;
@@ -90,22 +107,33 @@
 #comment{
     border-radius: 0;
     text-align: center;
-    border: 1px solid black;
-    max-width: 600px;
+    /* border: 1px solid black; */
+    max-width: 800px;
     height:100px;
     /* margin: 0 auto; */
     word-wrap: break-word;
 }
 .review-header{
-    max-width: 600px;
+    font-family: 'Bebas Neue', cursive;
+    max-width: 800px;
     margin: 0 auto;
 }
 .review-comment{
     max-width: 200px;
     margin: 0 auto;
     word-wrap: break-word;
+    
 }
 .button{
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.create-review{
+    display: flex;
+    flex-direction: column;
+}
+.bottom-half{
+    background-color: rgb(0, 0, 0, .5);
+    
 }

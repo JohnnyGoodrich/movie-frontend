@@ -8,10 +8,10 @@ function MovieDetails(props) {
     const [editForm, setEditForm] = useState("")
     const [newReview, setNewReview] = useState([
         {
-        rating:"",
-        comment:"",
-        title:"",
-    }]
+            rating: "",
+            comment: "",
+            title: "",
+        }]
 
     )
 
@@ -25,7 +25,7 @@ function MovieDetails(props) {
     const URL2 = `http://localhost:4000/review/${id}`
     const URL3 = `http://localhost:3000/review/${id}`
     const URL4 = `http://localhost:3000/review/${id}/edit`
-  
+
 
     // console.log("id", id, URL)
     // console.log(`Current Person: ${JSON.stringify(movie)}`)
@@ -37,7 +37,7 @@ function MovieDetails(props) {
 
             const response = await fetch(URL)
             const foundMovie = await response.json()
-            
+
             setMovie(foundMovie)
             // console.log(foundMovie)
             // setEditForm(foundMovie)
@@ -105,7 +105,7 @@ function MovieDetails(props) {
         getMovie()
     }, [])
     useEffect(() => {
-       
+
         getReview()
     }, [])
 
@@ -114,12 +114,12 @@ function MovieDetails(props) {
             <section className='movie-details-1'>
                 <div className="movie">
                     <div>
-                    <h2>{movie.title}</h2>
-                    <img className='movie-details-image' src={movie.image} alt={movie.name + " image"} height="200px" width="200px" />
-                    <p className='movie-info'><span className='age-rating'>{movie.agerating}</span>&nbsp; {movie.year}, {movie.hlength}h{movie.mlength}m</p>             
+                        {/* <h2>{movie.title}</h2> */}
+                        <img className='movie-details-image' src={movie.image} alt={movie.name + " image"} height="400px" width="400px" />
+                        <p className='movie-info'><span className='age-rating'>{movie.agerating}</span>&nbsp; {movie.year}, {movie.hlength}h{movie.mlength}m</p>
                     </div>
                     <div className='cast'>
-                        <h5>Cast:</h5>
+                        <h4 className='section-header'>Cast:</h4>
                         <p>{movie.cast[0]}</p>
                         <p>{movie.cast[1]}</p>
                         <p>{movie.cast[2]}</p>
@@ -128,66 +128,67 @@ function MovieDetails(props) {
                     </div>
                 </div>
             </section>
-            
-            <div className='movie-description'>
-                <h4>Movie Description</h4>
-                <p>{movie.desc}</p>
-            </div>
-            <div>
-                <section>
-                    <form className='rating-form' onSubmit={handleSubmit}>
-                    <h4>Create a new Review</h4>
+                <div className='movie-description'>
+                    <h4 className='section-header'>Movie Description</h4>
+                    <p>{movie.desc}</p>
+                </div>
+            <div className='bottom-half'>
+                <div  >
+                    <section>
+                        <form className='rating-form' onSubmit={handleSubmit}>
+                            <h4 className='section-header'>Create a new Review</h4>
 
-                        <div>
-                        <div>Rating</div>
-                            <label htmlFor='title'>
-                                <input
-                                    type="number"
-                                    id="rating"
-                                    name="rating"
-                                    placeholder="rating"
-                                    value={newReview.rating}
-                                    onChange={handleChange}
-                                />
-                            </label>
-                            <label className='comment-label' htmlFor='title'>
-                        <div>Comment</div>
-                                <input
-                                    type="text"
-                                    id="comment"
-                                    name="comment"
-                                    placeholder="write review here"
-                                    value={newReview.comment}
-                                    onChange={handleChange}
-                                />
-                            </label>
+                            <div className='create-review'>
+                                <div>Rating</div>
+                                <label htmlFor='title'>
+                                    <input
+                                        type="number"
+                                        id="rating"
+                                        name="rating"
+                                        placeholder="rating"
+                                        value={newReview.rating}
+                                        onChange={handleChange}
+                                    />
+                                </label>
+                                <label className='comment-label' htmlFor='title'>
+                                    <div>Comment</div>
+                                    <input
+                                        type="text"
+                                        id="comment"
+                                        name="comment"
+                                        placeholder="write review here"
+                                        value={newReview.comment}
+                                        onChange={handleChange}
+                                    />
+                                </label>
 
-                            <br />
-                            <div className='button'>
-                            <button type="submit" value="Post Review">Post Review</button>
-                            </div>
-                        </div>
-                    </form>
-                </section>
-            </div >
-            
-            <h4 className='review-header'>Reviews:</h4>
-            <div className='all-reviews'>
-                {newReview.reviews ? (
-                    newReview.reviews.map((review, index) => {
-                        
-                        return (
-                            <div key={review._id} className='review-list'>
-                                <div className='review'>
-                                    <p className='rating-number'>Rating: {review.rating}</p>
-                                    <p className='review-comment'>"{review.comment}"</p>
-                                    {/* <button className="delete" onClick={removeReview}>Delete Review</button> */}
-                                    <Link to={`/review/edit/${review._id}`} className='edit'>edit</Link>
+                                <br />
+                                <div className='button'>
+                                    <button type="submit" value="Post Review">Post Review</button>
                                 </div>
                             </div>
-                        )
-                    })
-                ) : (<p> No reviews for this product </p>)}
+                        </form>
+                    </section>
+                </div >
+
+                <h4 className='review-header'>Reviews:</h4>
+                <div className='all-reviews'>
+                    {newReview.reviews ? (
+                        newReview.reviews.map((review, index) => {
+
+                            return (
+                                <div key={review._id} className='review-list'>
+                                    <div className='review'>
+                                        <p className='rating-number'>Rating: {review.rating}</p>
+                                        <p className='review-comment'>"{review.comment}"</p>
+                                        {/* <button className="delete" onClick={removeReview}>Delete Review</button> */}
+                                        <Link to={`/review/edit/${review._id}`} className='edit'>edit</Link>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    ) : (<p> No reviews for this product </p>)}
+                </div>
             </div>
         </div>
     )
