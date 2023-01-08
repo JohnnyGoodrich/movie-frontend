@@ -167,7 +167,7 @@ function MovieDetails(props) {
                                         type="number"
                                         className="rating"
                                         name="rating"
-                                        placeholder="rating"
+                                        placeholder="1-100"
                                         value={newReview.rating}
                                         onChange={handleChange}
                                     />
@@ -202,6 +202,7 @@ function MovieDetails(props) {
                                 <div key={review._id} className='review-list'>
                                     <Link to={`/review/edit/${review._id}`} className='edit'>
                                         <div className='review'>
+                                            
                                             <p className='rating-number'>Rating: {review.rating}</p>
                                             <p className='review-comment'>"{review.comment}"</p>
                                             {/* <button className="delete" onClick={removeReview}>Delete Review</button> */}
