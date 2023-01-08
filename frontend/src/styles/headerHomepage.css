@@ -54,7 +54,9 @@
 #biwind{
     color:deepskyblue;
 }
-
+.View-All {
+    margin-left: 1000px;
+}
 
 .spinner {
     width: 24px;
@@ -67,36 +69,81 @@
     animation: mymove 10s infinite;
 }
 
+
 /* movieSlider.js */
-.movies-slide-bar {
-    width: 80%;
-    max-width:1280px;
-    margin: 0 auto;
-    padding: 3rem 0;
-    text-align:center;
-
-    h1{
-        font-size: 1.9rem;
-    }
-
-    p{
-        width: 28rem;
-        margin: 0 auto;
-        padding: 1rem 0;
-        font-size: 0%.9rem;
-
-    }
+.movies-slide-bar{
+    position: relative;
+    border-radius: 5px;
+    cursor: pointer;    
 }
 
-.disc{
-    height: 10rem;
-    background-color: #4e5156;
-    margin: 0 0.5rem;
-    padding: 0 0.5rem;
-    border-radius: 5px;
-    cursor: pointer;
+.each-movie{
+    width: 100px;
+    height: auto;
+    position:relative;
+    margin-left: 20px;
+    background-color: rgba(139, 255, 255, 0.588);
+}
+
+.each-movie-img {
+    width: auto;
+    height: 400px;
+    margin-left: 30px;
+    transition: transform 400ms ease-in-out;
     
 }
+
+.each-movie-img:hover +.h3-in-each-movie{
+    display: block;
+}
+.each-movie-img:hover {
+    transform: scale(1.3);
+    opacity: 0.8;
+    
+}
+
+.Description{ 
+    font-weight: bold;
+    font-size: 50px;
+    color: rgb(255, 255, 255);
+}
+
+.h3-in-each-movie{
+    position:absolute;
+    font-size: 25px;
+    padding:15px;
+    bottom:50px;
+    display: none;
+    color:rgb(255, 255, 255);
+
+}
+
+.button-movie-slider{
+    position: absolute;
+    top: 45%;
+}
+.back{
+    padding: 10px;
+    font-size: 20px;
+    opacity: 0.4;
+}
+.back:hover{
+    opacity: 1;
+}
+.next{
+    margin-left: 1500px;
+    padding: 10px;
+    font-size: 20px;
+    opacity: 0.4;
+}
+.next:hover{
+    opacity: 1;
+}
+
+
+
+
+
 
 
 
