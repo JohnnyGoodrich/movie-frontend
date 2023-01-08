@@ -1,11 +1,20 @@
 .carousel-container {
     width:50%;
     margin-left: 400px;
+    margin: 0 auto;
+}
+.carousel-inner{
+    margin: auto;
 }
 .slider {
+    display: flex;
     height: 500px!important;
-    width: auto!important;
+    /* width: auto!important; */
     margin-left: 220px;
-    
+    margin:auto;
 }
+/* .carousel-control-next-icon .carousel-control-next{
+    gap: 5rem;
+    
+} */
 

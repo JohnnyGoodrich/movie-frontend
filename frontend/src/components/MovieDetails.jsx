@@ -22,7 +22,7 @@ function MovieDetails(props) {
 
 
     const URL = `https://movie-buff-backend.herokuapp.com/movie/${id}`
-    const URL2 = `http://localhost:4000/review/${id}`
+    const URL2 = `https://movie-buff-backend.herokuapp.com/review/${id}`
     const URL3 = `http://localhost:3000/review/${id}`
     const URL4 = `http://localhost:3000/review/${id}/edit`
 
