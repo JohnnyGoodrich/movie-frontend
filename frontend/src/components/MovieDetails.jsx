@@ -109,8 +109,51 @@ function MovieDetails(props) {
         getReview()
     }, [])
 
+    // circle attempt using setAttribute()
+    // let averageRating= document.querySelector(".circle-num")
+    // let ratings = averageRating.getAttribute("data-num")
+    // console.log(ratings)
+    // console.log(averageRating)
+    //average rating function attempt
+    let ratingArray=[]
+
+    //change circle number attempt
+    const dataNumData = document.querySelector(".progress-item")
+    function myFunction() {
+
+       dataNumData.setAttribute("data-num", "40"); 
+       
+      }
+    
+    //   myFunction()
+    // change circle number attempt
+    // let num=document.querySelector(".card1:nth-child(1) svg circle:nth-child(2)")
+    // console.log(num)
+    // function changeCircleNum (){
+    //     document.querySelector(".card1:nth-child(1) svg circle:nth-child(2)").style.color="red"
+    // }
+    // changeCircleNum()
+
+    let items = document.querySelectorAll('.progress-item');
+    const counters = Array(items.length);
+    const intervals = Array(items.length);
+    counters.fill(0);
+    items.forEach((number,index) => {
+      intervals[index] = setInterval(() => {
+              if(counters[index] == parseInt(number.dataset.num)){
+                  clearInterval(intervals[index]);
+              }else{
+                  counters[index] += 1;
+                  number.style.background = "conic-gradient(red calc(" + counters[index] + "%), gray 0deg)";
+                  number.setAttribute('data-value', counters[index] + "%");
+                  number.innerHTML = counters[index] + "%";
+              }
+      }, 15);
+     });
     const loaded = () => (
         <div className='details-content'>
+   
+            
             <section className='movie-details-1'>
                 <div className="movie">
                     <div>
@@ -119,7 +162,7 @@ function MovieDetails(props) {
                         <p className='movie-info'><span className='age-rating'>{movie.agerating}</span>&nbsp; {movie.year}, {movie.hlength}h{movie.mlength}m</p>
                     </div>
                     <div className='container1'>
-                        <div className='card1'>
+                        {/* <div className='card1'>
                             <div className='box'>
                                 <div className='percent'>
                                     <svg>
@@ -127,13 +170,17 @@ function MovieDetails(props) {
                                         <circle cx='70' cy="70" r='70'></circle>
                                     </svg>
                                     <div className='circle-number'>
-                                        <h2>90<span>%</span></h2>
+                                        <h2 className='circle-num'>90<span>%</span></h2>
                                     </div>
                                 </div>
+                                        <button className='ratingBtn' onClick={myFunction}>click</button>
                                 <h2 className='circle-text'></h2>
                             </div>
-                        </div>
-                       
+                        </div> */}
+                    
+                <div id="progress" >
+                    <div data-num="0" className="progress-item">ds</div>
+                </div>
                     </div>
                 </div>
             </section>
@@ -168,6 +215,7 @@ function MovieDetails(props) {
                                         className="rating"
                                         name="rating"
                                         placeholder="1-100"
+                                        autoComplete='off'
                                         value={newReview.rating}
                                         onChange={handleChange}
                                     />
@@ -179,6 +227,7 @@ function MovieDetails(props) {
                                         className="comment"
                                         name="comment"
                                         placeholder="write review here"
+                                        autoComplete='off'
                                         value={newReview.comment}
                                         onChange={handleChange}
                                     />
@@ -199,11 +248,12 @@ function MovieDetails(props) {
                         newReview.reviews.map((review, index) => {
 
                             return (
+
                                 <div key={review._id} className='review-list'>
                                     <Link to={`/review/edit/${review._id}`} className='edit'>
                                         <div className='review'>
-                                            
-                                            <p className='rating-number'>Rating: {review.rating}</p>
+
+                                            <p data-num="" className='rating-number'>Rating: {review.rating}</p>
                                             <p className='review-comment'>"{review.comment}"</p>
                                             {/* <button className="delete" onClick={removeReview}>Delete Review</button> */}
                                         </div>
@@ -224,8 +274,12 @@ function MovieDetails(props) {
         </>
     );
     return (
-        <div>{movie && newReview ? loaded() : loading()}</div>
+        <div>{movie && newReview ? loaded() : loading()}
+
+        </div>
+       
     )
+   
 }
 
 export default MovieDetails

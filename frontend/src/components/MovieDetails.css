@@ -173,13 +173,15 @@
     background-color: rgb(0, 0, 0, .4);
     
 }
+
+/* First circle progress bar test*/
 svg{
     position: relative;
     width: 150px;
     height: 150px;
     z-index: 1000;
 }
-.circle-number{
+.circle-number {
     color: white;
 }
 svg circle{
@@ -233,3 +235,31 @@ svg circle:nth-child(2){
     color: black;
     opacity: 1;
 }
+
+/*Second circle progress bar test*/
+#progress{
+    display: flex;
+    justify-content: space-around;
+    
+  }
+  .progress-item {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: 0;
+    animation: .4s ease-out reverse; 
+  }
+  
+  .progress-item::after {
+    content: attr(data-value);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100px;
+    margin: 10px;
+    border-radius: 50%;
+    background-color: #191919;
+    font-size: 1rem;
+    text-align: center;
+  }
