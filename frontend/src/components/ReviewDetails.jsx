@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './ReviewDetails.css'
+import './MovieDetails.css'
 import { Link } from 'react-router-dom'
 
 function ReviewDetails(props) {
@@ -136,46 +137,50 @@ function ReviewDetails(props) {
     }, [])
 
     const loaded = () => (
-        <>
+        <div className='details-content'>
             <section>
+                <div className='review-editor'>Review Editor</div>
                 <div className='review-details-list'>
                     <div className='review-details'>
-                        <h2>{newReview.rating}</h2>
-                    <h2>{newReview.comment}</h2>
-                        {/* <Link to={`/review/${review._id}`}> */}
-                        {/* </Link> */}
+                        <h4>Rating: {newReview.rating}</h4>
+                        <h4>{newReview.comment}</h4>   
                     </div>
-                </div>
-                <div>
-                    <button className="delete" onClick={removeReview}>delete review</button>
                 </div>
             </section>
             <section>
-                <h2>Edit this review</h2>
-                <form className='rating-form'onSubmit={updateReview}>
-                    Rating
+                <form className='rating-form-2'onSubmit={updateReview}>
+                <div className='delete'>
+                    <button onClick={removeReview}>delete review</button>
+                </div>
+                <h2 className='section-header'>Edit this review</h2>
+                <div className='create-review'>
+                    <div className='text-box'>Rating</div>
+                    <label htmlFor='title'>
                     <input
                         type="number"
                         value={editForm.rating}
-                        id="rating"
+                        className="rating"
                         name="rating"
                         placeholder="rating"
                         onChange={handleChange}
                     />
-                    Comment
+                    </label>
+                    <div className='text-box'>Comment</div>
                     <input
                         type="text"
-                        id="comment"
+                        className="comment"
                         value={editForm.comment}
                         name="comment"
                         placeholder="comment"
                         onChange={handleChange}
                     />
-                
+                    <div className='button'>
                     <button type="submit" value="Update Person">update review</button>
+                    </div>
+                    </div>
                 </form> 
             </section>
-        </>
+        </div>
     )
     const loading = () => (
         <>

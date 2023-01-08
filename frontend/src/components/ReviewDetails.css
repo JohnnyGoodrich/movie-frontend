@@ -5,16 +5,41 @@
     justify-content: flex-start;
     text-align: center;
     border-radius: 10px;
+    height: 200px;
+    background-color: white;
+    color: rgb(109, 108, 108);
+    padding-top: 20px;
 }
-/* .review-details-list{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 60px;
-} */
-
-
-
-.delete{
-    text-align: center;
+.review-details-list{
     margin: 0 auto;
+    /* width: 500px; */
+    padding-top: 50px;
+    padding-bottom: 20px;
+    max-width: 800px;
+   
+}
+
+.text-box{
+    /* padding-top:50px; */
+}
+.delete{
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+.review-editor{
+    font-family: 'Bebas Neue', cursive;
+    padding-top:10px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 50px;
+    text-decoration:underline;
+}
+.rating-form-2{
+    /* display: flex;
+    flex-direction: column; */
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 200px;
 }

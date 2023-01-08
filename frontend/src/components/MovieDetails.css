@@ -1,49 +1,91 @@
+.section-header{
+    font-family: 'Bebas Neue', cursive;
+    padding-top:10px;
+
+}
 .details-content{
-    /* text-align: center; */
+    padding-top: 50px;
+    /* background-color: black; */
+    background-image: url("https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-size:100% 100%;
+    background-attachment: fixed;
+    margin:0px;
+    background-repeat: no-repeat;
+    color: white;
+    /* height:100vh; */
 }
 .review{
-    border: 1px solid black;
-    display: flex;
+    border: 1px solid white;
+    /* display: flex; */
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
     border-radius: 10px;
     width: 300px;
     height: 200px;
+  
+   
+    color:white;
+   
     
 }
+.review:hover{
+    border: 1px solid #ddd;
+    /* background-color: transparent; */
+    /* padding: 8px 24px; */
+    width: 300px;
+    height:210px;
+    /* border-radius: 4px; */
+    transition: transform .3s ease-in-out;
+    transform: scale(1.1);
+    opacity: .9;
+    
+    
+
+}
 .review-list{
-    /* display: grid;
-    grid-template-columns: repeat(3,1fr); */
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-self: start;
     gap: 60px;
     margin:0 auto;
+    padding-top: 20px;
     
 }
 .edit{
     text-align: right;
     padding-right: 10px;
     align-items: flex-end;
+    text-decoration: none;
    
 }
 .movie{
     display: flex;
     justify-content: flex-start;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
 }
 .cast{
-    padding: 50px;
+    max-width: 800px;
+    margin:0 auto;
+}
+.cast-list{
+    margin: 0;
 }
 .rating-number{
     text-align: left;
     padding-left: 5px;
+    
+    
 }
 .age-rating{
+    color: black;
     border:1px solid black;
     border-radius: 5px;
     font-size:15px;
     background-color: lightgray;
     padding: 0 3px 0 3px;
+    
 }
 .movie-info{
     display: flex;
@@ -54,58 +96,170 @@
     text-align: center;
 }
 .comment-label{
-    
+    /* color:red; */
 }
 .rating-form{
     /* display: flex;
     flex-direction: column; */
-    max-width: 600px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding-top: 20px;
+    
+    
 }
 .movie-description{
-    max-width: 600px;
-    /* text-align: center; */
+    max-width: 800px;
     margin:0 auto;
 }
 .all-reviews{
-
+  justify-self: start;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-auto-rows: minmax(10px, 50px);
   grid-gap: 1rem;
   margin: 0 auto;
-  max-width: 600px;
-  /* padding: 1rem; */
+  max-width: 1200px;
+  padding-bottom: 4rem;
   grid-auto-rows: auto;
+  color: rgb(85, 84, 84);
 }
 
-#rating{
+.rating{
     text-align: center;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     max-width: 70px;
     margin:0 auto;
     height:40px;
-    border-radius: 0;
+    border-radius: 15px;
+    opacity: .3;
+    
+    
 }
-#comment{
-    border-radius: 0;
+.comment{
+    border-radius: 15px;
     text-align: center;
-    border: 1px solid black;
-    max-width: 600px;
+    /* border: 1px solid black; */
+    /* max-width: 800px; */
     height:100px;
     /* margin: 0 auto; */
     word-wrap: break-word;
+    opacity: .3;
+    
+    
 }
 .review-header{
-    max-width: 600px;
+    font-family: 'Bebas Neue', cursive;
+    max-width: 1200px;
     margin: 0 auto;
 }
 .review-comment{
     max-width: 200px;
+    padding-top: 40px;
     margin: 0 auto;
     word-wrap: break-word;
+    
 }
 .button{
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+.create-review{
+    display: flex;
+    flex-direction: column;
+    
+}
+.bottom-half{
+    background-color: rgb(0, 0, 0, .4);
+    
+}
+
+/* First circle progress bar test*/
+svg{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    z-index: 1000;
+}
+.circle-number {
+    color: white;
+}
+svg circle{
+    width: 100%;
+    height: 100%;
+    fill:none;
+    stroke: #191919;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transform: translate(5px,5px);
+}
+svg circle:nth-child(2){
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+}
+.card1:nth-child(1) svg circle:nth-child(2){
+    stroke-dashoffset: calc(440 - (440*90)/100);
+    stroke: red;
+}
+.card1:nth-child(2) svg circle:nth-child(2){
+    stroke: #00a1ff;
+}
+.card1:nth-child(3) svg circle:nth-child(2){
+    stroke: #ff04f7;
+}
+.container1 .card1{
+    position: relative;
+    width: 250px;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:300px;
+    text-align: center;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.percent .circle-number{
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+::placeholder{
+    color: black;
+    opacity: 1;
+}
+
+/*Second circle progress bar test*/
+#progress{
+    display: flex;
+    justify-content: space-around;
+    
+  }
+  .progress-item {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: 0;
+    animation: .4s ease-out reverse; 
+  }
+  
+  .progress-item::after {
+    content: attr(data-value);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100px;
+    margin: 10px;
+    border-radius: 50%;
+    background-color: #191919;
+    font-size: 1rem;
+    text-align: center;
+  }

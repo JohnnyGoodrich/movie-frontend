@@ -8,10 +8,10 @@ function MovieDetails(props) {
     const [editForm, setEditForm] = useState("")
     const [newReview, setNewReview] = useState([
         {
-        rating:"",
-        comment:"",
-        title:"",
-    }]
+            rating: "",
+            comment: "",
+            title: "",
+        }]
 
     )
 
@@ -25,7 +25,7 @@ function MovieDetails(props) {
     const URL2 = `http://localhost:4000/review/${id}`
     const URL3 = `http://localhost:3000/review/${id}`
     const URL4 = `http://localhost:3000/review/${id}/edit`
-  
+
 
     // console.log("id", id, URL)
     // console.log(`Current Person: ${JSON.stringify(movie)}`)
@@ -37,7 +37,7 @@ function MovieDetails(props) {
 
             const response = await fetch(URL)
             const foundMovie = await response.json()
-            
+
             setMovie(foundMovie)
             // console.log(foundMovie)
             // setEditForm(foundMovie)
@@ -105,89 +105,164 @@ function MovieDetails(props) {
         getMovie()
     }, [])
     useEffect(() => {
-       
+
         getReview()
     }, [])
 
+    // circle attempt using setAttribute()
+    // let averageRating= document.querySelector(".circle-num")
+    // let ratings = averageRating.getAttribute("data-num")
+    // console.log(ratings)
+    // console.log(averageRating)
+    //average rating function attempt
+    let ratingArray=[]
+
+    //change circle number attempt
+    const dataNumData = document.querySelector(".progress-item")
+    function myFunction() {
+
+       dataNumData.setAttribute("data-num", "40"); 
+       
+      }
+    
+    //   myFunction()
+    // change circle number attempt
+    // let num=document.querySelector(".card1:nth-child(1) svg circle:nth-child(2)")
+    // console.log(num)
+    // function changeCircleNum (){
+    //     document.querySelector(".card1:nth-child(1) svg circle:nth-child(2)").style.color="red"
+    // }
+    // changeCircleNum()
+
+    let items = document.querySelectorAll('.progress-item');
+    const counters = Array(items.length);
+    const intervals = Array(items.length);
+    counters.fill(0);
+    items.forEach((number,index) => {
+      intervals[index] = setInterval(() => {
+              if(counters[index] == parseInt(number.dataset.num)){
+                  clearInterval(intervals[index]);
+              }else{
+                  counters[index] += 1;
+                  number.style.background = "conic-gradient(red calc(" + counters[index] + "%), gray 0deg)";
+                  number.setAttribute('data-value', counters[index] + "%");
+                  number.innerHTML = counters[index] + "%";
+              }
+      }, 15);
+     });
     const loaded = () => (
         <div className='details-content'>
+   
+            
             <section className='movie-details-1'>
                 <div className="movie">
                     <div>
-                    <h2>{movie.title}</h2>
-                    <img className='movie-details-image' src={movie.image} alt={movie.name + " image"} height="200px" width="200px" />
-                    <p className='movie-info'><span className='age-rating'>{movie.agerating}</span>&nbsp; {movie.year}, {movie.hlength}h{movie.mlength}m</p>             
+                        {/* <h2>{movie.title}</h2> */}
+                        <img className='movie-details-image' src={movie.image} alt={movie.name + " image"} height="400px" width="400px" />
+                        <p className='movie-info'><span className='age-rating'>{movie.agerating}</span>&nbsp; {movie.year}, {movie.hlength}h{movie.mlength}m</p>
                     </div>
-                    <div className='cast'>
-                        <h5>Cast:</h5>
-                        <p>{movie.cast[0]}</p>
-                        <p>{movie.cast[1]}</p>
-                        <p>{movie.cast[2]}</p>
-                        <p>{movie.cast[3]}</p>
-                        <p>{movie.cast[4]}</p>
+                    <div className='container1'>
+                        {/* <div className='card1'>
+                            <div className='box'>
+                                <div className='percent'>
+                                    <svg>
+                                        <circle cx='70' cy="70" r='70'></circle>
+                                        <circle cx='70' cy="70" r='70'></circle>
+                                    </svg>
+                                    <div className='circle-number'>
+                                        <h2 className='circle-num'>90<span>%</span></h2>
+                                    </div>
+                                </div>
+                                        <button className='ratingBtn' onClick={myFunction}>click</button>
+                                <h2 className='circle-text'></h2>
+                            </div>
+                        </div> */}
+                    
+                <div id="progress" >
+                    <div data-num="0" className="progress-item">ds</div>
+                </div>
                     </div>
                 </div>
             </section>
-            
             <div className='movie-description'>
-                <h4>Movie Description</h4>
+                <h2 className='section-header'>Movie Description</h2>
                 <p>{movie.desc}</p>
             </div>
-            <div>
-                <section>
-                    <form className='rating-form' onSubmit={handleSubmit}>
-                    <h4>Create a new Review</h4>
+            <div className='cast'>
 
-                        <div>
-                        <div>Rating</div>
-                            <label htmlFor='title'>
-                                <input
-                                    type="number"
-                                    id="rating"
-                                    name="rating"
-                                    placeholder="rating"
-                                    value={newReview.rating}
-                                    onChange={handleChange}
-                                />
-                            </label>
-                            <label className='comment-label' htmlFor='title'>
-                        <div>Comment</div>
-                                <input
-                                    type="text"
-                                    id="comment"
-                                    name="comment"
-                                    placeholder="write review here"
-                                    value={newReview.comment}
-                                    onChange={handleChange}
-                                />
-                            </label>
+                <h2 className='section-header'>Director:</h2>
+                <p>{movie.director}</p>
+                <h2 className='section-header'>Cast:</h2>
+                <div className='cast-list'>
+                    <p>{movie.cast[0]}</p>
+                    <p>{movie.cast[1]}</p>
+                    <p>{movie.cast[2]}</p>
+                    <p>{movie.cast[3]}</p>
+                    <p>{movie.cast[4]}</p>
+                </div>
+            </div>
+            <div className='bottom-half'>
+                <div  >
+                    <section>
+                        <form className='rating-form' onSubmit={handleSubmit}>
+                            <h2 className='section-header'>Create a new Review</h2>
 
-                            <br />
-                            <div className='button'>
-                            <button type="submit" value="Post Review">Post Review</button>
-                            </div>
-                        </div>
-                    </form>
-                </section>
-            </div >
-            
-            <h4 className='review-header'>Reviews:</h4>
-            <div className='all-reviews'>
-                {newReview.reviews ? (
-                    newReview.reviews.map((review, index) => {
-                        
-                        return (
-                            <div key={review._id} className='review-list'>
-                                <div className='review'>
-                                    <p className='rating-number'>Rating: {review.rating}</p>
-                                    <p className='review-comment'>"{review.comment}"</p>
-                                    {/* <button className="delete" onClick={removeReview}>Delete Review</button> */}
-                                    <Link to={`/review/edit/${review._id}`} className='edit'>edit</Link>
+                            <div className='create-review'>
+                                <div>Rating</div>
+                                <label htmlFor='title'>
+                                    <input
+                                        type="number"
+                                        className="rating"
+                                        name="rating"
+                                        placeholder="1-100"
+                                        autoComplete='off'
+                                        value={newReview.rating}
+                                        onChange={handleChange}
+                                    />
+                                </label>
+                                <label className='comment-label' htmlFor='title'>
+                                    <div>Comment</div>
+                                    <input
+                                        type="text"
+                                        className="comment"
+                                        name="comment"
+                                        placeholder="write review here"
+                                        autoComplete='off'
+                                        value={newReview.comment}
+                                        onChange={handleChange}
+                                    />
+                                </label>
+
+                                <br />
+                                <div className='button'>
+                                    <button type="submit" value="Post Review">Post Review</button>
                                 </div>
                             </div>
-                        )
-                    })
-                ) : (<p> No reviews for this product </p>)}
+                        </form>
+                    </section>
+                </div >
+
+                <h2 className='review-header'>Reviews:</h2>
+                <div className='all-reviews'>
+                    {newReview.reviews ? (
+                        newReview.reviews.map((review, index) => {
+
+                            return (
+
+                                <div key={review._id} className='review-list'>
+                                    <Link to={`/review/edit/${review._id}`} className='edit'>
+                                        <div className='review'>
+
+                                            <p data-num="" className='rating-number'>Rating: {review.rating}</p>
+                                            <p className='review-comment'>"{review.comment}"</p>
+                                            {/* <button className="delete" onClick={removeReview}>Delete Review</button> */}
+                                        </div>
+                                    </Link>
+                                </div>
+                            )
+                        })
+                    ) : (<p> No reviews for this product </p>)}
+                </div>
             </div>
         </div>
     )
@@ -199,8 +274,12 @@ function MovieDetails(props) {
         </>
     );
     return (
-        <div>{movie && newReview ? loaded() : loading()}</div>
+        <div>{movie && newReview ? loaded() : loading()}
+
+        </div>
+       
     )
+   
 }
 
 export default MovieDetails
