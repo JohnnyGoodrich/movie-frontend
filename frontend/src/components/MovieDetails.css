@@ -175,12 +175,12 @@
 }
 
 /* First circle progress bar test*/
-svg{
+/* svg{
     position: relative;
     width: 150px;
     height: 150px;
     z-index: 1000;
-}
+} */
 .circle-number {
     color: white;
 }
