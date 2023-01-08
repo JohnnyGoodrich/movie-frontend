@@ -54,7 +54,9 @@
 #biwind{
     color:deepskyblue;
 }
-
+.View-All {
+    margin-left: 1000px;
+}
 
 .spinner {
     width: 24px;

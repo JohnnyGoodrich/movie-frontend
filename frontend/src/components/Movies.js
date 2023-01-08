@@ -25,6 +25,8 @@ function Movies(props) {
         getMovies()
     }, [])
 
+    console.log(movies[0])
+
     const movieTitleList = []
     const movieImageList = []
     const movieDescList= []
@@ -36,7 +38,6 @@ function Movies(props) {
         movieID.push(movies[i]._id)
 
     }
-    console.log(movieDescList)
 
     const loaded = () => {
         return (
@@ -65,7 +66,7 @@ function Movies(props) {
     return (
         <>
             <div className='header-homepage'>
-                <Link to={'./'} style={{ textDecoration: 'none' }}>
+                <Link to={'/'} style={{ textDecoration: 'none' }}>
                     <div className="homepage">
                         <h1 id="movie-buff" >MovieBuff</h1>
                         <h1 id="blank-symbol-header">...</h1>
@@ -78,7 +79,7 @@ function Movies(props) {
             <div className='content'>
                 <Slider movieList={movieTitleList} movieImage={movieImageList} />
             </div>
-            <h1 className='Top-Rated-Movies'><span id="biwind">{<FaRegHandPointRight />}</span>TOP RATED MOVIES</h1>
+            <h1 className='Top-Rated-Movies'><span id="biwind">{<FaRegHandPointRight />}</span>TOP RATED MOVIES <a href="http://localhost:3000/viewAllTopRatedMovies" className="View-All" >View All</a></h1>
             <div className="movies-slide-bar">
                 <MovieSlider image={movieImageList} title={movieTitleList} desc={movieDescList} id={movieID} />
             </div>
