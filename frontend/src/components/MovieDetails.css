@@ -23,19 +23,25 @@
     border-radius: 10px;
     width: 300px;
     height: 200px;
-    /* background-color:whitesmoke; */
-    /* color: rgb(81, 79, 79); */
-    color:white
+  
+   
+    color:white;
+   
     
 }
 .review:hover{
     border: 1px solid #ddd;
     /* background-color: transparent; */
     /* padding: 8px 24px; */
-    width: 310px;
+    width: 300px;
     height:210px;
     /* border-radius: 4px; */
-    transition: transform .5s ease-in-out;
+    transition: transform .3s ease-in-out;
+    transform: scale(1.1);
+    opacity: .9;
+    
+    
+
 }
 .review-list{
     display: grid;
@@ -43,6 +49,7 @@
     justify-self: start;
     gap: 60px;
     margin:0 auto;
+    padding-top: 20px;
     
 }
 .edit{
@@ -68,6 +75,8 @@
 .rating-number{
     text-align: left;
     padding-left: 5px;
+    
+    
 }
 .age-rating{
     color: black;
@@ -76,6 +85,7 @@
     font-size:15px;
     background-color: lightgray;
     padding: 0 3px 0 3px;
+    
 }
 .movie-info{
     display: flex;
@@ -86,7 +96,7 @@
     text-align: center;
 }
 .comment-label{
-    
+    /* color:red; */
 }
 .rating-form{
     /* display: flex;
@@ -94,6 +104,8 @@
     max-width: 1200px;
     margin: 0 auto;
     padding-top: 20px;
+    
+    
 }
 .movie-description{
     max-width: 800px;
@@ -118,16 +130,22 @@
     max-width: 70px;
     margin:0 auto;
     height:40px;
-    border-radius: 0;
+    border-radius: 15px;
+    opacity: .3;
+    
+    
 }
 .comment{
-    border-radius: 0;
+    border-radius: 15px;
     text-align: center;
     /* border: 1px solid black; */
     /* max-width: 800px; */
     height:100px;
     /* margin: 0 auto; */
     word-wrap: break-word;
+    opacity: .3;
+    
+    
 }
 .review-header{
     font-family: 'Bebas Neue', cursive;
@@ -149,8 +167,65 @@
 .create-review{
     display: flex;
     flex-direction: column;
+    
 }
 .bottom-half{
     background-color: rgb(0, 0, 0, .4);
     
+}
+svg{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    z-index: 1000;
+}
+.circle-number{
+    color: white;
+}
+svg circle{
+    width: 100%;
+    height: 100%;
+    fill:none;
+    stroke: #191919;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transform: translate(5px,5px);
+}
+svg circle:nth-child(2){
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+}
+.card1:nth-child(1) svg circle:nth-child(2){
+    stroke-dashoffset: calc(440 - (440*90)/100);
+    stroke: red;
+}
+.card1:nth-child(2) svg circle:nth-child(2){
+    stroke: #00a1ff;
+}
+.card1:nth-child(3) svg circle:nth-child(2){
+    stroke: #ff04f7;
+}
+.container1 .card1{
+    position: relative;
+    width: 250px;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:300px;
+    text-align: center;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.percent .circle-number{
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
 }

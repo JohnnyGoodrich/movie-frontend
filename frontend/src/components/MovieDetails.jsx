@@ -118,33 +118,42 @@ function MovieDetails(props) {
                         <img className='movie-details-image' src={movie.image} alt={movie.name + " image"} height="400px" width="400px" />
                         <p className='movie-info'><span className='age-rating'>{movie.agerating}</span>&nbsp; {movie.year}, {movie.hlength}h{movie.mlength}m</p>
                     </div>
-                    {/* <div className='cast'>
-                        <h4 className='section-header'>Cast:</h4>
-                        <p>{movie.cast[0]}</p>
-                        <p>{movie.cast[1]}</p>
-                        <p>{movie.cast[2]}</p>
-                        <p>{movie.cast[3]}</p>
-                        <p>{movie.cast[4]}</p>
-                    </div> */}
+                    <div className='container1'>
+                        <div className='card1'>
+                            <div className='box'>
+                                <div className='percent'>
+                                    <svg>
+                                        <circle cx='70' cy="70" r='70'></circle>
+                                        <circle cx='70' cy="70" r='70'></circle>
+                                    </svg>
+                                    <div className='circle-number'>
+                                        <h2>90<span>%</span></h2>
+                                    </div>
+                                </div>
+                                <h2 className='circle-text'></h2>
+                            </div>
+                        </div>
+                       
+                    </div>
                 </div>
             </section>
-                <div className='movie-description'>
-                    <h2 className='section-header'>Movie Description</h2>
-                    <p>{movie.desc}</p>
-                </div>
-                <div className='cast'>
+            <div className='movie-description'>
+                <h2 className='section-header'>Movie Description</h2>
+                <p>{movie.desc}</p>
+            </div>
+            <div className='cast'>
 
-                        <h2 className='section-header'>Director:</h2>
-                        <p>{movie.director}</p>
-                        <h2 className='section-header'>Cast:</h2>
-                        <div className='cast-list'>
-                        <p>{movie.cast[0]}</p>
-                        <p>{movie.cast[1]}</p>
-                        <p>{movie.cast[2]}</p>
-                        <p>{movie.cast[3]}</p>
-                        <p>{movie.cast[4]}</p>
-                        </div>
-                    </div>
+                <h2 className='section-header'>Director:</h2>
+                <p>{movie.director}</p>
+                <h2 className='section-header'>Cast:</h2>
+                <div className='cast-list'>
+                    <p>{movie.cast[0]}</p>
+                    <p>{movie.cast[1]}</p>
+                    <p>{movie.cast[2]}</p>
+                    <p>{movie.cast[3]}</p>
+                    <p>{movie.cast[4]}</p>
+                </div>
+            </div>
             <div className='bottom-half'>
                 <div  >
                     <section>
@@ -192,11 +201,11 @@ function MovieDetails(props) {
                             return (
                                 <div key={review._id} className='review-list'>
                                     <Link to={`/review/edit/${review._id}`} className='edit'>
-                                    <div className='review'>
-                                        <p className='rating-number'>Rating: {review.rating}</p>
-                                        <p className='review-comment'>"{review.comment}"</p>
-                                        {/* <button className="delete" onClick={removeReview}>Delete Review</button> */}
-                                    </div>
+                                        <div className='review'>
+                                            <p className='rating-number'>Rating: {review.rating}</p>
+                                            <p className='review-comment'>"{review.comment}"</p>
+                                            {/* <button className="delete" onClick={removeReview}>Delete Review</button> */}
+                                        </div>
                                     </Link>
                                 </div>
                             )
