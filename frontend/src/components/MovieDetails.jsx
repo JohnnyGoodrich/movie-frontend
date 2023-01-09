@@ -2,29 +2,35 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './MovieDetails.css'
 import { Link } from 'react-router-dom'
+import { getUserToken } from '../utils/authToken'//Triet's stuff
 
 function MovieDetails(props) {
+    const token = getUserToken() //Triet's stuff
+    const params = useParams()
+    const { id } = params
     const [movie, setMovie] = useState(null)
-    const [editForm, setEditForm] = useState("")
-    const [newReview, setNewReview] = useState([
-        {
-            rating: "",
-            comment: "",
-            title: "",
-        }]
-
-    )
+    const [editForm, setEditForm] = useState({
+        rating: "",
+        comment: "",
+        title: id,
+    })
+    const [reviews, setReviews] = useState([])
 
     const navigate = useNavigate()
 
-    const params = useParams()
-    const { id } = params
+
+    // const URL = `https://movie-buff-backend.herokuapp.com/movie/${id}`
+    const BASE_URL = 'http://localhost:4000/movie'//testing
 
 
-    const URL = `https://movie-buff-backend.herokuapp.com/movie/${id}`
-    const URL2 = `http://localhost:4000/review/${id}`
-    const URL3 = `http://localhost:3000/review/${id}`
-    const URL4 = `http://localhost:3000/review/${id}/edit`
+    // const URL2 = `https://movie-buff-backend.herokuapp.com/review/${id}` John
+    const URL2 = `http://localhost:4000/review/${id}`//Triet's stuff
+
+    // const URL3 = `http://localhost:3000/review/${id}` John
+    const URL3 = `http://localhost:4000/review/${id}`//Triet
+
+    // const URL4 = `http://localhost:3000/review/${id}/edit` John
+    const URL4 = `http://localhost:4000/review/edit/${id}`//Triet
 
 
     // console.log("id", id, URL)
@@ -35,10 +41,10 @@ function MovieDetails(props) {
     const getMovie = async () => {
         try {
 
-            const response = await fetch(URL)
+            const response = await fetch(URL2)
             const foundMovie = await response.json()
-
-            setMovie(foundMovie)
+            setMovie(foundMovie.title)
+            setReviews(foundMovie.reviews)
             // console.log(foundMovie)
             // setEditForm(foundMovie)
 
@@ -47,40 +53,41 @@ function MovieDetails(props) {
         }
     }
 
-    const getReview = async () => {
-        try {
+    // const getReview = async () => {
+    //     try {
 
-            const response = await fetch(URL2)
-            const foundReview = await response.json()
-            // console.log(response.json)
-            setNewReview(foundReview)
-            // console.log(foundReview)
-            // setEditForm(foundMovie)
-            // console.log(newReview.reviews[0]._id)
+    //         const response = await fetch(URL2)
+    //         const foundReview = await response.json()
+    //         // console.log(response.json)
+    //         setReviews(foundReview)
+    //         // console.log(foundReview)
+    //         // setEditForm(foundMovie)
+    //         // console.log(newReview.reviews[0]._id)
 
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
 
     const handleChange = (e) => {
         // console.log(newReview.reviews._id)
-        const userInput = { ...newReview }
+        const userInput = { ...editForm }
         userInput[e.target.name] = e.target.value
-        setNewReview(userInput)
+        setEditForm(userInput)
         // console.log(userInput)
         // console.log(URL2)
     }
     const handleSubmit = async (e) => {
-        // e.preventDefault()
-        const currentState = { ...newReview }
-        // console.log(currentState)
+        e.preventDefault()
+        const currentState = { ...editForm }
+        console.log(currentState)
         // console.log(newReview.reviews[0]._id)
         try {
             const requestOptions = {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`//Triet's stuff
                 },
                 body: JSON.stringify(currentState)
 
@@ -89,8 +96,8 @@ function MovieDetails(props) {
             // console.log(URL2)
             const createdReview = await response.json()
             // console.log(createdReview)
-            setNewReview([...newReview, createdReview])
-            setNewReview([{
+            setReviews([...reviews, createdReview])
+            setEditForm([{
                 rating: "",
                 comment: "",
             }])
@@ -104,10 +111,10 @@ function MovieDetails(props) {
     useEffect(() => {
         getMovie()
     }, [])
-    useEffect(() => {
+    // useEffect(() => {
 
-        getReview()
-    }, [])
+    //     getReview()
+    // }, [])
 
     // circle attempt using setAttribute()
     // let averageRating= document.querySelector(".circle-num")
@@ -115,16 +122,16 @@ function MovieDetails(props) {
     // console.log(ratings)
     // console.log(averageRating)
     //average rating function attempt
-    let ratingArray=[]
+    let ratingArray = []
 
     //change circle number attempt
     const dataNumData = document.querySelector(".progress-item")
     function myFunction() {
 
-       dataNumData.setAttribute("data-num", "40"); 
-       
-      }
-    
+        dataNumData.setAttribute("data-num", "40");
+
+    }
+
     //   myFunction()
     // change circle number attempt
     // let num=document.querySelector(".card1:nth-child(1) svg circle:nth-child(2)")
@@ -138,49 +145,34 @@ function MovieDetails(props) {
     const counters = Array(items.length);
     const intervals = Array(items.length);
     counters.fill(0);
-    items.forEach((number,index) => {
-      intervals[index] = setInterval(() => {
-              if(counters[index] == parseInt(number.dataset.num)){
-                  clearInterval(intervals[index]);
-              }else{
-                  counters[index] += 1;
-                  number.style.background = "conic-gradient(red calc(" + counters[index] + "%), gray 0deg)";
-                  number.setAttribute('data-value', counters[index] + "%");
-                  number.innerHTML = counters[index] + "%";
-              }
-      }, 15);
-     });
+    items.forEach((number, index) => {
+        intervals[index] = setInterval(() => {
+            if (counters[index] == parseInt(number.dataset.num)) {
+                clearInterval(intervals[index]);
+            } else {
+                counters[index] += 1;
+                number.style.background = "conic-gradient(red calc(" + counters[index] + "%), gray 0deg)";
+                number.setAttribute('data-value', counters[index] + "%");
+                number.innerHTML = counters[index] + "%";
+            }
+        }, 15);
+    });
     const loaded = () => (
         <div className='details-content'>
-   
-            
+
+
             <section className='movie-details-1'>
                 <div className="movie">
                     <div>
-                        {/* <h2>{movie.title}</h2> */}
+                        <h2>{movie.title}</h2>
                         <img className='movie-details-image' src={movie.image} alt={movie.name + " image"} height="400px" width="400px" />
                         <p className='movie-info'><span className='age-rating'>{movie.agerating}</span>&nbsp; {movie.year}, {movie.hlength}h{movie.mlength}m</p>
                     </div>
                     <div className='container1'>
-                        {/* <div className='card1'>
-                            <div className='box'>
-                                <div className='percent'>
-                                    <svg>
-                                        <circle cx='70' cy="70" r='70'></circle>
-                                        <circle cx='70' cy="70" r='70'></circle>
-                                    </svg>
-                                    <div className='circle-number'>
-                                        <h2 className='circle-num'>90<span>%</span></h2>
-                                    </div>
-                                </div>
-                                        <button className='ratingBtn' onClick={myFunction}>click</button>
-                                <h2 className='circle-text'></h2>
-                            </div>
-                        </div> */}
-                    
-                <div id="progress" >
-                    <div data-num="0" className="progress-item">ds</div>
-                </div>
+
+                        <div id="progress" >
+                            <div data-num="0" className="progress-item">ds</div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -203,7 +195,7 @@ function MovieDetails(props) {
             </div>
             <div className='bottom-half'>
                 <div  >
-                    <section>
+                    {token ?<section>
                         <form className='rating-form' onSubmit={handleSubmit}>
                             <h2 className='section-header'>Create a new Review</h2>
 
@@ -216,7 +208,7 @@ function MovieDetails(props) {
                                         name="rating"
                                         placeholder="1-100"
                                         autoComplete='off'
-                                        value={newReview.rating}
+                                        value={editForm.rating}
                                         onChange={handleChange}
                                     />
                                 </label>
@@ -228,7 +220,7 @@ function MovieDetails(props) {
                                         name="comment"
                                         placeholder="write review here"
                                         autoComplete='off'
-                                        value={newReview.comment}
+                                        value={editForm.comment}
                                         onChange={handleChange}
                                     />
                                 </label>
@@ -239,13 +231,13 @@ function MovieDetails(props) {
                                 </div>
                             </div>
                         </form>
-                    </section>
+                    </section>:null}
                 </div >
 
                 <h2 className='review-header'>Reviews:</h2>
                 <div className='all-reviews'>
-                    {newReview.reviews ? (
-                        newReview.reviews.map((review, index) => {
+                    {reviews ? (
+                        reviews.map((review, index) => {
 
                             return (
 
@@ -255,7 +247,6 @@ function MovieDetails(props) {
 
                                             <p data-num="" className='rating-number'>Rating: {review.rating}</p>
                                             <p className='review-comment'>"{review.comment}"</p>
-                                            {/* <button className="delete" onClick={removeReview}>Delete Review</button> */}
                                         </div>
                                     </Link>
                                 </div>
@@ -274,12 +265,13 @@ function MovieDetails(props) {
         </>
     );
     return (
-        <div>{movie && newReview ? loaded() : loading()}
+        <div>
+            {movie && reviews ? loaded() : loading()}
 
         </div>
-       
+
     )
-   
+
 }
 
 export default MovieDetails

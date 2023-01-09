@@ -5,7 +5,8 @@ import '../styles/allMovies.css'
 
 function AllMovies(props) {
     const [movies, setMovies] = useState([])
-    const BASE_URL = 'https://movie-buff-backend.herokuapp.com/movie'
+    // const BASE_URL = 'https://movie-buff-backend.herokuapp.com/movie'
+    const BASE_URL = 'http://localhost:4000/movie'//testing
 
     const getMovies = async () => {
         try {

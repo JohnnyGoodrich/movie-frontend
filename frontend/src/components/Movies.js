@@ -7,7 +7,8 @@ import MovieSlider from './MovieSlider';
 import '../styles/headerHomepage.css'
 function Movies(props) {
     const [movies, setMovies] = useState([])
-    const BASE_URL = 'https://movie-buff-backend.herokuapp.com/movie'
+    // const BASE_URL = 'https://movie-buff-backend.herokuapp.com/movie'
+    const BASE_URL = 'http://localhost:4000/movie'
     const getMovies = async () => {
         try {
             const response = await fetch(BASE_URL)
@@ -20,7 +21,6 @@ function Movies(props) {
     useEffect(() => {
         getMovies()
     }, [])
-    console.log(movies[0])
     const movieTitleList = []
     const movieImageList = []
     const movieDescList= []
