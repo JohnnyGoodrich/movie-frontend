@@ -39,3 +39,15 @@
     width:1500px;
     margin: 0 auto;
 }
+.slick-arrow .slick.prev::before{
+    display:none
+}
+
+::before{
+    display: none;
+}
+
+.button-movie-slider{
+    display: flex;
+    left:-2%;
+}

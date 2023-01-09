@@ -43,6 +43,7 @@ input {
     text-decoration: none;
     color: black;
 }
+
 .search-context-inner {
     display: flex;
     border-radius: 50px;

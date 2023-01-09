@@ -1,5 +1,8 @@
 
-
+a {
+    text-decoration: none;
+    color: #19F19B;
+}
 .main-page{
     background-image: url("https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
     /* padding-top: 100px; */
@@ -17,6 +20,7 @@
   
 }
 #movie-buff {
+    font-family: 'Bebas Neue', cursive;
     background-color: #F3EC78;
     background-image: linear-gradient(45deg, #7DF58D, #5191FF);
     background-size: 100%;
@@ -56,11 +60,20 @@
 .movie-images {
     height: 200px!important;
 }
+.top-rated-movies{
+    color:white;
+    width: 1400px;
+    margin:0 auto ;
+}
 #biwind{
     color:deepskyblue;
 }
 .View-All {
-    margin-left: 1000px;
+    font-family: 'Bebas Neue', cursive;
+    /* margin-left: 1000px; */
+   height: 50px;
+    text-decoration: none;
+    color: white;
 }
 .spinner {
     width: 24px;
@@ -153,5 +166,9 @@
   } */
   .movies-slide-bar{
     background-color: none;
+  }
+  .header-logo{
+    height: 50px;
+    padding: 10px 0 0 10px;
   }
  

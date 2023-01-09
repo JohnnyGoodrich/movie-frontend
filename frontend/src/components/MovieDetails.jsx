@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './MovieDetails.css'
 import { Link } from 'react-router-dom'
+import logo from '../images/Screen Shot 2023-01-09 at 10.14.57 AM.png'
 
 function MovieDetails(props) {
     const [movie, setMovie] = useState(null)
@@ -118,7 +119,7 @@ function MovieDetails(props) {
     let ratingArray=[]
 
     //change circle number attempt
-    const dataNumData = document.querySelector(".progress-item")
+    const dataNumData = document.querySelector(".progress-ite")
     function myFunction() {
 
        dataNumData.setAttribute("data-num", "40"); 
@@ -152,6 +153,15 @@ function MovieDetails(props) {
      });
     const loaded = () => (
         <div className='details-content'>
+            <Link to={'/'} style={{ textDecoration: 'none' }}>
+                    <div className="">
+                        {/* <h1 id="movie-buff" >MovieBUFF</h1> */}
+                        <Link to={`/`}>
+                        <img src={logo} className='header-logo'></img>
+                        {/* <h1 id="blank-symbol-header">...</h1> */}
+                        </Link>
+                    </div>
+                </Link>
    
             
             <section className='movie-details-1'>

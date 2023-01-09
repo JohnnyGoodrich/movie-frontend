@@ -5,6 +5,7 @@ import Search from './Search'
 import Slider from './Slider'
 import MovieSlider from './MovieSlider';
 import '../styles/headerHomepage.css'
+import logo from '../images/Screen Shot 2023-01-09 at 10.14.57 AM.png'
 function Movies(props) {
     const [movies, setMovies] = useState([])
     const BASE_URL = 'https://movie-buff-backend.herokuapp.com/movie'
@@ -60,8 +61,11 @@ function Movies(props) {
             <div className='header-homepage'>
                 <Link to={'/'} style={{ textDecoration: 'none' }}>
                     <div className="homepage">
-                        <h1 id="movie-buff" >MovieBuff</h1>
-                        <h1 id="blank-symbol-header">...</h1>
+                        {/* <h1 id="movie-buff" >MovieBUFF</h1> */}
+                        <Link to={`/`}>
+                        <img src={logo} className='header-logo'></img>
+                        {/* <h1 id="blank-symbol-header">...</h1> */}
+                        </Link>
                     </div>
                 </Link>
                 <Search movieList={movieTitleList} />
@@ -70,7 +74,7 @@ function Movies(props) {
             <div className='content'>
                 <Slider movieList={movieTitleList} movieImage={movieImageList} />
             </div>
-            <h1 className='Top-Rated-Movies'><span id="biwind">{<FaRegHandPointRight />}</span>TOP RATED MOVIES <a href="http://localhost:3000/viewAllTopRatedMovies" className="View-All" >View All</a></h1>
+            <h1 className='top-rated-movies'><span id="biwind"></span><a href="http://localhost:3000/viewAllTopRatedMovies" className="View-All" >All Movies</a></h1>
             <div className='bottom-half'>
             <div className="movies-slide-bar">
                 <MovieSlider image={movieImageList} title={movieTitleList} desc={movieDescList} id={movieID} />
