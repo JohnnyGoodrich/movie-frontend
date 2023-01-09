@@ -2,8 +2,10 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './MovieDetails.css'
 import { Link } from 'react-router-dom'
+import logo from '../images/Screen Shot 2023-01-09 at 10.14.57 AM.png'
 
 function MovieDetails(props) {
+    const [reviewAverage, setReviewAverage]= useState(null)
     const [movie, setMovie] = useState(null)
     const [editForm, setEditForm] = useState("")
     const [newReview, setNewReview] = useState([
@@ -22,7 +24,7 @@ function MovieDetails(props) {
 
 
     const URL = `https://movie-buff-backend.herokuapp.com/movie/${id}`
-    const URL2 = `http://localhost:4000/review/${id}`
+    const URL2 = `https://movie-buff-backend.herokuapp.com/review/${id}`
     const URL3 = `http://localhost:3000/review/${id}`
     const URL4 = `http://localhost:3000/review/${id}/edit`
 
@@ -41,12 +43,26 @@ function MovieDetails(props) {
             setMovie(foundMovie)
             // console.log(foundMovie)
             // setEditForm(foundMovie)
+            average()
 
         } catch (err) {
             console.log(err)
         }
     }
-
+    function average(){
+        
+        const array = []
+        let sum = 0
+        for (let i =0;i<newReview.reviews.length; i++){
+            array.push(newReview.reviews[i].rating)
+            // averageRating = array/newReview.reviews.length
+            sum += array[i]
+            const averageRating = sum/array.length
+            //  console.log(i)
+            //  console.log(newReview.reviews[i].rating)
+            console.log(averageRating) 
+        }}
+        // average()
     const getReview = async () => {
         try {
 
@@ -54,9 +70,18 @@ function MovieDetails(props) {
             const foundReview = await response.json()
             // console.log(response.json)
             setNewReview(foundReview)
-            // console.log(foundReview)
-            // setEditForm(foundMovie)
-            // console.log(newReview.reviews[0]._id)
+            console.log(foundReview)
+            // var yearStart = 2030;
+            // var yearEnd = 2040;
+
+            // var arr = [];
+
+            // for (var i = yearStart; i < yearEnd+1; i++) {
+            //     arr.push(i);
+            //     console.log(arr)
+            // }
+         
+        
 
         } catch (err) {
             console.log(err)
@@ -108,6 +133,11 @@ function MovieDetails(props) {
 
         getReview()
     }, [])
+    useEffect(() => {
+    //   average()
+        },[])
+        
+    // }, [reviews.length])
 
     // circle attempt using setAttribute()
     // let averageRating= document.querySelector(".circle-num")
@@ -118,7 +148,7 @@ function MovieDetails(props) {
     let ratingArray=[]
 
     //change circle number attempt
-    const dataNumData = document.querySelector(".progress-item")
+    const dataNumData = document.querySelector(".progress-ite")
     function myFunction() {
 
        dataNumData.setAttribute("data-num", "40"); 
@@ -150,8 +180,19 @@ function MovieDetails(props) {
               }
       }, 15);
      });
+
+
     const loaded = () => (
         <div className='details-content'>
+            <Link to={'/'} style={{ textDecoration: 'none' }}>
+                    <div className="">
+                     
+                        <Link to={`/`}>
+                        <img src={logo} className='header-logo'></img>
+                      
+                        </Link>
+                    </div>
+                </Link>
    
             
             <section className='movie-details-1'>
@@ -179,7 +220,7 @@ function MovieDetails(props) {
                         </div> */}
                     
                 <div id="progress" >
-                    <div data-num="0" className="progress-item">ds</div>
+                    <div data-num="90" className="progress-item">ds</div>
                 </div>
                     </div>
                 </div>
@@ -246,7 +287,7 @@ function MovieDetails(props) {
                 <div className='all-reviews'>
                     {newReview.reviews ? (
                         newReview.reviews.map((review, index) => {
-
+                            
                             return (
 
                                 <div key={review._id} className='review-list'>
@@ -279,7 +320,7 @@ function MovieDetails(props) {
         </div>
        
     )
-   
+
 }
 
 export default MovieDetails
