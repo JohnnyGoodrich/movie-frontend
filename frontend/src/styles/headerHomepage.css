@@ -68,8 +68,9 @@
 }
 .content{
     /* background-image: linear-gradient(0.25turn, #10698683, #0C2C63); */
-  
     /* animation: mymove 10s infinite; */
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 /* movieSlider.js */
 .movies-slide-bar{

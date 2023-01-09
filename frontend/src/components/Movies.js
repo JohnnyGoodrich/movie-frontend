@@ -76,7 +76,7 @@ function Movies(props) {
                 <MovieSlider image={movieImageList} title={movieTitleList} desc={movieDescList} id={movieID} />
             </div>
             </div>
-            {movies && movies.length ? loaded() : loading()}
+            {/* {movies && movies.length ? loaded() : loading()} */}
         </div>
     )
 }
