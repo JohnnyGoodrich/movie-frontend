@@ -33,7 +33,8 @@ function Movies(props) {
     }
     const loaded = () => {
         return (
-            <>
+            
+            <div className='main-page'>
                 <section className="movie-list">
                     {movies?.map((movie) => {
                         return (
@@ -46,7 +47,7 @@ function Movies(props) {
                         )
                     })}
                 </section>
-            </>
+            </div>
         )
     }
     const loading = () => (
@@ -55,7 +56,7 @@ function Movies(props) {
         </section>
     )
     return (
-        <>
+        <div className='main-page'>
             <div className='header-homepage'>
                 <Link to={'/'} style={{ textDecoration: 'none' }}>
                     <div className="homepage">
@@ -70,11 +71,13 @@ function Movies(props) {
                 <Slider movieList={movieTitleList} movieImage={movieImageList} />
             </div>
             <h1 className='Top-Rated-Movies'><span id="biwind">{<FaRegHandPointRight />}</span>TOP RATED MOVIES <a href="http://localhost:3000/viewAllTopRatedMovies" className="View-All" >View All</a></h1>
+            <div className='bottom-half'>
             <div className="movies-slide-bar">
                 <MovieSlider image={movieImageList} title={movieTitleList} desc={movieDescList} id={movieID} />
             </div>
-            {/* {movies && movies.length ? loaded() : loading()} */}
-        </>
+            </div>
+            {movies && movies.length ? loaded() : loading()}
+        </div>
     )
 }
 export default Movies

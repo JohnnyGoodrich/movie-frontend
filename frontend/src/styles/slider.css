@@ -8,8 +8,8 @@
 }
 .slider {
     display: flex;
-    height: 500px!important;
-    /* width: auto!important; */
+    height: 400px!important;
+    width: auto!important;
     margin-left: 220px;
     margin:auto;
 }
@@ -17,4 +17,25 @@
     gap: 5rem;
     
 } */
+.slick-track{
+    min-width: 350px;
+}
 
+.slick-slider .slick-initialized{
+    display: block;
+    box-sizing: border-box;
+    user-select: none;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+    width: 800px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+
+}
+.movies-slide-bar{
+    width:1500px;
+    margin: 0 auto;
+}
