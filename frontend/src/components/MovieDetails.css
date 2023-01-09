@@ -92,6 +92,7 @@
 }
 .movie-details-1{
     text-align: center;
+    padding-top: 50px;
 }
 .comment-label{
     /* color:red; */
@@ -238,6 +239,10 @@ svg circle:nth-child(2){
 #progress{
     display: flex;
     justify-content: space-around;
+    width:400px;
+    padding-top: 50px;
+
+
     
   }
   .progress-item {
@@ -247,6 +252,7 @@ svg circle:nth-child(2){
     border-radius: 50%;
     font-size: 0;
     animation: .4s ease-out reverse; 
+    /* padding-left: 10px; */
   }
   
   .progress-item::after {
@@ -260,4 +266,8 @@ svg circle:nth-child(2){
     background-color: #191919;
     font-size: 1rem;
     text-align: center;
+  }
+  .movie-details-image{
+    border-radius: 10px;
+    box-shadow: 1px 4px 50px grey;
   }

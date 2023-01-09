@@ -43,6 +43,7 @@ function MovieDetails(props) {
             setMovie(foundMovie)
             // console.log(foundMovie)
             // setEditForm(foundMovie)
+            average()
 
         } catch (err) {
             console.log(err)
