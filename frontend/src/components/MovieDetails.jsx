@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import logo from '../images/Screen Shot 2023-01-09 at 10.14.57 AM.png'
 
 function MovieDetails(props) {
-    const [reviewAverage, setReviewAverage]= useState(null)
+    const [reviewAverage, setReviewAverage] = useState(null)
     const [movie, setMovie] = useState(null)
     const [editForm, setEditForm] = useState("")
     const [newReview, setNewReview] = useState([
@@ -43,26 +43,30 @@ function MovieDetails(props) {
             setMovie(foundMovie)
             // console.log(foundMovie)
             // setEditForm(foundMovie)
-            average()
+            // average()
 
         } catch (err) {
             console.log(err)
         }
     }
-    function average(){
-        
+    let averageRating =0
+    async function average() {
         const array = []
         let sum = 0
-        for (let i =0;i<newReview.reviews.length; i++){
-            array.push(newReview.reviews[i].rating)
-            // averageRating = array/newReview.reviews.length
-            sum += array[i]
-            const averageRating = sum/array.length
-            //  console.log(i)
-            //  console.log(newReview.reviews[i].rating)
-            console.log(averageRating) 
-        }}
-        // average()
+        try{
+          for (let i = 0; i < newReview.reviews.length; i++) {
+                array.push(newReview.reviews[i].rating)
+              
+                sum += array[i]
+                averageRating = sum / array.length
+                
+                console.log(averageRating)
+            }
+        }catch(err){
+            console.log(err)
+        }
+    }
+    average()
     const getReview = async () => {
         try {
 
@@ -71,18 +75,7 @@ function MovieDetails(props) {
             // console.log(response.json)
             setNewReview(foundReview)
             console.log(foundReview)
-            // var yearStart = 2030;
-            // var yearEnd = 2040;
-
-            // var arr = [];
-
-            // for (var i = yearStart; i < yearEnd+1; i++) {
-            //     arr.push(i);
-            //     console.log(arr)
-            // }
-         
         
-
         } catch (err) {
             console.log(err)
         }
@@ -134,9 +127,9 @@ function MovieDetails(props) {
         getReview()
     }, [])
     useEffect(() => {
-    //   average()
-        },[])
-        
+        //   average()
+    }, [])
+
     // }, [reviews.length])
 
     // circle attempt using setAttribute()
@@ -145,16 +138,16 @@ function MovieDetails(props) {
     // console.log(ratings)
     // console.log(averageRating)
     //average rating function attempt
-    let ratingArray=[]
+    let ratingArray = []
 
     //change circle number attempt
     const dataNumData = document.querySelector(".progress-ite")
     function myFunction() {
 
-       dataNumData.setAttribute("data-num", "40"); 
-       
-      }
-    
+        dataNumData.setAttribute("data-num", "40");
+
+    }
+
     //   myFunction()
     // change circle number attempt
     // let num=document.querySelector(".card1:nth-child(1) svg circle:nth-child(2)")
@@ -168,33 +161,33 @@ function MovieDetails(props) {
     const counters = Array(items.length);
     const intervals = Array(items.length);
     counters.fill(0);
-    items.forEach((number,index) => {
-      intervals[index] = setInterval(() => {
-              if(counters[index] == parseInt(number.dataset.num)){
-                  clearInterval(intervals[index]);
-              }else{
-                  counters[index] += 1;
-                  number.style.background = "conic-gradient(red calc(" + counters[index] + "%), gray 0deg)";
-                  number.setAttribute('data-value', counters[index] + "%");
-                  number.innerHTML = counters[index] + "%";
-              }
-      }, 15);
-     });
+    items.forEach((number, index) => {
+        intervals[index] = setInterval(() => {
+            if (counters[index] == parseInt(number.dataset.num)) {
+                clearInterval(intervals[index]);
+            } else {
+                counters[index] += 1;
+                number.style.background = "conic-gradient(red calc(" + counters[index] + "%), gray 0deg)";
+                number.setAttribute('data-value', counters[index] + "%");
+                number.innerHTML = counters[index] + "%";
+            }
+        }, 15);
+    });
 
 
     const loaded = () => (
         <div className='details-content'>
             <Link to={'/'} style={{ textDecoration: 'none' }}>
-                    <div className="">
-                     
-                        <Link to={`/`}>
+                <div className="">
+
+                    <Link to={`/`}>
                         <img src={logo} className='header-logo'></img>
-                      
-                        </Link>
-                    </div>
-                </Link>
-   
-            
+
+                    </Link>
+                </div>
+            </Link>
+
+
             <section className='movie-details-1'>
                 <div className="movie">
                     <div>
@@ -218,10 +211,10 @@ function MovieDetails(props) {
                                 <h2 className='circle-text'></h2>
                             </div>
                         </div> */}
-                    
-                <div id="progress" >
-                    <div data-num="90" className="progress-item">ds</div>
-                </div>
+
+                        <div id="progress" >
+                            <div data-num= {averageRating} className="progress-item">ds</div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -287,7 +280,7 @@ function MovieDetails(props) {
                 <div className='all-reviews'>
                     {newReview.reviews ? (
                         newReview.reviews.map((review, index) => {
-                            
+
                             return (
 
                                 <div key={review._id} className='review-list'>
@@ -318,7 +311,7 @@ function MovieDetails(props) {
         <div>{movie && newReview ? loaded() : loading()}
 
         </div>
-       
+
     )
 
 }
