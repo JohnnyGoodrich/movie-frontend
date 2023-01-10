@@ -7,7 +7,7 @@ import '../styles/slider.css'
 
 
 function Slider(props) {
-    const urlMovie = "http://localhost:4000/movie"
+    const urlMovie = "https://movie-backend-project3.herokuapp.com/movie"
     const [movie, setMovie] = useState(null)
         useEffect(() => {
         fetch(urlMovie)
