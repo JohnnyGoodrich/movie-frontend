@@ -1,0 +1,18 @@
+.login-password {
+    -webkit-text-security: circle;
+}
+
+.register-password {
+    -webkit-text-security: circle;
+}
+
+.registerForm-container {
+    border: 2px solid black;
+    margin-top: 100px;
+    font-size: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 50px;
+    width: 50%;
+    margin-left: 25%;
+}
