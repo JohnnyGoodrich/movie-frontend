@@ -63,6 +63,7 @@ function MovieDetails(props) {
                 averageRating = sum / array.length
 
                 console.log(`averageRating: ${averageRating}`)
+                console.log(averageRating)
             }
         }catch(err){
             console.log(err)

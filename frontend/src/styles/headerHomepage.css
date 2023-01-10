@@ -3,6 +3,10 @@ a {
     text-decoration: none;
     color: #19F19B;
 }
+h1{
+    text-decoration: none;
+
+}
 .main-page{
     background-image: url("https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
     /* padding-top: 100px; */
@@ -19,6 +23,7 @@ a {
     background-color: rgb(49, 48, 48);
     text-decoration: none;
     padding-bottom: 7px;
+    /* padding-right: 200px; */
   
 }
 #movie-buff {
@@ -63,10 +68,13 @@ a {
     
 }
 #avatar-image {
-    margin-right: 60px;
+    display: flex;
+    /* margin-right: 60px; */
+    padding-right: 100px;
+    padding-left: 100px;
     margin-top: 5px;
     width: auto;
-    height: 60px;
+    height: 45px;
     border-radius: 50%;
 }
 .movie-list{
@@ -87,9 +95,11 @@ a {
 .View-All {
     font-family: 'Bebas Neue', cursive;
     /* margin-left: 1000px; */
-   height: 50px;
+    height: 50px;
     text-decoration: none;
     color: white;
+    text-decoration: none;
+    
 }
 .spinner {
     width: 24px;

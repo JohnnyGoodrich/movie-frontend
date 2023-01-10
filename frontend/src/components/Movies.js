@@ -78,7 +78,9 @@ function Movies(props) {
             <div className='content'>
                 <Slider movieList={movieTitleList} movieImage={movieImageList} />
             </div>
-            <h1 className='top-rated-movies'><span id="biwind"></span><a href="/viewAllTopRatedMovies" className="View-All" >All Movies</a></h1>
+            <Link style={{textDecoration:"none"}} to="/viewAllTopRatedMovies">
+            <h1 className='top-rated-movies'><div  className="View-All" textDecoration="none">All Movies</div></h1>
+            </Link>
             <div className='bottom-half'>
             <div className="movies-slide-bar">
                 <MovieSlider image={movieImageList} title={movieTitleList} desc={movieDescList} id={movieID} />
