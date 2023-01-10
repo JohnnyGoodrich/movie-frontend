@@ -3,10 +3,12 @@ import { useState, useEffect, useContext } from 'react'
 import './ReviewDetails.css'
 import './MovieDetails.css'
 import { Link } from 'react-router-dom'
-import { getUserToken } from '../utils/authToken'//Triet 
+import { getUserToken, decodeToken } from '../utils/authToken'//Triet 
 import { UserContext } from '../data'
 
 function ReviewDetails(props) {
+    const loggedInUser = decodeToken(getUserToken())//new stuff to make user still able to update or delete when refreshing the page
+    // console.log(loggedInUser)
     const token = getUserToken()//Triet
     const params = useParams()
     const { id } = params
@@ -82,7 +84,6 @@ function ReviewDetails(props) {
             const response = await fetch(URL4, options)
             // console.log(URL2.reviews)
             const deletedReview = await response.json()
-            navigate(`/review/${id}`)
             // navigate('/')
             // navigate(URL2)
             // console.log(URL3)
@@ -162,9 +163,10 @@ function ReviewDetails(props) {
         //    removeReview()
         getReview()
     }, [])
-    const isOwner = currentUser?._id === reviews?.owner
+    // const isOwner = currentUser?._id === reviews?.owner OLD VERSION
+    const isOwner = loggedInUser.id === reviews?.owner
     console.log(`token is : ${token}`)
-    console.log(`isowner is ${isOwner}`)
+    console.log(`Second condition is: ${loggedInUser.id === reviews?.owner}`)
     const loaded = () => (
         <div className='details-content'>
             <section>
