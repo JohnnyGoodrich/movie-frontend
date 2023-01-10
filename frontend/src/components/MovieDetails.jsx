@@ -35,15 +35,10 @@ function MovieDetails(props) {
 
             const response = await fetch(URL2)
             const foundMovie = await response.json()
-            console.log(foundMovie.reviews)
             setMovie(foundMovie.title)
-            
             setReviews(foundMovie.reviews)
-            console.log(reviews)
             
-            // important!!!!!!*****
-            console.log(averageRating)
-            average()
+    
         } catch (err) {
             console.log(err)
         }
