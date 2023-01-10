@@ -47,7 +47,7 @@ const RegisterForm = ({ signUp }) => {
                 />
                 <br />
                 <br />
-                <input type="submit" value="Sign Up" />
+                <input id="login-button"type="submit" value="Sign Up" />
             </form>
         </>
     );

@@ -10,28 +10,39 @@
 
 
 .card-movie{
-    border: 1px solid lightgray;
+    /* border: 1px solid lightgray; */
     border-radius: 1rem;
     display: grid;
     grid-template-rows: 2fr 1fr;
 }
 
 .card-image{
+    border-radius: 10px;
     align-items: center;
     display: flex;
     justify-content: center;
 }
 
 .card-each-image{
-    height: 200px;
-    width: auto;
+    height: 300px;
+    width: 250px;
+    
 }
 
 .card-title {
-    background-color: #276074;
+    font-family: 'Bebas Neue', cursive;
+    /* background-color: #276074; */
     /* color: white; */
     border-radius: 0 0 1rem 1rem;
     margin: 0;
     padding: 1rem;
     text-align: center;
+    color: white;
+  }
+  .all-mvoies-title{
+    color:white;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 75px;
+    padding-left: 50px;
+
   }

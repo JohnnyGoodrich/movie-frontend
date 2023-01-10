@@ -47,7 +47,7 @@ const LoginForm = ({ signIn }) => {
                 />
                 <br />
                 <br />
-                <input type="submit" value="Login User" />
+                <input id="login-button" type="submit" value="Login User" />
             </form>
         </>
     );

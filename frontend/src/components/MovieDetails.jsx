@@ -42,8 +42,8 @@ function MovieDetails(props) {
             console.log(reviews)
             
             // important!!!!!!*****
-            // average()
-
+            console.log(averageRating)
+            average()
         } catch (err) {
             console.log(err)
         }

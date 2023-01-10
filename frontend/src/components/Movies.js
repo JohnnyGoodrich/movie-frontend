@@ -72,13 +72,15 @@ function Movies(props) {
                     </div>
                 </Link>
                 <Search movieList={movieTitleList} />
-                {token ? <img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80" id="avatar-image" />:<a id="login-box" href="/auth">LOGIN/SIGNUP</a>}
+                {token ? <img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80" id="avatar-image" />:<a id="login-box" href="/auth">LOGIN|SIGN-UP</a>}
                 {/* <h1 id="login-box">LOGIN/SIGNUP</h1> */}
             </div>
             <div className='content'>
                 <Slider movieList={movieTitleList} movieImage={movieImageList} />
             </div>
-            <h1 className='top-rated-movies'><span id="biwind"></span><a href="/viewAllTopRatedMovies" className="View-All" >All Movies</a></h1>
+            <Link style={{textDecoration:"none"}} to="/viewAllTopRatedMovies">
+            <h1 className='top-rated-movies'><div  className="View-All" textDecoration="none">All Movies</div></h1>
+            </Link>
             <div className='bottom-half'>
             <div className="movies-slide-bar">
                 <MovieSlider image={movieImageList} title={movieTitleList} desc={movieDescList} id={movieID} />
