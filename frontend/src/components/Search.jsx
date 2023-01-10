@@ -41,9 +41,9 @@ const Search = (props) => {
             {/* search-context-inner class is a form for user to type */}
             <div className="search-context-inner">
                 <p id="look-up-symbol">{<BsSearch/>}</p>
-                <input type="text" value={searchValue} onChange={onChange} id="search" autocomplete="off" placeholder="Search movies titles....." /> 
+                <input type="text" value={searchValue} onChange={onChange} id="search" autoComplete="off" placeholder="Search movies titles....." /> 
                 <Link to={`/details/${searchValue}`}>
-                    <button onClick={<Link to={`/details/${searchValue}`}></Link>} id="search-submit">Search  </button>
+                    <button onClick={()=><Link to={`/details/${searchValue}`}></Link>} id="search-submit">Search  </button>
                 </Link>
             </div>
 

@@ -59,7 +59,7 @@ function MovieDetails(props) {
               
                 sum += array[i]
                 averageRating = sum / array.length
-                
+
                 console.log(averageRating)
             }
         }catch(err){
@@ -90,7 +90,8 @@ function MovieDetails(props) {
         // console.log(URL2)
     }
     const handleSubmit = async (e) => {
-        // e.preventDefault()
+        navigate(`/review/${id}`)
+        e.preventDefault()
         const currentState = { ...newReview }
         // console.log(currentState)
         // console.log(newReview.reviews[0]._id)
@@ -108,7 +109,7 @@ function MovieDetails(props) {
             const createdReview = await response.json()
             // console.log(createdReview)
             setNewReview([...newReview, createdReview])
-            setNewReview([{
+            setEditForm([{
                 rating: "",
                 comment: "",
             }])
