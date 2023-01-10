@@ -1,5 +1,5 @@
 // src/pages/Auth.jsx
-import {getUserToken,setUserToken, clearUserToken} from "../utils/authToken"
+import {getUserToken,setUserToken, clearUserToken, decodeToken} from "../utils/authToken"
 import { useContext } from "react"
 import { UserContext } from "../data"
 import RegisterForm from "./RegisterForm"
@@ -57,7 +57,7 @@ function Auth(props){
             }
     
             const response = await fetch(
-                "http://localhost:4000/auth/login",
+                "https://movie-backend-project3.herokuapp.com/auth/login",
                 configs
             )
     
