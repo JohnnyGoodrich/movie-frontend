@@ -17,7 +17,7 @@ function AuthRegister(props) {
             }
 
             const newUser = await fetch(
-                "http://localhost:4000/auth/register",
+                "https://movie-backend-project3.herokuapp.com/auth/register",
                 configs
             )
 
