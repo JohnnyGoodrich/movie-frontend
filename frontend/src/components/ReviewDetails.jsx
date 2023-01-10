@@ -64,11 +64,11 @@ function ReviewDetails(props) {
             console.log(deletedReview)
             // navigate(URL2)
             // console.log(URL3)
-            // navigate(-1)
+            navigate(-1)
             
         } catch (err) {
             console.log(err)
-            navigate(-1)
+            // navigate(-1)
             
         }
     }
