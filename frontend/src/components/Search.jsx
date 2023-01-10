@@ -43,7 +43,7 @@ const Search = (props) => {
                 <p id="look-up-symbol">{<BsSearch/>}</p>
                 <input type="text" value={searchValue} onChange={onChange} id="search" autoComplete="off" placeholder="Search movies titles....." /> 
                 <Link to={`/details/${searchValue}`}>
-                    <button onClick={()=><Link to={`/details/${searchValue}`}></Link>} id="search-submit">Search  </button>
+                    <button onClick={()=><Link to={`/details/${searchValue}`}></Link>} id="search-submit">Search</button>
                 </Link>
             </div>
 
@@ -60,8 +60,10 @@ const Search = (props) => {
                     .map((movie, idx) => (
                         <div onClick={() => onSearch(movie)} className="drop-down-row" key={idx}>
                             <Link key={movie._id} to={`/review/${movie._id}`}>
-                            <h3 id="search-title">{movie.title}</h3>
+                            <div className='drop-down-info'>
                             <img id="search-image" src={movie.image} alt=""/>
+                            <div id="search-title" textDecoration="none">{movie.title}</div>
+                            </div>
                             </Link>
                             </div>
                     ))

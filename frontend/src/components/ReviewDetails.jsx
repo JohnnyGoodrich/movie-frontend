@@ -64,7 +64,7 @@ function ReviewDetails(props) {
             console.log(deletedReview)
             // navigate(URL2)
             // console.log(URL3)
-            navigate(-1)
+            // navigate(-1)
             
         } catch (err) {
             console.log(err)
@@ -85,12 +85,12 @@ function ReviewDetails(props) {
             const updatedReview = await response.json()
 
             setNewReview(updatedReview)
-            setEditForm(updatedReview)
+            // setEditForm(updatedReview)
             navigate(-1)
 
         } catch (err) {
             console.log(err)
-            navigate(URL)
+            navigate(-1)
         }
     }
     // const handleChange = (e) => setEditForm({ ...editForm, [e.target.name]: e.target.value })
@@ -103,7 +103,7 @@ function ReviewDetails(props) {
         // console.log(URL2)
     }
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         const currentState = { ...newReview }
         // console.log(currentState)
         // console.log(newReview.reviews[0]._id)

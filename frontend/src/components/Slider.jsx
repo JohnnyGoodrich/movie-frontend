@@ -21,8 +21,7 @@ function Slider(props) {
 
     const [index, setIndex] = useState(0)
     const handleSelect = (selectedIndex, e) => {
-        setIndex(selectedIndex);
-        console.log(index)};
+        setIndex(selectedIndex);};
         if (!movie){
             return(<h1>no movies</h1>)
         }else{
