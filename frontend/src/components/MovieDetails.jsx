@@ -91,7 +91,7 @@ function MovieDetails(props) {
     }
     const handleSubmit = async (e) => {
         // navigate(`/review/${id}`)
-        // e.preventDefault()
+        e.preventDefault()
         const currentState = { ...newReview }
         // console.log(currentState)
         // console.log(newReview.reviews[0]._id)
