@@ -42,7 +42,7 @@ const Search = (props) => {
             {/* search-context-inner class is a form for user to type */}
             <div className="search-context-inner">
                 <p id="look-up-symbol">{<BsSearch/>}</p>
-                <input type="text" value={searchValue} onChange={onChange} id="search" placeholder="Search movies titles....." /> 
+                <input type="text" value={searchValue} onChange={onChange} id="search" autocomplete="off" placeholder="Search movies titles....." /> 
                 <Link to={`/details/${searchValue}`}>
                     <button onClick={<Link to={`/details/${searchValue}`}></Link>} id="search-submit">Search  </button>
                 </Link>
@@ -60,8 +60,10 @@ const Search = (props) => {
                     .slice(0, 8)
                     .map((movie, idx) => (
                         <div onClick={() => onSearch(movie)} className="drop-down-row" key={idx}>
-                            <h3>{movie.title}</h3>
+                            <Link key={movie._id} to={`/review/${movie._id}`}>
+                            <h3 id="search-title">{movie.title}</h3>
                             <img id="search-image" src={movie.image} alt=""/>
+                            </Link>
                             </div>
                     ))
                 }

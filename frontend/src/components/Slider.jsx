@@ -5,7 +5,7 @@ function Slider(props) {
     return (
         <>
             <Carousel className="carousel-container">
-                <Carousel.Item interval={1500}>
+                <Carousel.Item interval={5000}>
                     <img
                         className="slider"
                         src={props.movieImage[0]}
@@ -16,7 +16,7 @@ function Slider(props) {
                     </Carousel.Caption>
                 </Carousel.Item>
 
-                <Carousel.Item interval={1500}>
+                <Carousel.Item interval={5000}>
                     <img
                         className="slider"
                         src={props.movieImage[1]}
@@ -27,7 +27,7 @@ function Slider(props) {
                     </Carousel.Caption>
                 </Carousel.Item>
 
-                <Carousel.Item interval={1500}>
+                <Carousel.Item interval={5000}>
                     <img
                         className="slider"
                         src={props.movieImage[2]}
