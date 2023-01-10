@@ -7,10 +7,7 @@ import logo from '../images/Screen Shot 2023-01-09 at 10.14.57 AM.png'
 
 
 function MovieDetails(props) {
-    const token = getUserToken() //Triet's stuff
-    const params = useParams()
-    const { id } = params
-    const [reviewAverage, setReviewAverage] = useState(null)
+    const [reviewAverage, setReviewAverage]= useState(null)
     const [movie, setMovie] = useState(null)
     const [editForm, setEditForm] = useState({
         rating: "",
@@ -40,37 +37,58 @@ function MovieDetails(props) {
 
             const response = await fetch(URL2)
             const foundMovie = await response.json()
-            setMovie(foundMovie.title)
-            setReviews(foundMovie.reviews)
-            // important!!!!!!*****
-            // average()
+
+            setMovie(foundMovie)
+            // console.log(foundMovie)
+            // setEditForm(foundMovie)
+            average()
 
         } catch (err) {
             console.log(err)
         }
     }
+    let averageRating =0
+    async function average() {
+        const array = []
+        let sum = 0
+        try{
+          for (let i = 0; i < newReview.reviews.length; i++) {
+                array.push(newReview.reviews[i].rating)
+              
+                sum += array[i]
+                averageRating = sum / array.length
+                
+                console.log(averageRating)
+            }
+        }catch(err){
+            console.log(err)
+        }
+    }
+    average()
+    const getReview = async () => {
+        try {
 
+            const response = await fetch(URL2)
+            const foundReview = await response.json()
+            // console.log(response.json)
+            setNewReview(foundReview)
+            console.log(foundReview)
+            // var yearStart = 2030;
+            // var yearEnd = 2040;
 
-    // important!!!!!!********
-    // function average() {
+            // var arr = [];
 
-    //     const array = []
-    //     let sum = 0
-    //     for (let i = 0; i < newReview.reviews.length; i++) {
-    //         array.push(newReview.reviews[i].rating)
-    //         // averageRating = array/newReview.reviews.length
-    //         sum += array[i]
-    //         const averageRating = sum / array.length
-    //         //  console.log(i)
-    //         //  console.log(newReview.reviews[i].rating)
-    //         console.log(averageRating)
-    //     }
-    // }
+            // for (var i = yearStart; i < yearEnd+1; i++) {
+            //     arr.push(i);
+            //     console.log(arr)
+            // }
+         
+        
 
-
-
-    // average()
-    
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     const handleChange = (e) => {
         const userInput = { ...editForm }
@@ -106,13 +124,11 @@ function MovieDetails(props) {
     }, [])
     // useEffect(() => {
 
-    // //     getReview()
-    // // }, [])
-    //     getReview()
-    // }, [])
-    // useEffect(() => {
-    // //   average()
-    //     },[])
+        getReview()
+    }, [])
+    useEffect(() => {
+        //   average()
+    }, [])
 
     // }, [reviews.length])
 
@@ -122,11 +138,15 @@ function MovieDetails(props) {
     // console.log(ratings)
     // console.log(averageRating)
     //average rating function attempt
-    let ratingArray = []
+    let ratingArray  =  []
 
     //change circle number attempt
     const dataNumData = document.querySelector(".progress-ite")
     function myFunction() {
+
+        dataNumData.setAttribute("data-num", "40");
+
+    }
 
         dataNumData.setAttribute("data-num", "40");
 
@@ -145,7 +165,6 @@ function MovieDetails(props) {
     const counters = Array(items.length);
     const intervals = Array(items.length);
     counters.fill(0);
-
     items.forEach((number, index) => {
         intervals[index] = setInterval(() => {
             if (counters[index] == parseInt(number.dataset.num)) {
@@ -166,11 +185,15 @@ function MovieDetails(props) {
                 <div className="">
 
                     <Link to={`/`}>
+                <div className="">
+
+                    <Link to={`/`}>
                         <img src={logo} className='header-logo'></img>
 
                     </Link>
                 </div>
             </Link>
+
 
             <section className='movie-details-1'>
                 <div className="movie">
@@ -197,7 +220,7 @@ function MovieDetails(props) {
                         </div> */}
 
                         <div id="progress" >
-                            <div data-num="90" className="progress-item">ds</div>
+                            <div data-num= {averageRating} className="progress-item">ds</div>
                         </div>
                     </div>
                 </div>
