@@ -16,3 +16,12 @@
     width: 50%;
     margin-left: 25%;
 }
+#username{
+    max-width:70%;
+}
+#password{
+    max-width:60%;
+}
+#login-button{
+    width:90%
+}

@@ -53,6 +53,7 @@ function AllMovies(props) {
                 {/* <h1 id="login-box">LOGIN/SIGNUP</h1> */}
             </div>
 
+                <h1 className='all-mvoies-title'>All Movies</h1>
             <div className="All-Movies">
             {movies.map((movie) => (
                 <Link to={`/review/${movie._id}`} style={{ textDecoration: 'none' }} key={movie._id}>
