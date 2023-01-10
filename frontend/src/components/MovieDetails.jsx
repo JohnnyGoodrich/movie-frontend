@@ -7,7 +7,10 @@ import logo from '../images/Screen Shot 2023-01-09 at 10.14.57 AM.png'
 
 
 function MovieDetails(props) {
-    const [reviewAverage, setReviewAverage]= useState(null)
+    const token = getUserToken() //Triet's stuff
+    const params = useParams()
+    const { id } = params
+    const [reviewAverage, setReviewAverage] = useState(null)
     const [movie, setMovie] = useState(null)
     const [editForm, setEditForm] = useState({
         rating: "",
@@ -20,7 +23,7 @@ function MovieDetails(props) {
 
 
     // const URL = `https://movie-buff-backend.herokuapp.com/movie/${id}`
-    const BASE_URL = `https://movie-backend-project3.herokuapp.com/movie/${id}`//testing
+    const BASE_URL = `https://movie-backend-project3.herokuapp.com/movie/${id}`//Triet's heroku
 
 
     // const URL2 = `https://movie-buff-backend.herokuapp.com/review/${id}` John
@@ -37,23 +40,24 @@ function MovieDetails(props) {
 
             const response = await fetch(URL2)
             const foundMovie = await response.json()
-
-            setMovie(foundMovie)
-            // console.log(foundMovie)
-            // setEditForm(foundMovie)
-            average()
+            setMovie(foundMovie.title)
+            setReviews(foundMovie.reviews)
+            // important!!!!!!*****
+            // average()
 
         } catch (err) {
             console.log(err)
         }
     }
+
+    // Calculate average rating
     let averageRating =0
     async function average() {
         const array = []
         let sum = 0
         try{
-          for (let i = 0; i < newReview.reviews.length; i++) {
-                array.push(newReview.reviews[i].rating)
+          for (let i = 0; i < reviews.length; i++) {
+                array.push(reviews[i].rating)
               
                 sum += array[i]
                 averageRating = sum / array.length
@@ -65,37 +69,40 @@ function MovieDetails(props) {
         }
     }
     average()
-    const getReview = async () => {
-        try {
 
-            const response = await fetch(URL2)
-            const foundReview = await response.json()
-            // console.log(response.json)
-            setNewReview(foundReview)
-            console.log(foundReview)
-            // var yearStart = 2030;
-            // var yearEnd = 2040;
 
-            // var arr = [];
+    // const getReview = async () => {
+    //     try {
 
-            // for (var i = yearStart; i < yearEnd+1; i++) {
-            //     arr.push(i);
-            //     console.log(arr)
-            // }
+    //         const response = await fetch(URL2)
+    //         const foundReview = await response.json()
+    //         // console.log(response.json)
+    //         setNewReview(foundReview)
+    //         console.log(foundReview)
+    //         // var yearStart = 2030;
+    //         // var yearEnd = 2040;
+
+    //         // var arr = [];
+
+    //         // for (var i = yearStart; i < yearEnd+1; i++) {
+    //         //     arr.push(i);
+    //         //     console.log(arr)
+    //         // }
          
         
 
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
 
     const handleChange = (e) => {
         const userInput = { ...editForm }
         userInput[e.target.name] = e.target.value
         setEditForm(userInput)
     }
-    const handleSubmit = async (e) => {
+
+     const handleSubmit = async (e) => {
         e.preventDefault()
         const currentState = { ...editForm }
         try {
@@ -119,15 +126,10 @@ function MovieDetails(props) {
             console.log(err)
         }
     }
+
+
     useEffect(() => {
         getMovie()
-    }, [])
-    // useEffect(() => {
-
-        getReview()
-    }, [])
-    useEffect(() => {
-        //   average()
     }, [])
 
     // }, [reviews.length])
@@ -138,15 +140,12 @@ function MovieDetails(props) {
     // console.log(ratings)
     // console.log(averageRating)
     //average rating function attempt
+
     let ratingArray  =  []
 
     //change circle number attempt
     const dataNumData = document.querySelector(".progress-ite")
     function myFunction() {
-
-        dataNumData.setAttribute("data-num", "40");
-
-    }
 
         dataNumData.setAttribute("data-num", "40");
 
@@ -185,15 +184,11 @@ function MovieDetails(props) {
                 <div className="">
 
                     <Link to={`/`}>
-                <div className="">
-
-                    <Link to={`/`}>
                         <img src={logo} className='header-logo'></img>
 
                     </Link>
                 </div>
             </Link>
-
 
             <section className='movie-details-1'>
                 <div className="movie">
@@ -220,7 +215,7 @@ function MovieDetails(props) {
                         </div> */}
 
                         <div id="progress" >
-                            <div data-num= {averageRating} className="progress-item">ds</div>
+                            <div data-num={averageRating} className="progress-item">ds</div>
                         </div>
                     </div>
                 </div>
