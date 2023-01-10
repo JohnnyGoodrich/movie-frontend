@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import '../styles/auth.css'
 
 const RegisterForm = ({ signUp }) => {
 
@@ -25,7 +26,7 @@ const RegisterForm = ({ signUp }) => {
 
     return (
         <>
-            <h1>Register</h1>
+            <h1>REGISTER</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Name: </label>
                 <input
@@ -40,6 +41,7 @@ const RegisterForm = ({ signUp }) => {
                 <input
                     id="password"
                     name="password"
+                    className='register-password'
                     value={input.password}
                     onChange={handleChange}
                 />

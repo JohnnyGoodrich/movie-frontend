@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { getUserToken } from '../utils/authToken'//Triet's stuff
 import logo from '../images/Screen Shot 2023-01-09 at 10.14.57 AM.png'
 
-// function MovieDetails(props) {
+
 function MovieDetails(props) {
     const token = getUserToken() //Triet's stuff
     const params = useParams()
@@ -35,12 +35,6 @@ function MovieDetails(props) {
     // const URL4 = `http://localhost:3000/review/${id}/edit` John
     const URL4 = `https://movie-backend-project3.herokuapp.com/review/edit/${id}`//Triet
 
-
-    // console.log("id", id, URL)
-    // console.log(`Current Person: ${JSON.stringify(movie)}`)
-
-    // const handleChange = (e) => setEditForm({ ...editForm, [e.target.name]: e.target.value })
-
     const getMovie = async () => {
         try {
 
@@ -48,9 +42,6 @@ function MovieDetails(props) {
             const foundMovie = await response.json()
             setMovie(foundMovie.title)
             setReviews(foundMovie.reviews)
-            // console.log(foundMovie)
-            // setEditForm(foundMovie)
-
             // important!!!!!!*****
             // average()
 
@@ -59,16 +50,6 @@ function MovieDetails(props) {
         }
     }
 
-    // const getReview = async () => {
-    //     try {
-
-    //         const response = await fetch(URL2)
-    //         const foundReview = await response.json()
-    //         // console.log(response.json)
-    //         setReviews(foundReview)
-    //         // console.log(foundReview)
-    //         // setEditForm(foundMovie)
-    //         // console.log(newReview.reviews[0]._id)
 
     // important!!!!!!********
     // function average() {
@@ -89,44 +70,16 @@ function MovieDetails(props) {
 
 
     // average()
-    // const getReview = async () => {
-    //     try {
-
-    //         const response = await fetch(URL2)
-    //         const foundReview = await response.json()
-    //         // console.log(response.json)
-    //         setNewReview(foundReview)
-    //         console.log(foundReview)
-    //         // var yearStart = 2030;
-    //         // var yearEnd = 2040;
-
-    //         // var arr = [];
-
-    //         // for (var i = yearStart; i < yearEnd+1; i++) {
-    //         //     arr.push(i);
-    //         //     console.log(arr)
-    //         // }
-
-
-
-    // //     } catch (err) {
-    // //         console.log(err)
-    // //     }
-    // // }
+    
 
     const handleChange = (e) => {
-        // console.log(newReview.reviews._id)
         const userInput = { ...editForm }
         userInput[e.target.name] = e.target.value
         setEditForm(userInput)
-        // console.log(userInput)
-        // console.log(URL2)
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
         const currentState = { ...editForm }
-        console.log(currentState)
-        // console.log(newReview.reviews[0]._id)
         try {
             const requestOptions = {
                 method: "POST",
@@ -138,21 +91,16 @@ function MovieDetails(props) {
 
             }
             const response = await fetch(URL2, requestOptions)
-            // console.log(URL2)
             const createdReview = await response.json()
-            // console.log(createdReview)
             setReviews([...reviews, createdReview])
             setEditForm([{
                 rating: "",
                 comment: "",
             }])
-
         } catch (err) {
             console.log(err)
         }
     }
-
-
     useEffect(() => {
         getMovie()
     }, [])
@@ -198,21 +146,6 @@ function MovieDetails(props) {
     const intervals = Array(items.length);
     counters.fill(0);
 
-    // items.forEach((number, index) => {
-    //     intervals[index] = setInterval(() => {
-    //         if (counters[index] == parseInt(number.dataset.num)) {
-    //             clearInterval(intervals[index]);
-    //         } else {
-    //             counters[index] += 1;
-    //             number.style.background = "conic-gradient(red calc(" + counters[index] + "%), gray 0deg)";
-    //             number.setAttribute('data-value', counters[index] + "%");
-    //             number.innerHTML = counters[index] + "%";
-    //         }
-    //     }, 15);
-    // });Triet old stuff
-
-    // const loaded = () => (
-    //     <div className='details-content'>
     items.forEach((number, index) => {
         intervals[index] = setInterval(() => {
             if (counters[index] == parseInt(number.dataset.num)) {

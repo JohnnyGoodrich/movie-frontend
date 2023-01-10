@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import '../styles/auth.css'
 
 const LoginForm = ({ signIn }) => {
 
@@ -40,6 +41,7 @@ const LoginForm = ({ signIn }) => {
                 <input
                     id="password"
                     name="password"
+                    className='login-password'
                     value={input.password}
                     onChange={handleChange}
                 />

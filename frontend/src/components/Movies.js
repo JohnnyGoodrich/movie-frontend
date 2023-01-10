@@ -6,7 +6,9 @@ import Slider from './Slider'
 import MovieSlider from './MovieSlider';
 import '../styles/headerHomepage.css'
 import logo from '../images/Screen Shot 2023-01-09 at 10.14.57 AM.png'
+import { getUserToken } from '../utils/authToken'//Triet's stuff
 function Movies(props) {
+    const token = getUserToken() //Triet's stuff
     const [movies, setMovies] = useState([])
     // const BASE_URL = 'https://movie-buff-backend.herokuapp.com/movie'
     const BASE_URL = 'http://localhost:4000/movie'
@@ -69,12 +71,13 @@ function Movies(props) {
                     </div>
                 </Link>
                 <Search movieList={movieTitleList} />
-                <h1 id="login-box">LOGIN/SIGNUP</h1>
+                {token ? <img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80" id="avatar-image" />:<a id="login-box" href="/auth">LOGIN/SIGNUP</a>}
+                {/* <h1 id="login-box">LOGIN/SIGNUP</h1> */}
             </div>
             <div className='content'>
                 <Slider movieList={movieTitleList} movieImage={movieImageList} />
             </div>
-            <h1 className='top-rated-movies'><span id="biwind"></span><a href="http://localhost:3000/viewAllTopRatedMovies" className="View-All" >All Movies</a></h1>
+            <h1 className='top-rated-movies'><span id="biwind"></span><a href="/viewAllTopRatedMovies" className="View-All" >All Movies</a></h1>
             <div className='bottom-half'>
             <div className="movies-slide-bar">
                 <MovieSlider image={movieImageList} title={movieTitleList} desc={movieDescList} id={movieID} />

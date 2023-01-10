@@ -84,10 +84,12 @@ function Auth(props){
     
 
     return (
-        <section>
-            <h1>Login / Register Container</h1>
-            <RegisterForm signUp={registerUser}/>
+        <section className="registerForm-container">
+            {/* <h1>Login / Register Container</h1> */}
+            {/* <RegisterForm signUp={registerUser}/> */}
             <LoginForm signIn={loginUser}/>
+            <br />
+            <a href="/auth/register" id="register-id"> Create your account</a>
         </section>
     )
 }
