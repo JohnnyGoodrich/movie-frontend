@@ -2,60 +2,62 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './MovieDetails.css'
 import { Link } from 'react-router-dom'
+import { getUserToken } from '../utils/authToken'//Triet's stuff
 import logo from '../images/Screen Shot 2023-01-09 at 10.14.57 AM.png'
 
+
 function MovieDetails(props) {
+    const token = getUserToken() //Triet's stuff
+    const params = useParams()
+    const { id } = params
     const [reviewAverage, setReviewAverage] = useState(null)
     const [movie, setMovie] = useState(null)
-    const [editForm, setEditForm] = useState("")
-    const [newReview, setNewReview] = useState([
-        {
-            rating: "",
-            comment: "",
-            title: "",
-        }]
-
-    )
+    const [editForm, setEditForm] = useState({
+        rating: "",
+        comment: "",
+        title: id,
+    })
+    const [reviews, setReviews] = useState([])
 
     const navigate = useNavigate()
 
-    const params = useParams()
-    const { id } = params
+
+    // const URL = `https://movie-buff-backend.herokuapp.com/movie/${id}`
+    const BASE_URL = `https://movie-backend-project3.herokuapp.com/movie/${id}`//Triet's heroku
 
 
-    const URL = `https://movie-buff-backend.herokuapp.com/movie/${id}`
-    const URL2 = `https://movie-buff-backend.herokuapp.com/review/${id}`
-    const URL3 = `http://localhost:3000/review/${id}`
-    const URL4 = `http://localhost:3000/review/${id}/edit`
+    // const URL2 = `https://movie-buff-backend.herokuapp.com/review/${id}` John
+    const URL2 = `https://movie-backend-project3.herokuapp.com/review/${id}`//Triet's stuff
 
+    // const URL3 = `http://localhost:3000/review/${id}` John
+    const URL3 = `https://movie-backend-project3.herokuapp.com/review/${id}`//Triet
 
-    // console.log("id", id, URL)
-    // console.log(`Current Person: ${JSON.stringify(movie)}`)
-
-    // const handleChange = (e) => setEditForm({ ...editForm, [e.target.name]: e.target.value })
+    // const URL4 = `http://localhost:3000/review/${id}/edit` John
+    const URL4 = `https://movie-backend-project3.herokuapp.com/review/edit/${id}`//Triet
 
     const getMovie = async () => {
         try {
 
-            const response = await fetch(URL)
+            const response = await fetch(URL2)
             const foundMovie = await response.json()
-
-            setMovie(foundMovie)
-            // console.log(foundMovie)
-            // setEditForm(foundMovie)
+            setMovie(foundMovie.title)
+            setReviews(foundMovie.reviews)
+            // important!!!!!!*****
             // average()
 
         } catch (err) {
             console.log(err)
         }
     }
+
+    // Calculate average rating
     let averageRating =0
     async function average() {
         const array = []
         let sum = 0
         try{
-          for (let i = 0; i < newReview.reviews.length; i++) {
-                array.push(newReview.reviews[i].rating)
+          for (let i = 0; i < reviews.length; i++) {
+                array.push(reviews[i].rating)
               
                 sum += array[i]
                 averageRating = sum / array.length
@@ -67,52 +69,59 @@ function MovieDetails(props) {
         }
     }
     average()
-    const getReview = async () => {
-        try {
 
-            const response = await fetch(URL2)
-            const foundReview = await response.json()
-            // console.log(response.json)
-            setNewReview(foundReview)
-            console.log(foundReview)
+
+    // const getReview = async () => {
+    //     try {
+
+    //         const response = await fetch(URL2)
+    //         const foundReview = await response.json()
+    //         // console.log(response.json)
+    //         setNewReview(foundReview)
+    //         console.log(foundReview)
+    //         // var yearStart = 2030;
+    //         // var yearEnd = 2040;
+
+    //         // var arr = [];
+
+    //         // for (var i = yearStart; i < yearEnd+1; i++) {
+    //         //     arr.push(i);
+    //         //     console.log(arr)
+    //         // }
+         
         
-        } catch (err) {
-            console.log(err)
-        }
-    }
+
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
 
     const handleChange = (e) => {
-        // console.log(newReview.reviews._id)
-        const userInput = { ...newReview }
+        const userInput = { ...editForm }
         userInput[e.target.name] = e.target.value
-        setNewReview(userInput)
-        // console.log(userInput)
-        // console.log(URL2)
+        setEditForm(userInput)
     }
-    const handleSubmit = async (e) => {
-        // e.preventDefault()
-        const currentState = { ...newReview }
-        // console.log(currentState)
-        // console.log(newReview.reviews[0]._id)
+
+     const handleSubmit = async (e) => {
+        e.preventDefault()
+        const currentState = { ...editForm }
         try {
             const requestOptions = {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`//Triet's stuff
                 },
                 body: JSON.stringify(currentState)
 
             }
             const response = await fetch(URL2, requestOptions)
-            // console.log(URL2)
             const createdReview = await response.json()
-            // console.log(createdReview)
-            setNewReview([...newReview, createdReview])
-            setNewReview([{
+            setReviews([...reviews, createdReview])
+            setEditForm([{
                 rating: "",
                 comment: "",
             }])
-
         } catch (err) {
             console.log(err)
         }
@@ -121,13 +130,6 @@ function MovieDetails(props) {
 
     useEffect(() => {
         getMovie()
-    }, [])
-    useEffect(() => {
-
-        getReview()
-    }, [])
-    useEffect(() => {
-        //   average()
     }, [])
 
     // }, [reviews.length])
@@ -138,7 +140,8 @@ function MovieDetails(props) {
     // console.log(ratings)
     // console.log(averageRating)
     //average rating function attempt
-    let ratingArray = []
+
+    let ratingArray  =  []
 
     //change circle number attempt
     const dataNumData = document.querySelector(".progress-ite")
@@ -187,7 +190,6 @@ function MovieDetails(props) {
                 </div>
             </Link>
 
-
             <section className='movie-details-1'>
                 <div className="movie">
                     <div>
@@ -213,7 +215,7 @@ function MovieDetails(props) {
                         </div> */}
 
                         <div id="progress" >
-                            <div data-num= {averageRating} className="progress-item">ds</div>
+                            <div data-num={averageRating} className="progress-item">ds</div>
                         </div>
                     </div>
                 </div>
@@ -235,9 +237,10 @@ function MovieDetails(props) {
                     <p>{movie.cast[4]}</p>
                 </div>
             </div>
-            <div className='bottom-half'>
+
+     <div className='bottom-half'>
                 <div  >
-                    <section>
+                    {token ?<section>
                         <form className='rating-form' onSubmit={handleSubmit}>
                             <h2 className='section-header'>Create a new Review</h2>
 
@@ -250,7 +253,7 @@ function MovieDetails(props) {
                                         name="rating"
                                         placeholder="1-100"
                                         autoComplete='off'
-                                        value={newReview.rating}
+                                        value={editForm.rating}
                                         onChange={handleChange}
                                     />
                                 </label>
@@ -262,7 +265,7 @@ function MovieDetails(props) {
                                         name="comment"
                                         placeholder="write review here"
                                         autoComplete='off'
-                                        value={newReview.comment}
+                                        value={editForm.comment}
                                         onChange={handleChange}
                                     />
                                 </label>
@@ -273,13 +276,13 @@ function MovieDetails(props) {
                                 </div>
                             </div>
                         </form>
-                    </section>
+                    </section>:null}
                 </div >
 
                 <h2 className='review-header'>Reviews:</h2>
                 <div className='all-reviews'>
-                    {newReview.reviews ? (
-                        newReview.reviews.map((review, index) => {
+                    {reviews ? (
+                        reviews.map((review, index) => {
 
                             return (
 
@@ -289,7 +292,6 @@ function MovieDetails(props) {
 
                                             <p data-num="" className='rating-number'>Rating: {review.rating}</p>
                                             <p className='review-comment'>"{review.comment}"</p>
-                                            {/* <button className="delete" onClick={removeReview}>Delete Review</button> */}
                                         </div>
                                     </Link>
                                 </div>
@@ -300,19 +302,20 @@ function MovieDetails(props) {
             </div>
         </div>
     )
-    const loading = () => (
-        <>
-            <h1>
-                Loading...
-            </h1>
-        </>
-    );
-    return (
-        <div>{movie && newReview ? loaded() : loading()}
+const loading = () => (
+    <>
+        <h1>
+            Loading...
+        </h1>
+    </>
+);
+return (
+    <div>
+        {movie && reviews ? loaded() : loading()}
 
-        </div>
+    </div>
 
-    )
+)
 
 }
 
