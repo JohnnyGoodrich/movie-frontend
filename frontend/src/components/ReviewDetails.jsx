@@ -89,7 +89,7 @@ function ReviewDetails(props) {
             // console.log(URL3)
         } catch (err) {
             console.log(err)
-            // navigate(-1)
+            navigate(-1)
             
         }
     }
@@ -114,7 +114,7 @@ function ReviewDetails(props) {
 
         } catch (err) {
             console.log(err)
-            // navigate(URL)
+            navigate(URL)
         }
     }
     // const handleChange = (e) => setEditForm({ ...editForm, [e.target.name]: e.target.value })
