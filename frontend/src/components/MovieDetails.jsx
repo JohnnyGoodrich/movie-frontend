@@ -22,17 +22,12 @@ function MovieDetails(props) {
     const navigate = useNavigate()
 
 
-    // const URL = `https://movie-buff-backend.herokuapp.com/movie/${id}`
     const BASE_URL = `https://movie-backend-project3.herokuapp.com/movie/${id}`//Triet's heroku
 
-
-    // const URL2 = `https://movie-buff-backend.herokuapp.com/review/${id}` John
     const URL2 = `https://movie-backend-project3.herokuapp.com/review/${id}`//Triet's stuff
 
-    // const URL3 = `http://localhost:3000/review/${id}` John
     const URL3 = `https://movie-backend-project3.herokuapp.com/review/${id}`//Triet
 
-    // const URL4 = `http://localhost:3000/review/${id}/edit` John
     const URL4 = `https://movie-backend-project3.herokuapp.com/review/edit/${id}`//Triet
 
     const getMovie = async () => {
@@ -40,8 +35,12 @@ function MovieDetails(props) {
 
             const response = await fetch(URL2)
             const foundMovie = await response.json()
+            console.log(foundMovie.reviews)
             setMovie(foundMovie.title)
+            
             setReviews(foundMovie.reviews)
+            console.log(reviews)
+            
             // important!!!!!!*****
             // average()
 
@@ -49,52 +48,15 @@ function MovieDetails(props) {
             console.log(err)
         }
     }
-
+    
     // Calculate average rating
-    let averageRating =0
-    async function average() {
-        const array = []
-        let sum = 0
-        try{
-          for (let i = 0; i < reviews.length; i++) {
-                array.push(reviews[i].rating)
-              
-                sum += array[i]
-                averageRating = sum / array.length
-
-                console.log(`averageRating: ${averageRating}`)
-            }
-        }catch(err){
-            console.log(err)
-        }
+    const reviewRatings = []
+    let sum = 0
+    for (let i=0; i<reviews.length; i++) {
+        reviewRatings.push(parseInt(reviews[i].rating))
+        sum+=reviews[i].rating
     }
-    average()
-
-
-    // const getReview = async () => {
-    //     try {
-
-    //         const response = await fetch(URL2)
-    //         const foundReview = await response.json()
-    //         // console.log(response.json)
-    //         setNewReview(foundReview)
-    //         console.log(foundReview)
-    //         // var yearStart = 2030;
-    //         // var yearEnd = 2040;
-
-    //         // var arr = [];
-
-    //         // for (var i = yearStart; i < yearEnd+1; i++) {
-    //         //     arr.push(i);
-    //         //     console.log(arr)
-    //         // }
-         
-        
-
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // }
+    let averageRating = sum / reviewRatings.length
 
     const handleChange = (e) => {
         const userInput = { ...editForm }
@@ -133,14 +95,7 @@ function MovieDetails(props) {
         getMovie()
     }, [])
 
-    // }, [reviews.length])
 
-    // circle attempt using setAttribute()
-    // let averageRating= document.querySelector(".circle-num")
-    // let ratings = averageRating.getAttribute("data-num")
-    // console.log(ratings)
-    // console.log(averageRating)
-    //average rating function attempt
 
     let ratingArray  =  []
 
@@ -151,15 +106,6 @@ function MovieDetails(props) {
         dataNumData.setAttribute("data-num", "40");
 
     }
-
-    //   myFunction()
-    // change circle number attempt
-    // let num=document.querySelector(".card1:nth-child(1) svg circle:nth-child(2)")
-    // console.log(num)
-    // function changeCircleNum (){
-    //     document.querySelector(".card1:nth-child(1) svg circle:nth-child(2)").style.color="red"
-    // }
-    // changeCircleNum()
 
     let items = document.querySelectorAll('.progress-item');
     const counters = Array(items.length);
