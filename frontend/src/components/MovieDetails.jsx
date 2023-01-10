@@ -250,6 +250,8 @@ function MovieDetails(props) {
                                         className="rating"
                                         name="rating"
                                         placeholder="1-100"
+                                        min="1"
+                                        max="100"
                                         autoComplete='off'
                                         value={newReview.rating}
                                         onChange={handleChange}
