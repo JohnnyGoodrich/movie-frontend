@@ -82,8 +82,6 @@ function ReviewDetails(props) {
             const response = await fetch(URL4, options)
             // console.log(URL2.reviews)
             const deletedReview = await response.json()
-            navigate(`/review/${id}`)
-            console.log(`id: ${id}`)
             // navigate('/')
             // navigate(URL2)
             // console.log(URL3)
