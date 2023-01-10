@@ -1,3 +1,8 @@
+.content{
+    max-width: 1000px;
+    margin: 0 auto;
+    min-width: 770px;
+}
 .carousel-container {
     width:50%;
     margin-left: 400px;
@@ -6,17 +11,28 @@
 .carousel-inner{
     margin: auto;
 }
+.carousel-control-prev{
+    width:40%!important;
+}
+.carousel-control-next{
+    width:40%!important;
+}
 .slider {
     display: flex;
-    height: 400px!important;
-    width: auto!important;
-    margin-left: 220px;
-    margin:auto;
+    height: 500px!important;
+    width: 400px!important;
+    /* margin-left: 220px; */
+    margin:0 auto;
+
 }
 /* .carousel-control-next-icon .carousel-control-next{
     gap: 5rem;
     
 } */
+.carousel-indicators{
+max-width: 300px;
+margin: 0 auto!important;
+}
 .slick-track{
     min-width: 350px;
 }

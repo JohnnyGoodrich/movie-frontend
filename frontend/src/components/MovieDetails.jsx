@@ -61,7 +61,7 @@ function MovieDetails(props) {
               
                 sum += array[i]
                 averageRating = sum / array.length
-                
+
                 console.log(averageRating)
             }
         }catch(err){
@@ -105,6 +105,7 @@ function MovieDetails(props) {
      const handleSubmit = async (e) => {
         e.preventDefault()
         const currentState = { ...editForm }
+
         try {
             const requestOptions = {
                 method: "POST",
@@ -252,6 +253,8 @@ function MovieDetails(props) {
                                         className="rating"
                                         name="rating"
                                         placeholder="1-100"
+                                        min="1"
+                                        max="100"
                                         autoComplete='off'
                                         value={editForm.rating}
                                         onChange={handleChange}

@@ -10,6 +10,7 @@ a {
     background-attachment: fixed;
     /* margin:0px; */
     background-repeat: no-repeat;
+    
 }
 .header-homepage {
     display: flex;

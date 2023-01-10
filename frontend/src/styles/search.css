@@ -6,6 +6,7 @@ input {
     border: 0px solid white;
     border-radius: 90px;
     background-color: whitesmoke;
+    text-decoration: none!important;
 }
 *:focus {
     outline: 0 !important;
@@ -16,6 +17,7 @@ input {
     margin-top: 1px;
     margin-left: 20px;
     
+    
 }
 #search-submit {
     height: 40px;
@@ -25,6 +27,9 @@ input {
     padding-left: 50px;
     padding-right: 50px;
     background-image: linear-gradient(75deg, yellow, red);
+    /* max-width: 20px; */
+   
+    
 }
 #look-up-symbol {
     margin-left: 20px;
@@ -35,21 +40,39 @@ input {
     position: relative;
     z-index: 100;
     height: 10px;
+    width: 50%;
+    max-width: 700px;
+    min-width:400px;
+    padding-left: 20px;
+    
 }
 .drop-down-list {
-    position: absolute;
+    /* padding-top: 10px; */
+    /* position: absolute; */
     top: 100%;
-    width: 150%;
+    width: 500px;
     color: black;
     background-color: white;
+    text-decoration: none!important;
+    /* padding-left: 20px; */
+    margin-right:none!important;
+    
+}
+.drop-down-info{
+    display: flex;
+    
 }
 #search-image {
-    width: 10%;
+    width: 12%;
     height: auto;
+    margin-top: 10px;
+    
 }
 #search-title{
-    text-decoration: none;
+    text-decoration: none!important;
+    font-size: 20px;
     color: black;
+    margin-top: 5px;
 }
 
 .search-context-inner {
@@ -59,6 +82,7 @@ input {
     box-sizing: border-box;
     margin-top: 8px;
     height: 40px;
+    text-decoration: none!important;
 }
 
 /* input {
@@ -96,13 +120,18 @@ input {
 .drop-down-list:empty{
 border: none;
 background-color: black;
-}
+}*/
 .drop-down-row {
     cursor: pointer;
     text-align: start;
-    margin: 2px 0;
-    background-color: black;
+    margin: 0px 4px;
+  
+    text-decoration: none!important;
+ 
+    background-color: white;
+    
 }
+/*
 .search-context-inner {
     display: flex;
     margin: 0;
@@ -113,11 +142,11 @@ background-color: black;
     padding: 10px;
     margin: 0px;
     font-family: 'Yanone Kaffeesatz', sans-serif;
-}
+}-  
 #search:hover {
     color: rgb(0, 157, 255);
     background-color: rgb(12, 12, 12);
-} */
+} 
 
 
 

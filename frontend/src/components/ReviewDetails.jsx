@@ -86,11 +86,10 @@ function ReviewDetails(props) {
             // navigate('/')
             // navigate(URL2)
             // console.log(URL3)
-
         } catch (err) {
             console.log(err)
-            navigate(-1)
-            // navigate(`/`)
+            // navigate(-1)
+            
         }
     }
     const updateReview = async (e) => {

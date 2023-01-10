@@ -24,6 +24,7 @@ function Movies(props) {
     useEffect(() => {
         getMovies()
     }, [])
+
     const movieTitleList = []
     const movieImageList = []
     const movieDescList= []

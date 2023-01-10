@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import Search from "./Search"
 import '../styles/allMovies.css'
+import logo from '../images/Screen Shot 2023-01-09 at 10.14.57 AM.png'
 
 function AllMovies(props) {
     const [movies, setMovies] = useState([])
@@ -27,8 +28,8 @@ function AllMovies(props) {
 
 
     return (
-        <>
-            <div className='header-homepage'>
+        <div className='main-page'>
+            {/* <div className='header-homepage'>
                 <Link to={'/'} style={{ textDecoration: 'none' }}>
                     <div className="homepage">
                         <h1 id="movie-buff" >MovieBuff</h1>
@@ -37,6 +38,19 @@ function AllMovies(props) {
                 </Link>
                 <Search />
                 <h1 id="login-box">LOGIN/SIGNUP</h1>
+            </div> */}
+             <div className='header-homepage'>
+                <Link to={'/'} style={{ textDecoration: 'none' }}>
+                    <div className="homepage">
+                        <Link to={`/`}>
+                        <img src={logo} className='header-logo'></img>
+                        </Link>
+                    </div>
+                </Link>
+                <div>
+                <Search />
+                </div>
+                {/* <h1 id="login-box">LOGIN/SIGNUP</h1> */}
             </div>
 
             <div className="All-Movies">
@@ -56,7 +70,7 @@ function AllMovies(props) {
             </div>
 
 
-        </>
+        </div>
     )
 }
 
