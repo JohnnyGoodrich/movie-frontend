@@ -33,20 +33,20 @@ function ReviewDetails(props) {
 
 
     // const URL = `https://movie-buff-backend.herokuapp.com/movie/${id}`
-    const URL = 'http://localhost:4000/movie'//testing
+    const URL = 'https://movie-backend-project3.herokuapp.com/movie'//testing
 
 
 
     // const URL2 = `https://movie-buff-backend.herokuapp.com/review/${id}` John
-    const URL2 = `http://localhost:4000/review/${id}`//Triet's stuff
+    const URL2 = `https://movie-backend-project3.herokuapp.com/review/${id}`//Triet's stuff
 
     // const URL3 = `http://localhost:3000/review/${id}` John
-    const URL3 = `http://localhost:4000/review/${id}` // Triet's stuff
+    const URL3 = `https://movie-backend-project3.herokuapp.com/review/${id}` // Triet's stuff
 
 
     // const URL4 = `https://movie-buff-backend.herokuapp.com/review/edit/${id}`
 
-    const URL4 = `http://localhost:4000/review/edit/${id}`//Triet's stuff
+    const URL4 = `https://movie-backend-project3.herokuapp.com/review/edit/${id}`//Triet's stuff
 
     // console.log("id", id, URL)
     // console.log(`Current Person: ${JSON.stringify(movie)}`)

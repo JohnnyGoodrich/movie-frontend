@@ -20,17 +20,17 @@ function MovieDetails(props) {
 
 
     // const URL = `https://movie-buff-backend.herokuapp.com/movie/${id}`
-    const BASE_URL = 'http://localhost:4000/movie'//testing
+    const BASE_URL = `https://movie-backend-project3.herokuapp.com/movie/${id}`//testing
 
 
     // const URL2 = `https://movie-buff-backend.herokuapp.com/review/${id}` John
-    const URL2 = `http://localhost:4000/review/${id}`//Triet's stuff
+    const URL2 = `https://movie-backend-project3.herokuapp.com/review/${id}`//Triet's stuff
 
     // const URL3 = `http://localhost:3000/review/${id}` John
-    const URL3 = `http://localhost:4000/review/${id}`//Triet
+    const URL3 = `https://movie-backend-project3.herokuapp.com/review/${id}`//Triet
 
     // const URL4 = `http://localhost:3000/review/${id}/edit` John
-    const URL4 = `http://localhost:4000/review/edit/${id}`//Triet
+    const URL4 = `https://movie-backend-project3.herokuapp.com/review/edit/${id}`//Triet
 
 
     // console.log("id", id, URL)
