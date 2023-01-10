@@ -43,8 +43,8 @@ function MovieDetails(props) {
             setMovie(foundMovie.title)
             setReviews(foundMovie.reviews)
             // important!!!!!!*****
-            // average()
-
+            console.log(averageRating)
+            average()
         } catch (err) {
             console.log(err)
         }
