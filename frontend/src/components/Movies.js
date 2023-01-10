@@ -11,7 +11,7 @@ function Movies(props) {
     const token = getUserToken() //Triet's stuff
     const [movies, setMovies] = useState([])
     // const BASE_URL = 'https://movie-buff-backend.herokuapp.com/movie'
-    const BASE_URL = 'http://localhost:4000/movie'
+    const BASE_URL = 'https://movie-backend-project3.herokuapp.com/movie'
     const getMovies = async () => {
         try {
             const response = await fetch(BASE_URL)
