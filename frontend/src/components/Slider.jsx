@@ -22,12 +22,15 @@ function Slider(props) {
             return(<h1>no movies</h1>)
         }else{
             const eachMovie = movie.map((movies, imageIndex) =>
+                
                 <Carousel.Item key={imageIndex} interval={5000}>
+                   `<a href={`/review/${movies._id}`}>
                     <img
                         className="slider"
                         src={movies.image}
                         alt="First slide"
                     />
+                    </a>
                     <Carousel.Caption>
                     </Carousel.Caption>
                 </Carousel.Item>

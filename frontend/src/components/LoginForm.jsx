@@ -28,11 +28,12 @@ const LoginForm = ({ signIn }) => {
         <>
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Name: </label>
+                <label htmlFor="username" >Name: </label>
                 <input
                     id="username"
                     name="username"
                     value={input.username}
+                    autoComplete='off'
                     onChange={handleChange}
                 />
                 <br />
@@ -42,6 +43,7 @@ const LoginForm = ({ signIn }) => {
                     id="password"
                     name="password"
                     className='login-password'
+                    autoComplete='off'
                     value={input.password}
                     onChange={handleChange}
                 />

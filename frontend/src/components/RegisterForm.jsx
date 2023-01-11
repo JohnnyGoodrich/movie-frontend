@@ -34,6 +34,7 @@ const RegisterForm = ({ signUp }) => {
                     name="username"
                     value={input.username}
                     onChange={handleChange}
+                    autoComplete='off'
                 />
                 <br />
                 <br />
@@ -44,6 +45,7 @@ const RegisterForm = ({ signUp }) => {
                     className='register-password'
                     value={input.password}
                     onChange={handleChange}
+                    autoComplete='off'
                 />
                 <br />
                 <br />
