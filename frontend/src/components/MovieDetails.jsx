@@ -38,21 +38,21 @@ function MovieDetails(props) {
         }
     }
 
-    let averageRating =0
+    let averageRating = 0
     async function average() {
         const array = []
         let sum = 0
-        try{
-          for (let i = 0; i < reviews.length; i++) {
+        try {
+            for (let i = 0; i < reviews.length; i++) {
                 array.push(reviews[i].rating)
                 sum += array[i]
                 averageRating = sum / array.length
             }
-        }catch(err){
+        } catch (err) {
             console.log(err)
         }
     }
-    
+
     average()
 
     const handleChange = (e) => {
@@ -61,7 +61,7 @@ function MovieDetails(props) {
         setEditForm(userInput)
     }
 
-     const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const currentState = { ...editForm }
 
@@ -113,7 +113,7 @@ function MovieDetails(props) {
     const loaded = () => (
         <div className='details-content'>
             <Link to={'/'} style={{ textDecoration: 'none' }}>
-                <div className="">
+                <div className="header-homepage">
 
                     <Link to={`/`}>
                         <img src={logo} className='header-logo'></img>
@@ -153,9 +153,9 @@ function MovieDetails(props) {
                 </div>
             </div>
 
-     <div className='bottom-half'>
+            <div className='bottom-half'>
                 <div  >
-                    {token ?<section>
+                    {token ? <section>
                         <form className='rating-form' onSubmit={handleSubmit}>
                             <h2 className='section-header'>Create a new Review</h2>
 
@@ -193,45 +193,68 @@ function MovieDetails(props) {
                                 </div>
                             </div>
                         </form>
-                    </section>:null}
+                    </section> : null}
                 </div >
 
                 <h2 className='review-header'>Reviews:</h2>
                 <div className='all-reviews'>
-                    {reviews ? (
-                        reviews.map((review, index) => {
+                    {token ?
+                        <div className='review-list'>
+                            {reviews ? (
+                                reviews.map((review, index) => {
 
-                            return (
+                                    return (
 
-                                <div key={review._id} className='review-list'>
-                                    <Link to={`/review/edit/${review._id}`} className='edit'>
-                                        <div className='review'>
+                                        <div key={review._id} className='review-list'>
+                                            <Link to={`/review/edit/${review._id}`} className='edit'>
+                                                <div className='review'>
 
-                                            <p data-num="" className='rating-number'>Rating: {review.rating}</p>
-                                            <p className='review-comment'>"{review.comment}"</p>
+                                                    <p data-num="" className='rating-number'>Rating: {review.rating}</p>
+                                                    <p className='review-comment'>"{review.comment}"</p>
+                                                </div>
+                                            </Link>
                                         </div>
-                                    </Link>
-                                </div>
-                            )
-                        })
-                    ) : (<p> No reviews for this product </p>)}
+                                    )
+                                })
+                            ) : (<p> No reviews for this product </p>)}
+                        </div> :
+                        <div className='review-list'>
+                            {reviews ? (
+                                reviews.map((review, index) => {
+
+                                    return (
+
+                                        <div key={review._id} className='review-list'>
+                                            <div  className='edit'>
+                                                <div className='review'>
+
+                                                    <p data-num="" className='rating-number'>Rating: {review.rating}</p>
+                                                    <p className='review-comment'>"{review.comment}"</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            ) : (<p> No reviews for this product </p>)}
+                        </div>}
+
                 </div>
             </div>
         </div>
     )
-const loading = () => (
-    <>
-        <h1>
-            Loading...
-        </h1>
-    </>
-);
-return (
-    <div>
-        {movie && reviews ? loaded() : loading()}
+    const loading = () => (
+        <>
+            <h1>
+                Loading...
+            </h1>
+        </>
+    );
+    return (
+        <div>
+            {movie && reviews ? loaded() : loading()}
 
-    </div>
-)
+        </div>
+    )
 }
 
 export default MovieDetails

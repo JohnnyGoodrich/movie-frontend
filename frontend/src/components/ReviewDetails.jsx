@@ -101,8 +101,8 @@ function ReviewDetails(props) {
                     {token && isOwner ? <button onClick={removeReview}>delete review</button> : null}
                 </div>
                 <form className='rating-form-2' onSubmit={(e) => { updateReview(e) }} >
-                    <h2 className='section-header'>Edit this review</h2>
                     {token && isOwner ? <div className='create-review'>
+                    <h2 className='section-header'>Edit this review</h2>
                         <div className='text-box'>Rating</div>
                         <label htmlFor='title'>
                             <input
