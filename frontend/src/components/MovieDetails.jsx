@@ -2,12 +2,11 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './MovieDetails.css'
 import { Link } from 'react-router-dom'
-import { getUserToken } from '../utils/authToken'//Triet's stuff
+import { getUserToken } from '../utils/authToken'
 import logo from '../images/Screen Shot 2023-01-09 at 10.14.57 AM.png'
 
-
 function MovieDetails(props) {
-    const token = getUserToken() //Triet's stuff
+    const token = getUserToken()
     const params = useParams()
     const { id } = params
     const [reviewAverage, setReviewAverage] = useState(null)
@@ -19,21 +18,12 @@ function MovieDetails(props) {
     })
     const [reviews, setReviews] = useState([])
 
-    const navigate = useNavigate()
-
-
-    // const URL = `https://movie-buff-backend.herokuapp.com/movie/${id}`
-    const BASE_URL = `https://movie-backend-project3.herokuapp.com/movie/${id}`//Triet's heroku
-
-
-    // const URL2 = `https://movie-buff-backend.herokuapp.com/review/${id}` John
-    const URL2 = `https://movie-backend-project3.herokuapp.com/review/${id}`//Triet's stuff
-
+    const BASE_URL = `https://movie-backend-project3.herokuapp.com/movie/${id}`
+    const URL2 = `https://movie-backend-project3.herokuapp.com/review/${id}`
     // const URL3 = `http://localhost:3000/review/${id}` John
-    const URL3 = `https://movie-backend-project3.herokuapp.com/review/${id}`//Triet
-
+    const URL3 = `https://movie-backend-project3.herokuapp.com/review/${id}`
     // const URL4 = `http://localhost:3000/review/${id}/edit` John
-    const URL4 = `https://movie-backend-project3.herokuapp.com/review/edit/${id}`//Triet
+    const URL4 = `https://movie-backend-project3.herokuapp.com/review/edit/${id}`
 
     const getMovie = async () => {
         try {
@@ -42,15 +32,12 @@ function MovieDetails(props) {
             const foundMovie = await response.json()
             setMovie(foundMovie.title)
             setReviews(foundMovie.reviews)
-            // important!!!!!!*****
-            console.log(averageRating)
             average()
         } catch (err) {
             console.log(err)
         }
     }
 
-    // Calculate average rating
     let averageRating =0
     async function average() {
         const array = []
@@ -58,44 +45,15 @@ function MovieDetails(props) {
         try{
           for (let i = 0; i < reviews.length; i++) {
                 array.push(reviews[i].rating)
-              
                 sum += array[i]
                 averageRating = sum / array.length
-
-                console.log(`averageRating: ${averageRating}`)
-                console.log(averageRating)
             }
         }catch(err){
             console.log(err)
         }
     }
+    
     average()
-
-
-    // const getReview = async () => {
-    //     try {
-
-    //         const response = await fetch(URL2)
-    //         const foundReview = await response.json()
-    //         // console.log(response.json)
-    //         setNewReview(foundReview)
-    //         console.log(foundReview)
-    //         // var yearStart = 2030;
-    //         // var yearEnd = 2040;
-
-    //         // var arr = [];
-
-    //         // for (var i = yearStart; i < yearEnd+1; i++) {
-    //         //     arr.push(i);
-    //         //     console.log(arr)
-    //         // }
-         
-        
-
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // }
 
     const handleChange = (e) => {
         const userInput = { ...editForm }
@@ -112,7 +70,7 @@ function MovieDetails(props) {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`//Triet's stuff
+                    Authorization: `Bearer ${token}`
                 },
                 body: JSON.stringify(currentState)
 
@@ -133,34 +91,6 @@ function MovieDetails(props) {
     useEffect(() => {
         getMovie()
     }, [])
-
-    // }, [reviews.length])
-
-    // circle attempt using setAttribute()
-    // let averageRating= document.querySelector(".circle-num")
-    // let ratings = averageRating.getAttribute("data-num")
-    // console.log(ratings)
-    // console.log(averageRating)
-    //average rating function attempt
-
-    let ratingArray  =  []
-
-    //change circle number attempt
-    const dataNumData = document.querySelector(".progress-ite")
-    function myFunction() {
-
-        dataNumData.setAttribute("data-num", "40");
-
-    }
-
-    //   myFunction()
-    // change circle number attempt
-    // let num=document.querySelector(".card1:nth-child(1) svg circle:nth-child(2)")
-    // console.log(num)
-    // function changeCircleNum (){
-    //     document.querySelector(".card1:nth-child(1) svg circle:nth-child(2)").style.color="red"
-    // }
-    // changeCircleNum()
 
     let items = document.querySelectorAll('.progress-item');
     const counters = Array(items.length);
@@ -195,27 +125,10 @@ function MovieDetails(props) {
             <section className='movie-details-1'>
                 <div className="movie">
                     <div>
-                        {/* <h2>{movie.title}</h2> */}
                         <img className='movie-details-image' src={movie.image} alt={movie.name + " image"} height="400px" width="400px" />
                         <p className='movie-info'><span className='age-rating'>{movie.agerating}</span>&nbsp; {movie.year}, {movie.hlength}h{movie.mlength}m</p>
                     </div>
                     <div className='container1'>
-                        {/* <div className='card1'>
-                            <div className='box'>
-                                <div className='percent'>
-                                    <svg>
-                                        <circle cx='70' cy="70" r='70'></circle>
-                                        <circle cx='70' cy="70" r='70'></circle>
-                                    </svg>
-                                    <div className='circle-number'>
-                                        <h2 className='circle-num'>90<span>%</span></h2>
-                                    </div>
-                                </div>
-                                        <button className='ratingBtn' onClick={myFunction}>click</button>
-                                <h2 className='circle-text'></h2>
-                            </div>
-                        </div> */}
-
                         <div id="progress" >
                             <div data-num={averageRating} className="progress-item">ds</div>
                         </div>
@@ -318,9 +231,7 @@ return (
         {movie && reviews ? loaded() : loading()}
 
     </div>
-
 )
-
 }
 
 export default MovieDetails

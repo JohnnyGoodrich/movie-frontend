@@ -5,7 +5,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 function MovieSlider(props) {
     const arrowRef = useRef(null)
-    var settings = {
+    let settings = {
         className: "center",
         centermode: true,
         dots: false,
@@ -80,10 +80,6 @@ function MovieSlider(props) {
                         <h3 className="h3-in-each-movie"></h3>
                     </div>
                 </Link>
-                {/* <div className='each-movie'>
-                    <img className="each-movie-img" src={props.image[10]} alt="" />
-                    <h3 className="h3-in-each-movie">{props.desc[10]}</h3>
-                </div> */}
                 <Link to={`review/${props.id[8]}`} key={props.id}>
                     <div className='each-movie'>
                         <img className="each-movie-img" src={props.image[8]} alt="" />

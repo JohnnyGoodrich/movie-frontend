@@ -64,16 +64,13 @@ function Movies(props) {
             <div className='header-homepage'>
                 <Link to={'/'} style={{ textDecoration: 'none' }}>
                     <div className="homepage">
-                        {/* <h1 id="movie-buff" >MovieBUFF</h1> */}
                         <Link to={`/`}>
                         <img src={logo} className='header-logo'></img>
-                        {/* <h1 id="blank-symbol-header">...</h1> */}
                         </Link>
                     </div>
                 </Link>
                 <Search movieList={movieTitleList} />
                 {token ? <img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80" id="avatar-image" />:<a id="login-box" href="/auth">LOGIN|SIGN-UP</a>}
-                {/* <h1 id="login-box">LOGIN/SIGNUP</h1> */}
             </div>
             <div className='content'>
                 <Slider movieList={movieTitleList} movieImage={movieImageList} />
@@ -86,7 +83,6 @@ function Movies(props) {
                 <MovieSlider image={movieImageList} title={movieTitleList} desc={movieDescList} id={movieID} />
             </div>
             </div>
-            {/* {movies && movies.length ? loaded() : loading()} */}
         </div>
     )
 }
