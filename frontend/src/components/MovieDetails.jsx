@@ -32,7 +32,7 @@ function MovieDetails(props) {
             const foundMovie = await response.json()
             setMovie(foundMovie.title)
             setReviews(foundMovie.reviews)
-            average()
+            // average()
         } catch (err) {
             console.log(err)
         }
