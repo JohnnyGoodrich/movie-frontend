@@ -66,7 +66,45 @@ Backend API documentation: https://github.com/cwest9400/movie-backend/blob/main/
 
 ## Cool Code
 ```
-code snipet and why it's cool
+        {token ?
+                        <div className='review-list'>
+                            {reviews ? (
+                                reviews.map((review, index) => {
+
+                                    return (
+
+                                        <div key={review._id} className='review-list'>
+                                            <Link to={`/review/edit/${review._id}`} className='edit'>
+                                                <div className='review'>
+
+                                                    <p data-num="" className='rating-number'>Rating: {review.rating}</p>
+                                                    <p className='review-comment'>"{review.comment}"</p>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                    )
+                                })
+                            ) : (<p> No reviews for this product </p>)}
+                        </div> :
+                        <div className='review-list'>
+                            {reviews ? (
+                                reviews.map((review, index) => {
+
+                                    return (
+
+                                        <div key={review._id} className='review-list'>
+                                            <div  className='edit'>
+                                                <div className='review'>
+
+                                                    <p data-num="" className='rating-number'>Rating: {review.rating}</p>
+                                                    <p className='review-comment'>"{review.comment}"</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            ) : (<p> No reviews for this product </p>)}
+                        </div>}
 ```
 
 ## Challenges
