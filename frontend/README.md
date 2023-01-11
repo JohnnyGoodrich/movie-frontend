@@ -111,4 +111,3 @@ Backend API documentation: https://github.com/cwest9400/movie-backend/blob/main/
 - posting reviews via frontend user input form
 - authentification/user accounts
 - github merge conflicts
-
