@@ -6,7 +6,6 @@ import MovieDetails from './components/MovieDetails';
 import ReviewDetails from './components/ReviewDetails';
 import AllMovies from './components/AllMovies'
 import AuthRegister from './components/AuthRegister';
-import Home from './components/Home'
 import Auth from './components/Auth'
 import { UserContext } from './data';
 import { useState } from 'react';
@@ -26,7 +25,6 @@ function App() {
         }}>
       <Routes>
         <Route path="/" element={<Movies />} />
-        <Route path="/signIn" element={<Home />}/>
         <Route path="/auth" element={<Auth />}/>
         <Route path="/auth/register" element={<AuthRegister />} />
         <Route path="/viewAllTopRatedMovies" element ={<AllMovies />}/>

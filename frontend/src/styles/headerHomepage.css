@@ -6,25 +6,19 @@ a {
 }
 h1{
     text-decoration: none;
-
 }
 .main-page{
     background-image: url("https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-    /* padding-top: 100px; */
     background-size:100% 100%;
     background-attachment: fixed;
-    /* margin:0px; */
     background-repeat: no-repeat;
-    
 }
 .header-homepage {
     display: flex;
     justify-content: space-between;
-    /* background-color: rgb(3, 28, 103); */
     background-color: rgb(49, 48, 48);
     text-decoration: none;
     padding-bottom: 7px;
-    /* padding-right: 200px; */
   
 }
 #movie-buff {
@@ -53,7 +47,6 @@ h1{
 #login-box{
     font-family: 'Bebas Neue', cursive;
     margin-top: 7px;
-    
     margin-right: 40px;
     background-color: #F3EC78;
     background-image: linear-gradient(75deg, yellow, red);
@@ -66,11 +59,9 @@ h1{
     text-decoration: none;
     display: flex;
     align-items: flex-end;
-    
 }
 #avatar-image {
     display: flex;
-    /* margin-right: 60px; */
     padding-right: 100px;
     padding-left: 100px;
     margin-top: 5px;
@@ -95,7 +86,6 @@ h1{
 }
 .View-All {
     font-family: 'Bebas Neue', cursive;
-    /* margin-left: 1000px; */
     height: 50px;
     text-decoration: none;
     color: white;
@@ -107,19 +97,14 @@ h1{
     animation: loading infinite 3s linear;
 }
 .content{
-    /* background-image: linear-gradient(0.25turn, #10698683, #0C2C63); */
-    /* animation: mymove 10s infinite; */
     padding-top: 100px;
     padding-bottom: 100px;
 }
-/* movieSlider.js */
 .movies-slide-bar{
     position: relative;
     border-radius: 5px;
     cursor: pointer;
-    /* background-color: rgb(0, 0, 0, .4); */
 }
-
 .Description{
     font-weight: bold;
     font-size: 50px;
@@ -155,18 +140,6 @@ h1{
 .next:hover{
     opacity: 1;
 }
-/* @keyframes mymove {
-    from {background-color: #2d883a83;}
-    to {background-color: #005CFC;}
-  }
-@keyframes loading{
-    from{
-      transform: rotateZ(0deg);
-    }
-    to{
-      transform: rotateZ(360deg);
-    }
-  } */
   .movies-slide-bar{
     background-color: none;
   }

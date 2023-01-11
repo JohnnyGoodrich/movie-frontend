@@ -12,15 +12,9 @@
 }
 .review-details-list{
     margin: 0 auto;
-    /* width: 500px; */
     padding-top: 50px;
     padding-bottom: 20px;
     max-width: 800px;
-   
-}
-
-.text-box{
-    /* padding-top:50px; */
 }
 .delete{
     max-width: 800px;
@@ -36,8 +30,6 @@
     text-decoration:underline;
 }
 .rating-form-2{
-    /* display: flex;
-    flex-direction: column; */
     max-width: 800px;
     margin: 0 auto;
     padding-top: 20px;

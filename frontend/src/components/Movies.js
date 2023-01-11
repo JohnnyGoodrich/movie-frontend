@@ -6,11 +6,10 @@ import Slider from './Slider'
 import MovieSlider from './MovieSlider';
 import '../styles/headerHomepage.css'
 import logo from '../images/Screen Shot 2023-01-09 at 10.14.57 AM.png'
-import { getUserToken } from '../utils/authToken'//Triet's stuff
+import { getUserToken } from '../utils/authToken'
 function Movies(props) {
-    const token = getUserToken() //Triet's stuff
+    const token = getUserToken() 
     const [movies, setMovies] = useState([])
-    // const BASE_URL = 'https://movie-buff-backend.herokuapp.com/movie'
     const BASE_URL = 'https://movie-backend-project3.herokuapp.com/movie'
     const getMovies = async () => {
         try {
@@ -35,30 +34,7 @@ function Movies(props) {
         movieDescList.push(movies[i].desc)
         movieID.push(movies[i]._id)
     }
-    const loaded = () => {
-        return (
-            
-            <div className='main-page'>
-                <section className="movie-list">
-                    {movies?.map((movie) => {
-                        return (
-                            <Link key={movie._id} to={`/review/${movie._id}`}>
-                                <div className="movie-card">
-                                    <img className="movie-images" src={movie.image} alt="" />
-                                    <h1>{movie.title}</h1>
-                                </div>
-                            </Link>
-                        )
-                    })}
-                </section>
-            </div>
-        )
-    }
-    const loading = () => (
-        <section className="movie-list">
-            <h1>Loading... <span>{" "} <img className='spinner' src="https://freesvg.org/img/1544764567.png" /></span></h1>
-        </section>
-    )
+
     return (
         <div className='main-page'>
             <div className='header-homepage'>

@@ -2,41 +2,29 @@
 .section-header{
     font-family: 'Bebas Neue', cursive;
     padding-top:10px;
-
 }
 .details-content{
-    /* padding-top: 50px; */
-    /* background-color: black; */
     background-image: url("https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
     background-size:100% 100%;
     background-attachment: fixed;
     margin:0px;
     background-repeat: no-repeat;
     color: white;
-    /* height:100vh; */
 }
 .review{
     border: 1px solid white;
-    /* display: flex; */
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
     border-radius: 10px;
     width: 300px;
     height: 200px;
-  
-   
     color:white;
-   
-    
 }
 .review:hover{
     border: 1px solid #ddd;
-    /* background-color: transparent; */
-    /* padding: 8px 24px; */
     width: 300px;
     height:210px;
-    /* border-radius: 4px; */
     transition: transform .3s ease-in-out;
     transform: scale(1.1);
     opacity: .9;
@@ -48,14 +36,12 @@
     gap: 60px;
     margin:0 auto;
     padding-top: 20px;
-    
 }
 .edit{
     text-align: right;
     padding-right: 10px;
     align-items: flex-end;
     text-decoration: none;
-   
 }
 .movie{
     display: flex;
@@ -73,8 +59,6 @@
 .rating-number{
     text-align: left;
     padding-left: 5px;
-    
-    
 }
 .age-rating{
     color: black;
@@ -83,7 +67,6 @@
     font-size:15px;
     background-color: lightgray;
     padding: 0 3px 0 3px;
-    
 }
 .movie-info{
     display: flex;
@@ -94,17 +77,10 @@
     text-align: center;
     padding-top: 50px;
 }
-.comment-label{
-    /* color:red; */
-}
 .rating-form{
-    /* display: flex;
-    flex-direction: column; */
     max-width: 1200px;
     margin: 0 auto;
     padding-top: 20px;
-    
-    
 }
 .movie-description{
     max-width: 800px;
@@ -122,29 +98,20 @@
   grid-auto-rows: auto;
   color: rgb(85, 84, 84);
 }
-
 .rating{
     text-align: center;
-    /* border: 1px solid black; */
     max-width: 70px;
     margin:0 auto;
     height:40px;
     border-radius: 15px;
     opacity: .3;
-    
-    
 }
 .comment{
     border-radius: 15px;
     text-align: center;
-    /* border: 1px solid black; */
-    /* max-width: 800px; */
     height:100px;
-    /* margin: 0 auto; */
     word-wrap: break-word;
     opacity: .3;
-    
-    
 }
 .review-header{
     font-family: 'Bebas Neue', cursive;
@@ -156,31 +123,20 @@
     padding-top: 40px;
     margin: 0 auto;
     word-wrap: break-word;
-    
 }
 .button{
     padding-top: 10px;
     padding-bottom: 10px;
 }
-
 .create-review{
     display: flex;
     flex-direction: column;
-    
 }
 .bottom-half{
     background-color: rgb(0, 0, 0, .4);
     padding-left: 10px;
     
 }
-
-/* First circle progress bar test*/
-/* svg{
-    position: relative;
-    width: 150px;
-    height: 150px;
-    z-index: 1000;
-} */
 .circle-number {
     color: white;
 }
@@ -210,7 +166,6 @@ svg circle:nth-child(2){
 .container1 .card1{
     position: relative;
     width: 250px;
-  
     display: flex;
     justify-content: center;
     align-items: center;
@@ -219,7 +174,6 @@ svg circle:nth-child(2){
     overflow: hidden;
     transition: .5s;
 }
-
 .percent .circle-number{
     position: absolute;
     top: 0;
@@ -236,15 +190,11 @@ svg circle:nth-child(2){
     opacity: 1;
 }
 
-/*Second circle progress bar test*/
 #progress{
     display: flex;
     justify-content: space-around;
     width:400px;
     padding-top: 50px;
-
-
-    
   }
   .progress-item {
     display: flex;
@@ -253,9 +203,7 @@ svg circle:nth-child(2){
     border-radius: 50%;
     font-size: 0;
     animation: .4s ease-out reverse; 
-    /* padding-left: 10px; */
   }
-  
   .progress-item::after {
     content: attr(data-value);
     display: flex;
