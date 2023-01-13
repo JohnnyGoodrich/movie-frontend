@@ -62,8 +62,8 @@ h1{
 }
 #avatar-image {
     display: flex;
-    padding-right: 100px;
-    padding-left: 100px;
+    padding-right: 50px;
+    padding-left: 50px;
     margin-top: 5px;
     width: auto;
     height: 45px;
@@ -146,6 +146,9 @@ h1{
   .header-logo{
     height: 50px;
     padding: 10px 0 0 10px;
+  }
+  .avatar-logout-button{
+    display: flex;
   }
          
  

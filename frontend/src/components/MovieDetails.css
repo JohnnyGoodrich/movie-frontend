@@ -220,6 +220,23 @@ svg circle:nth-child(2){
     border-radius: 10px;
     box-shadow: 1px 4px 50px grey;
   }
-  /* .logout{
-    color: white;
-  } */
+.button-box{
+    padding-top: 10px;
+    padding-right: 30px
+}
+.btn-outline-warning {
+    --bs-btn-color: red!important;
+    --bs-btn-border-color: red!important;
+    --bs-btn-hover-color: #313130!important;
+    --bs-btn-hover-bg: red!important;
+    --bs-btn-hover-border-color: red!important;
+    --bs-btn-focus-shadow-rgb: 255,193,7;
+    --bs-btn-active-color: #313130!important;
+    --bs-btn-active-bg: red!important;
+    --bs-btn-active-border-color: red!important;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: red!important;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: red!important;
+    --bs-gradient: none;
+}

@@ -8,7 +8,7 @@ import MovieSlider from './MovieSlider';
 import '../styles/headerHomepage.css'
 import logo from '../images/Screen Shot 2023-01-09 at 10.14.57 AM.png'
 // import { getUserToken } from '../utils/authToken'
-import {getUserToken,setUserToken, clearUserToken, decodeToken} from "../utils/authToken"
+import { getUserToken, setUserToken, clearUserToken, decodeToken } from "../utils/authToken"
 function Movies(props) {
     const navigate = useNavigate()
     const token = getUserToken()
@@ -37,7 +37,7 @@ function Movies(props) {
         movieDescList.push(movies[i].desc)
         movieID.push(movies[i]._id)
     }
-    function logout(){
+    function logout() {
         clearUserToken();
         navigate('/')
     }
@@ -54,9 +54,11 @@ function Movies(props) {
                 </Link>
                 <Search movieList={movieTitleList} />
                 {token ?
-                    <div>
+                    <div className='avatar-logout-button'>
                         <img src="https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2960&q=80" id="avatar-image" />
-                        <button onClick={logout} className='logout'>Logout</button>
+                        <div className='button-box'>
+                            <button type="button" onClick={logout} className='btn btn-outline-warning'>Logout</button>
+                        </div>
                     </div> : <a id="login-box" href="/auth">LOGIN|SIGN-UP</a>}
             </div>
             <div className='content'>
