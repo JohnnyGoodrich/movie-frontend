@@ -17,6 +17,7 @@ function MovieDetails(props) {
         title: id,
     })
     const [reviews, setReviews] = useState([])
+    const [averageRating, setAverageRating] = useState(0)
 
     const BASE_URL = `https://movie-backend-project3.herokuapp.com/movie/${id}`
     const URL2 = `https://movie-backend-project3.herokuapp.com/review/${id}`
@@ -35,7 +36,7 @@ function MovieDetails(props) {
         }
     }
 
-    let averageRating = 0
+    
     async function average() {
         const array = []
         let sum = 0
@@ -43,13 +44,14 @@ function MovieDetails(props) {
             for (let i = 0; i < reviews.length; i++) {
                 array.push(reviews[i].rating)
                 sum += array[i]
-                averageRating = sum / array.length
+          
             }
+            setAverageRating(sum/array.length)
         } catch (err) {
             console.log(err)
         }
     }
-    average()
+    // average()
 
     const handleChange = (e) => {
         const userInput = { ...editForm }
@@ -86,6 +88,9 @@ function MovieDetails(props) {
     useEffect(() => {
         getMovie()
     }, [])
+    useEffect(() => {
+        average()
+    }, [reviews.length])
 
     let items = document.querySelectorAll('.progress-item');
     const counters = Array(items.length);
