@@ -102,6 +102,7 @@ margin: 0 auto!important;
             margin-left: 50px!important;
         }
         .button-movie-slider{
+            display:none;
             top:100%!important;
             justify-content: center!important;
             position:relative!important;

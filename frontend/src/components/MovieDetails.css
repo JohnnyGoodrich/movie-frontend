@@ -11,6 +11,20 @@
     background-repeat: no-repeat;
     color: white;
 }
+.review-list{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-self: start;
+    gap: 10px;
+    margin:0 auto;
+    padding-top: 20px;
+    /* z-index: 1020; */
+}
+/* .review-list:hover{
+    z-index:0;
+    position: relative;
+    
+}  */
 .review{
     border: 1px solid white;
     flex-direction: column;
@@ -20,22 +34,17 @@
     width: 300px;
     height: 200px;
     color:white;
+    position: relative;
+    
 }
 .review:hover{
     border: 1px solid #ddd;
-    width: 300px;
-    height:210px;
-    transition: transform .3s ease-in-out;
+    transition: transform .2s ease-in-out;
     transform: scale(1.1);
     opacity: .9;
-}
-.review-list{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    justify-self: start;
-    gap: 60px;
-    margin:0 auto;
-    padding-top: 20px;
+    /* z-index: 10; */
+    /* position: relative; */
+    
 }
 .edit{
     text-align: right;
@@ -134,7 +143,7 @@
 }
 .bottom-half{
     background-color: rgb(0, 0, 0, .4);
-    padding-left: 10px;
+    padding-left: 15px;
     
 }
 .circle-number {
